@@ -19,11 +19,28 @@
 					?>                 
 				</div>
 			<?php endif; ?>
-			<p class="text-center">
-				<?php printf( __( 'Proudly powered by %s', 'giga-store' ), '<a href="' . esc_url( __( 'https://wordpress.org/', 'giga-store' ) ) . '">WordPress</a>' ); ?>
-				<span class="sep"> | </span>
-				<?php printf( __( 'Theme: %1$s by %2$s', 'giga-store' ), '<a href="http://themes4wp.com/theme/giga-store" title="' . esc_attr__( 'Free WooCommerce WordPress Theme', 'giga-store' ) . '">Giga Store</a>', 'Themes4WP' ); ?>
-			</p> 
+			<div class="row">
+				<div class="col-md-3">
+					<div class="follow-buttons">
+						<a class="twitter" href="https://twitter.com/PalletBoxSale"><span>Follow us on Twitter</span></a>
+						<a class="facebook" href="http://www.facebook.com/"><span>Follow Us on Facebook</span></a>
+						<a class="instagram" href="http://www.instagram.com/"><span>Follow Us on Instagram</span></a>
+						<a class="linkedIn" href="http://www.linkedin.com/"><span>Follow Us on LinkedIn</span></a>
+						
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div id="footerLink">
+						<a href="http://www.ebay.co.uk/bhp/pallet-box" target="_blank" >Ebay pallet box</a> <b>|</b>
+						<a href="https://dir.indiamart.com/impcat/wooden-pallet-box.html" target="_blank" >Wooden pallet box</a> <b>|</b>
+						<a href="https://www.moving-dolly.com" target="_blank" >Moving dolly</a>
+						<b>|</b>
+						<a href="https://www.plastic-crate.com/" target="_blank" >Plastic moving box</a>
+						<b>|</b>
+						<a href="http://www.orbiscorporation.com/products/bulk-containers" target="_blank" >Orbis</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>       
 </footer> 

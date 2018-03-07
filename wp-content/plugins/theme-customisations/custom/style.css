@@ -1,0 +1,130 @@
+/**
+ * Add any custom CSS here.
+ *
+ * This file will be loaded after all other theme stylesheets.
+ */
+
+ a {
+    color: #31708f;
+}
+.mt-10p{
+    margin-top: 10px;
+}
+.mt-20p{
+    margin-top: 20px;
+}
+.mt-30p{
+    margin-top: 30px;
+}
+
+.btn-default, input[type="submit"], button, a.comment-reply-link {
+    border: 1px solid #31708f;
+    color: #31708f;
+}
+
+.rsrc-header {
+    margin-top: 40px;
+}
+#site-header a {
+    font-size: 26px;
+}
+ .rsrc-top-menu {
+    display: none;
+}
+ .main-menu-section {
+    background-color: #184c63;
+}
+.current-menu-item {
+    background-color: #163847;
+}
+.header-section {
+    background-color: #31708f;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #163847;
+}
+
+.rsrc-footer {
+    background-color: #184c63;
+}
+#back-top span {
+    background-color: #376278;
+}
+
+#productDetail{
+    height: 130px;
+}
+
+section.related.products{
+    clear: both;
+}
+
+
+.wpcf7-form-control.g-recaptcha>div,
+.wpcf7-form-control.g-recaptcha iframe,
+.rc-anchor-compact {
+    width: 100%;
+}
+#text-6{
+    border: 1px solid #184c63;
+    color: #184c63;
+}
+#text-6 .widget-title{
+    font-weight: bold;
+    color: #184c63;
+    text-align: center;
+    border-bottom: 1px solid #184c63;
+}
+
+.cat-title{
+    font-size: 20px;
+}
+.homepage-desc .cat-desc-content{
+    margin-left: 15px;
+}
+.homepage-desc h4,
+.homepage-desc h2{
+    font-size: 16px;
+}
+.homepage-desc .cat-title{
+    font-weight: bold;
+}
+.follow-buttons>a {
+    color: #fff;
+    font-size: 1.3em;
+    padding-right: .5em;
+}
+.follow-buttons>a:after {
+    font-family: 'FontAwesome';
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 100%;
+    width: .8em;
+    text-align: center;
+}
+.follow-buttons>a span {
+    display: none;
+}
+.site-footer .follow-buttons>a span {
+    display: none;
+}
+.follow-buttons>a.twitter:after {
+    content: '\f099';
+}
+.follow-buttons>a.facebook:after {
+    content: '\f09a';
+}
+.follow-buttons>a.instagram:after {
+    content: '\f16d';
+}
+.follow-buttons>a.linkedIn:after {
+    content: "\f0e1";
+}
+
+#footerLink{
+    text-align: center;
+}
+#footerLink a{
+    color: #ddd;
+}

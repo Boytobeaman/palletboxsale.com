@@ -1,0 +1,59 @@
+0000.008 () Opened log file at time: Fri, 02 Mar 2018 00:46:12 +0000 on http://localpalletboxsale.com:8080
+0000.008 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.14.4 WP: 4.9.4 PHP: 5.6.28 (apache2handler, Windows NT LAPTOP-L90QIQC7 6.2 build 9200 (Windows 8 Home Premium Edition) i586) MySQL: 5.5.5 WPLANG: en_US Server: Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 40.1M | 40.5M) multisite: N openssl: OpenSSL 1.0.2j  26 Sep 2016 mcrypt: Y LANG:  ZipArchive::addFile: Y
+0000.008 () Free space on disk containing Updraft's temporary directory: 13638 MB
+0000.011 () Restore job started. Entities to restore: db. Restore options: {"updraft_encryptionphrase":"","updraft_restorer_wpcore_includewpconfig":false,"updraft_incremental_restore_point":-1}
+0000.052 () Entity: db
+0000.052 () restore_backup(backup_file=backup_2018-03-02-0023_PalletBoxSale_1920e2f1bfca-db.gz, type=db, info=a:0:{}, last_one=1)
+0000.053 () Unpacking backup... (backup_2018-03-02-0023_PalletBoxSale_1920e2f1bfca-db.gz, 0.2 Mb)
+0000.063 () Database successfully unpacked
+0000.064 () Restoring the database (on a large site this can take a long time - if it times out (which can happen if your web hosting company has configured your hosting to limit resources) then you should use a different method, such as phpMyAdmin)...
+0000.064 () Using direct MySQL access; value of use_mysqli is: 1
+0000.152 () Max packet size: 32 MB
+0000.152 () Entering maintenance mode
+0000.152 () Enabling Maintenance mode&#8230;
+0000.159 () Backup of: https://www.palletboxsale.com
+0000.198 () Content URL: https://www.palletboxsale.com/wp-content
+0000.199 () Uploads URL: https://www.palletboxsale.com/wp-content/uploads
+0000.199 () Old table prefix: wp_
+0000.199 () Site information: multisite=0
+0000.203 () New table prefix: wp_
+0000.214 () Processing table (InnoDB): wp_options
+0000.618 () Restoring prior UD configuration (table: wp_options; keys: 90)
+0001.389 () Processing table (InnoDB): wp_users
+0001.528 () Processing table (InnoDB): wp_usermeta
+0001.623 () Processing table (InnoDB): wp_commentmeta
+0001.683 () Processing table (InnoDB): wp_comments
+0001.740 () Processing table (InnoDB): wp_links
+0001.790 () Processing table (InnoDB): wp_postmeta
+0002.172 () Processing table (InnoDB): wp_posts
+0002.332 () Processing table (InnoDB): wp_term_relationships
+0002.390 () Processing table (InnoDB): wp_term_taxonomy
+0002.455 () Processing table (InnoDB): wp_termmeta
+0002.519 () Processing table (InnoDB): wp_terms
+0002.578 () Processing table (InnoDB): wp_woocommerce_order_itemmeta
+0002.632 () Processing table (InnoDB): wp_woocommerce_payment_tokenmeta
+0002.670 () Processing table (InnoDB): wp_w3tc_cdn_pathmap
+0002.713 () Processing table (InnoDB): wp_w3tc_cdn_queue
+0002.744 () Database queries processed: 50 in 2.67 seconds
+0002.763 () Processing table (InnoDB): wp_wc_download_log
+0002.838 () Processing table (InnoDB): wp_wc_webhooks
+0002.960 () Processing table (InnoDB): wp_woocommerce_api_keys
+0003.054 () Processing table (InnoDB): wp_woocommerce_attribute_taxonomies
+0003.131 () Processing table (InnoDB): wp_woocommerce_downloadable_product_permissions
+0003.242 () Processing table (InnoDB): wp_woocommerce_log
+0003.338 () Processing table (InnoDB): wp_woocommerce_order_items
+0003.426 () Processing table (InnoDB): wp_woocommerce_payment_tokens
+0003.552 () Processing table (InnoDB): wp_woocommerce_sessions
+0003.635 () Processing table (InnoDB): wp_woocommerce_shipping_zone_locations
+0003.713 () Processing table (InnoDB): wp_woocommerce_shipping_zone_methods
+0003.787 () Processing table (InnoDB): wp_woocommerce_shipping_zones
+0003.855 () Processing table (InnoDB): wp_woocommerce_tax_rate_locations
+0003.942 () Processing table (InnoDB): wp_woocommerce_tax_rates
+0004.033 () Processing table (InnoDB): wp_yoast_seo_links
+0004.179 () Processing table (InnoDB): wp_yoast_seo_meta
+0004.241 () Unlocking database and leaving maintenance mode
+0004.241 () Disabling Maintenance mode&#8230;
+0004.242 () Finished: lines processed: 88 in 4.17 seconds
+0004.244 () Cleaning up rubbish...
+0004.303 () Restore successful!
+0004.303 () Restore successful
