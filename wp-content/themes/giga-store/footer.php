@@ -38,6 +38,10 @@
 						<a href="https://www.plastic-crate.com/" target="_blank" >Plastic moving box</a>
 						<b>|</b>
 						<a href="http://www.orbiscorporation.com/products/bulk-containers" target="_blank" >Orbis</a>
+						<b>|</b>
+						<a href="https://www.plastic-crate.co.uk" target="_blank" >Euro crates</a>
+						<b>|</b>
+						<a href="http://www.joinplastic.com/products/foldableBox/foldablePlasticCrates.php" target="_blank" >Collapsible crate</a>
 					</div>
 				</div>
 			</div>
