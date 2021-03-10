@@ -46,8 +46,6 @@ abstract class UpdraftPlus_BackupModule {
 			throw new Exception('save_options() requires an instance ID, but was called without setting one (either directly or via set_instance_id())');
 		}
 		
-		global $updraftplus;
-		
 		$current_db_options = UpdraftPlus_Storage_Methods_Interface::update_remote_storage_options_format($this->get_id());
 
 		if (is_wp_error($current_db_options)) {
@@ -68,6 +66,18 @@ abstract class UpdraftPlus_BackupModule {
 	 */
 	public function get_default_options() {
 		return array();
+	}
+
+	/**
+	 * Check whether options have been set up by the user, or not
+	 * This method would normally be over-ridden by the child.
+	 *
+	 * @param Array $opts - the potential options
+	 *
+	 * @return Boolean
+	 */
+	public function options_exist($opts) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+		return false;
 	}
 
 	/**
@@ -93,6 +103,10 @@ abstract class UpdraftPlus_BackupModule {
 	 * - config_templates : not implemented yet: indicates that
 	 * the remote storage module can output its configuration in
 	 * Handlebars format via the get_configuration_template() method.
+	 *
+	 * - conditional_logic : indicates that the remote storage module
+	 * can handle predefined logics regarding how backups should be
+	 * sent to the remote storage
 	 *
 	 * @return Array - an array of supported features (any features not
 	 * mentioned are assumed to not be supported)
@@ -155,7 +169,7 @@ abstract class UpdraftPlus_BackupModule {
 		$name = '';
 
 		if (is_array($field)) {
-			foreach ($field as $key => $value) {
+			foreach ($field as $value) {
 				$id .= '_'.$value;
 				$name .= '['.$value.']';
 			}
@@ -217,15 +231,16 @@ abstract class UpdraftPlus_BackupModule {
 			{{/if}}
 			<?php
 			do_action('updraftplus_config_print_before_storage', $this->get_id(), $this);
-
+			do_action('updraftplus_config_print_add_conditional_logic', $this->get_id(), $this);
 			if ($this->supports_feature('multi_storage')) {
-					do_action('updraftplus_config_print_add_instance_label', $this->get_id(), $this);
+				do_action('updraftplus_config_print_add_instance_label', $this->get_id(), $this);
 			}
 
 			$template = ob_get_clean();
 			$template .= $this->get_configuration_template();
 		} else {
 			do_action('updraftplus_config_print_before_storage', $this->get_id(), $this);
+			do_action('updraftplus_config_print_add_conditional_logic', $this->get_id(), $this);
 			// N.B. These are mutually exclusive: config_print() is not used if config_templates is supported. So, even during transition, the UpdraftPlus_BackupModule instance only needs to support one of the two, not both.
 			$this->config_print();
 			$template = ob_get_clean();
@@ -271,6 +286,8 @@ abstract class UpdraftPlus_BackupModule {
 
 	/**
 	 * Supplies the list of keys for options to be saved in the backup job.
+	 *
+	 * @return Array
 	 */
 	public function get_credentials() {
 		$keys = array('updraft_ssl_disableverify', 'updraft_ssl_nossl', 'updraft_ssl_useservercerts');
@@ -341,7 +358,7 @@ abstract class UpdraftPlus_BackupModule {
 
 		$id = $this->get_id();
 
-		return $methods[$id];
+		return isset($methods[$id]) ? $methods[$id] : $id;
 	}
 
 	/**
@@ -543,7 +560,7 @@ abstract class UpdraftPlus_BackupModule {
 
 		if ($template_instead_of_notice) {
 			$instance_id = "{{instance_id}}";
-			$text = sprintf(__("<strong>After</strong> you have saved your settings (by clicking 'Save Changes' below), then come back here once and click this link to complete authentication with %s.", 'updraftplus'), $description);
+			$text = sprintf(__("<strong>After</strong> you have saved your settings (by clicking 'Save Changes' below), then come back here once and follow this link to complete authentication with %s.", 'updraftplus'), $description);
 		} else {
 			$instance_id = $this->get_instance_id();
 			$text = sprintf(__('Follow this link to authorize access to your %s account (you will not be able to backup to %s without it).', 'updraftplus'), $description, $description);
@@ -622,6 +639,47 @@ abstract class UpdraftPlus_BackupModule {
 	}
 
 	/**
+	 * Get the manual authorisation template
+	 *
+	 * @return String - the template
+	 */
+	public function get_manual_authorisation_template() {
+
+		$id = $this->get_id();
+		$description = $this->get_description();
+
+		$template = "<div id='updraftplus_manual_authorisation_template_{$id}'>";
+		$template .= "<strong>".sprintf(__('%s authentication:', 'updraftplus'), $description)."</strong>";
+		$template .= "<p>".sprintf(__('If you are having problems authenticating with %s you can manually authorize here.', 'updraftplus'), $description)."</p>";
+		$template .= "<p>".__('To complete manual authentication, at the orange UpdraftPlus authentication screen select the "Having problems authenticating?" link, then copy and paste the code given here.', 'updraftplus')."</p>";
+		$template .= "<label for='updraftplus_manual_authentication_data_{$id}'>".sprintf(__('%s authentication code:', 'updraftplus'), $description)."</label> <input type='text' id='updraftplus_manual_authentication_data_{$id}' name='updraftplus_manual_authentication_data_{$id}'>";
+		$template .= "<p id='updraftplus_manual_authentication_error_{$id}'></p>";
+		$template .= "<button type='button' data-method='{$id}' class='button button-primary' id='updraftplus_manual_authorisation_submit_{$id}'>".__('Complete manual authentication', 'updraftplus')."</button>";
+		$template .= '<span class="updraftplus_spinner spinner">' . __('Processing', 'updraftplus') . '...</span>';
+		$template .= "</div>";
+
+		return $template;
+	}
+
+	/**
+	 * This will call the remote storage methods complete authentication function
+	 *
+	 * @param string $state - the remote storage authentication state
+	 * @param string $code  - the remote storage authentication code
+	 *
+	 * @return string - returns a string response
+	 */
+	public function complete_authentication($state, $code) {
+		if (method_exists($this, 'do_complete_authentication')) {
+			return $this->do_complete_authentication($state, $code, true);
+		} else {
+			$message = $this->get_id().": module does not have an complete authentication method (coding bug)";
+			error_log($message);
+			return $message;
+		}
+	}
+
+	/**
 	 * Over-ride this to allow methods to output extra information about using the correct account for OAuth storage methods
 	 *
 	 * @return Boolean - return false so that no extra information is output
@@ -645,7 +703,7 @@ abstract class UpdraftPlus_BackupModule {
 
 		$prefix = $this->get_storage_label();
 
-		$updraftplus->log("$prefix: $line", $level, $uniq_id = false, $skip_dblog = false);
+		$updraftplus->log("$prefix: $line", $level, $uniq_id, $skip_dblog);
 	}
 
 	/**

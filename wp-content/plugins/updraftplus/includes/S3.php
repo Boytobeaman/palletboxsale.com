@@ -2313,7 +2313,7 @@ final class UpdraftPlus_S3Request {
 
 		// Parse body into XML
 		// The case in which there is not application/xml content-type header is to support a DreamObjects case seen, April 2018
-		if (false === $this->response->error && isset($this->response->body) && ((isset($this->response->headers['type']) && 'application/xml' == $this->response->headers['type']) || (!isset($this->response->headers['type']) && 0 === strpos($this->response->body, '<?xml')))) {
+		if (false === $this->response->error && isset($this->response->body) && ((isset($this->response->headers['type']) && false  !== strpos($this->response->headers['type'], 'application/xml')) || (!isset($this->response->headers['type']) && 0 === strpos($this->response->body, '<?xml')))) {
 			$this->response->body = simplexml_load_string($this->response->body);
 
 			// Grab S3 errors
@@ -2417,7 +2417,7 @@ final class UpdraftPlus_S3Request {
 			elseif ('content-type' == strtolower($header))
 				$this->response->headers['type'] = $value;
 			elseif ('etag' == strtolower($header))
-				$this->response->headers['hash'] = '"' == $value{0} ? substr($value, 1, -1) : $value;
+				$this->response->headers['hash'] = '"' == $value[0] ? substr($value, 1, -1) : $value;
 			elseif (preg_match('/^x-amz-meta-.*$/i', $header))
 				$this->response->headers[strtolower($header)] = $value;
 		}

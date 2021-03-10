@@ -4,7 +4,7 @@
  *
  * Handle comments (reviews and order notes).
  *
- * @package WooCommerce/Classes/Products
+ * @package WooCommerce\Classes\Products
  * @version 2.3.0
  */
 
@@ -146,7 +146,7 @@ class WC_Comments {
 	 */
 	public static function check_comment_rating( $comment_data ) {
 		// If posting a comment (not trackback etc) and not logged in.
-		if ( ! is_admin() && isset( $_POST['comment_post_ID'], $_POST['rating'], $comment_data['comment_type'] ) && 'product' === get_post_type( absint( $_POST['comment_post_ID'] ) ) && empty( $_POST['rating'] ) && '' === $comment_data['comment_type'] && 'yes' === get_option( 'woocommerce_enable_review_rating' ) && 'yes' === get_option( 'woocommerce_review_rating_required' ) ) { // WPCS: input var ok, CSRF ok.
+		if ( ! is_admin() && isset( $_POST['comment_post_ID'], $_POST['rating'], $comment_data['comment_type'] ) && 'product' === get_post_type( absint( $_POST['comment_post_ID'] ) ) && empty( $_POST['rating'] ) && self::is_default_comment_type( $comment_data['comment_type'] ) && wc_review_ratings_enabled() && wc_review_ratings_required() ) { // WPCS: input var ok, CSRF ok.
 			wp_die( esc_html__( 'Please rate the product.', 'woocommerce' ) );
 			exit;
 		}
@@ -195,12 +195,12 @@ class WC_Comments {
 	 * @param int $post_id Post ID.
 	 */
 	public static function clear_transients( $post_id ) {
-
 		if ( 'product' === get_post_type( $post_id ) ) {
 			$product = wc_get_product( $post_id );
-			self::get_rating_counts_for_product( $product );
-			self::get_average_rating_for_product( $product );
-			self::get_review_count_for_product( $product );
+			$product->set_rating_counts( self::get_rating_counts_for_product( $product ) );
+			$product->set_average_rating( self::get_average_rating_for_product( $product ) );
+			$product->set_review_count( self::get_review_count_for_product( $product ) );
+			$product->save();
 		}
 	}
 
@@ -238,9 +238,10 @@ class WC_Comments {
 					"
 					SELECT comment_approved, COUNT(*) AS num_comments
 					FROM {$wpdb->comments}
-					WHERE comment_type NOT IN ('order_note', 'webhook_delivery')
+					WHERE comment_type NOT IN ('action_log', 'order_note', 'webhook_delivery')
 					GROUP BY comment_approved
-				", ARRAY_A
+					",
+					ARRAY_A
 				);
 
 				$approved = array(
@@ -327,7 +328,8 @@ class WC_Comments {
 				AND comment_post_ID = %d
 				AND comment_approved = '1'
 				AND meta_value > 0
-			", $product->get_id()
+					",
+					$product->get_id()
 				)
 			);
 			$average = number_format( $ratings / $count, 2, '.', '' );
@@ -335,12 +337,50 @@ class WC_Comments {
 			$average = 0;
 		}
 
-		$product->set_average_rating( $average );
-
-		$data_store = $product->get_data_store();
-		$data_store->update_average_rating( $product );
-
 		return $average;
+	}
+
+	/**
+	 * Utility function for getting review counts for multiple products in one query. This is not cached.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param array $product_ids Array of product IDs.
+	 *
+	 * @return array
+	 */
+	public static function get_review_counts_for_product_ids( $product_ids ) {
+		global $wpdb;
+
+		if ( empty( $product_ids ) ) {
+			return array();
+		}
+
+		$product_id_string_placeholder = substr( str_repeat( ',%s', count( $product_ids ) ), 1 );
+
+		$review_counts = $wpdb->get_results(
+			// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Ignored for allowing interpolation in IN query.
+			$wpdb->prepare(
+				"
+					SELECT comment_post_ID as product_id, COUNT( comment_post_ID ) as review_count
+					FROM $wpdb->comments
+					WHERE
+						comment_parent = 0
+						AND comment_post_ID IN ( $product_id_string_placeholder )
+						AND comment_approved = '1'
+						AND comment_type in ( 'review', '', 'comment' )
+					GROUP BY product_id
+				",
+				$product_ids
+			),
+			// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared.
+			ARRAY_A
+		);
+
+		// Convert to key value pairs.
+		$counts = array_replace( array_fill_keys( $product_ids, 0 ), array_column( $review_counts, 'review_count', 'product_id' ) );
+
+		return $counts;
 	}
 
 	/**
@@ -351,25 +391,9 @@ class WC_Comments {
 	 * @return int
 	 */
 	public static function get_review_count_for_product( &$product ) {
-		global $wpdb;
+		$counts = self::get_review_counts_for_product_ids( array( $product->get_id() ) );
 
-		$count = $wpdb->get_var(
-			$wpdb->prepare(
-				"
-			SELECT COUNT(*) FROM $wpdb->comments
-			WHERE comment_parent = 0
-			AND comment_post_ID = %d
-			AND comment_approved = '1'
-		", $product->get_id()
-			)
-		);
-
-		$product->set_review_count( $count );
-
-		$data_store = $product->get_data_store();
-		$data_store->update_review_count( $product );
-
-		return $count;
+		return $counts[ $product->get_id() ];
 	}
 
 	/**
@@ -393,18 +417,14 @@ class WC_Comments {
 			AND comment_approved = '1'
 			AND meta_value > 0
 			GROUP BY meta_value
-		", $product->get_id()
+				",
+				$product->get_id()
 			)
 		);
 
 		foreach ( $raw_counts as $count ) {
 			$counts[ $count->meta_value ] = absint( $count->meta_value_count ); // WPCS: slow query ok.
 		}
-
-		$product->set_rating_counts( $counts );
-
-		$data_store = $product->get_data_store();
-		$data_store->update_rating_counts( $product );
 
 		return $counts;
 	}
@@ -417,11 +437,25 @@ class WC_Comments {
 	 * @return array
 	 */
 	public static function update_comment_type( $comment_data ) {
-		if ( ! is_admin() && isset( $_POST['comment_post_ID'], $comment_data['comment_type'] ) && '' === $comment_data['comment_type'] && 'product' === get_post_type( absint( $_POST['comment_post_ID'] ) ) ) { // WPCS: input var ok, CSRF ok.
+		if ( ! is_admin() && isset( $_POST['comment_post_ID'], $comment_data['comment_type'] ) && self::is_default_comment_type( $comment_data['comment_type'] ) && 'product' === get_post_type( absint( $_POST['comment_post_ID'] ) ) ) { // WPCS: input var ok, CSRF ok.
 			$comment_data['comment_type'] = 'review';
 		}
 
 		return $comment_data;
+	}
+
+	/**
+	 * Determines if a comment is of the default type.
+	 *
+	 * Prior to WordPress 5.5, '' was the default comment type.
+	 * As of 5.5, the default type is 'comment'.
+	 *
+	 * @since 4.3.0
+	 * @param string $comment_type Comment type.
+	 * @return bool
+	 */
+	private static function is_default_comment_type( $comment_type ) {
+		return ( '' === $comment_type || 'comment' === $comment_type );
 	}
 }
 

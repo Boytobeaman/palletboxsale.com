@@ -6,11 +6,11 @@ if (!function_exists("nxs_snapAjax")) { function nxs_snapAjax() { check_ajax_ref
      $ntObj->showNTSettings($ii, $pbo);  
   }
   if ($_POST['nxsact']=='setNTset') { global $nxs_snapAvNts; unset($_POST['action']); unset($_POST['nxsact']); unset($_POST['_wp_http_referer']); unset($_POST['_wpnonce']); //unset($_POST['apDoSFB0']); // Do something
-    if (get_magic_quotes_gpc() || (!empty($_POST['nxs_mqTest']) && $_POST['nxs_mqTest']=="\'")) {array_walk_recursive($_POST, 'nsx_stripSlashes');} array_walk_recursive($_POST, 'nsx_fixSlashes');  unset($_POST['nxs_mqTest']);
+    if (!empty($_POST['nxs_mqTest']) && $_POST['nxs_mqTest']=="\'") {array_walk_recursive($_POST, 'nsx_stripSlashes');} array_walk_recursive($_POST, 'nsx_fixSlashes');  unset($_POST['nxs_mqTest']); 
     $nxs_SNAP->setSettingsFromPOST(); $nxs_SNAP->saveNetworksOptions('',1); /* prr($_POST); prr($nxs_SNAP->nxs_accts);  */ die('OK');
   }
   if ($_POST['nxsact']=='setNTS') { global $nxs_snapAvNts; unset($_POST['action']); unset($_POST['nxsact']); unset($_POST['_wp_http_referer']); unset($_POST['_wpnonce']); //unset($_POST['apDoSFB0']); // Do something
-    if (get_magic_quotes_gpc() || (!empty($_POST['nxs_mqTest']) && $_POST['nxs_mqTest']=="\'")) {array_walk_recursive($_POST, 'nsx_stripSlashes');}  array_walk_recursive($_POST, 'nsx_fixSlashes');  unset($_POST['nxs_mqTest']);
+    if (!empty($_POST['nxs_mqTest']) && $_POST['nxs_mqTest']=="\'") {array_walk_recursive($_POST, 'nsx_stripSlashes');}  array_walk_recursive($_POST, 'nsx_fixSlashes');  unset($_POST['nxs_mqTest']);
     foreach ($nxs_snapAvNts as $avNt) if (isset($_POST[$avNt['lcode']])) { $clName = 'nxs_snapClass'.$avNt['code']; if (!isset($networks[$avNt['lcode']])) $networks[$avNt['lcode']] = array(); 
        $ntClInst = new $clName(); $ntOpt = $ntClInst->setNTSettings($_POST[$avNt['lcode']], $networks[$avNt['lcode']]); $networks[$avNt['lcode']] = $ntOpt;
     } $nxs_SNAP->saveNetworksOptions($networks); /* prr($nxs_SNAP->nxs_options); /* prr($_POST); prr($nxs_SNAP->nxs_accts);  */ die('OK');
@@ -89,8 +89,8 @@ if (!function_exists("nxs_snapAjax")) { function nxs_snapAjax() { check_ajax_ref
     
   
   if ($_POST['nxsact']=='svEdFlds') { 
-    $cn = str_replace(']','',$_POST['cname']); $cna = explode('[',$cn);  $id = $_POST['pid']; $nt = $cna[0]; $ntU = strtoupper($nt); $ii = $cna[1]; $fname = $cna[2]; //prr($cna);
-    $savedMeta = maybe_unserialize(get_post_meta($id, 'snap'.$ntU, true)); if (empty($savedMeta)) $savedMeta = array();  $savedMeta[$ii][$fname] = $_POST['cval'];  //prr($savedMeta);
+    $cn = str_replace(']','',$_POST['cname']); $cna = explode('[',$cn);  $id = $_POST['pid']; $nt = $cna[0]; $ntU = strtoupper($nt); $ii = $cna[1]; $fname = $cna[2];// prr($cna);
+    $savedMeta = maybe_unserialize(get_post_meta($id, 'snap'.$ntU, true)); if (empty($savedMeta)) $savedMeta = array();  $savedMeta[$ii][$fname] = $_POST['cval']; // prr($savedMeta);
     delete_post_meta($id, 'snap'.$ntU); add_post_meta($id, 'snap'.$ntU, str_replace('\\','\\\\',serialize($savedMeta)));   
   }
   if ($_POST['nxsact']=='tknzsrch') { $termsOut = array();
@@ -182,7 +182,9 @@ if (!function_exists("nsFormatMessage")) { function nsFormatMessage($msg, $postI
   if (stripos($msg, '%FULLTITLE%')!==false) { $title = apply_filters('the_title', nxs_doQTrans($post->post_title, $lng));  $msg = str_ireplace("%FULLTITLE%", $title, $msg); }                    
   if (stripos($msg, '%STITLE%')!==false) { $title = nxs_doQTrans($post->post_title, $lng);   $title = substr($title, 0, 115); $msg = str_ireplace("%STITLE%", $title, $msg); }                    
   if (stripos($msg, '%AUTHORNAME%')!==false) { $aun = $post->post_author;  $aun = get_the_author_meta('display_name', $aun );  $msg = str_ireplace("%AUTHORNAME%", $aun, $msg);}                    
+  if (stripos($msg, '%AUTHORUNAME%')!==false) { $aun = $post->post_author;  $aun = get_the_author_meta('user_login', $aun );  $msg = str_ireplace("%AUTHORUNAME%", $aun, $msg);}                    
   if (stripos($msg, '%AUTHORTWNAME%')!==false) { $aun = $post->post_author;  $aun = get_the_author_meta('twitter', $aun );  $msg = str_ireplace("%AUTHORTWNAME%", $aun, $msg);}                    
+  if (stripos($msg, '%AUTHORTWHANDLE%')!==false) { $aun = $post->post_author;  $aun = get_the_author_meta('twitter', $aun ); if(!empty($aun)){ $aun = "@".$aun; } $msg = str_ireplace("%AUTHORTWHANDLE%", $aun, $msg);} 
   if (stripos($msg, '%ANNOUNCE%')!==false) { $postContent = nxs_doQTrans($post->post_content, $lng);     
     $postContent = strip_tags(strip_shortcodes(str_ireplace('<!--more-->', '#####!--more--!#####', str_ireplace("&lt;!--more--&gt;", '<!--more-->', $postContent))));
     if (stripos($postContent, '#####!--more--!#####')!==false) { $postContentEx = explode('#####!--more--!#####',$postContent); $postContent = $postContentEx[0]; }    
@@ -237,7 +239,7 @@ if (!function_exists("nsFormatMessage")) { function nsFormatMessage($msg, $postI
         if (substr($mms, 0, 1)=='-' && stripos($mms, '%')!==false) { $mGr = CutFromTo($mms, '-', '%'); $cfItem =  get_post_meta($postID, $mGr, true);  $mms = str_ireplace("-".$mGr."%", $cfItem, $mms); } $mout .= $mms; 
     } $msg = $mout; 
   }  
-  $mm = array(); if (preg_match_all('/%H?CT-[a-zA-Z0-9_]+%/', $msg, $mm)) { $msgA = explode('%CT', str_ireplace("%HCT", "%CT", $msg)); $mout = ''; $i = 0;
+  $mm = array(); if (preg_match_all('/%H?CT-[a-zA-Z0-9_-]+%/', $msg, $mm)) { $msgA = explode('%CT', str_ireplace("%HCT", "%CT", $msg)); $mout = ''; $i = 0;
     foreach ($msgA as $mms) { 
       if (substr($mms, 0, 1)=='-' && stripos($mms, '%')!==false){ $h = strpos($mm[0][$i],'%HCT-')!==false; $i++; $mGr=CutFromTo($mms,'-','%'); $cfItem=wp_get_post_terms($postID,$mGr,array("fields"=>"names"));
         if (is_nxs_error($cfItem)) {nxs_addToLogN('E', 'Error', 'MSG', '-=ERROR=- '.$mGr.'|'.print_r($cfItem, true), '');  $mms=str_ireplace("-".$mGr."%",'',$mms);   } else { $tggs = array(); 
@@ -257,12 +259,13 @@ if (!function_exists("nsFormatMessage")) { function nsFormatMessage($msg, $postI
   if (stripos($msg, '%POSTDATE%')!==false) { $txt = get_the_date( '', $postID ); $msg = str_ireplace("%POSTDATE%", $txt, $msg);}      
   if (stripos($msg, '%POSTTIME%')!==false) { $txt = get_the_time( '', $postID ); $msg = str_ireplace("%POSTTIME%", $txt, $msg);}      
   if (isset($ShownAds)) $ShownAds = $ShownAdsL; // FIX for the quick-adsense plugin
+  $msg = apply_filters('nxs_msg_format',$msg);
   return trim($msg);
 }}
 //## Save Global Settings
 if (!function_exists("nxs_save_glbNtwrks")) { function nxs_save_glbNtwrks($nt, $ii, $ntOptsOrVal, $field='', $networks='')  { if (empty($ii) && $ii!=0 && $ii!='0') return; if (empty($networks)) { if ($field=='*') {$field=''; $merge = true;} else $merge = false;
     if (function_exists("nxs_settings_open")) $networks = nxs_settings_open(); else { if (class_exists('nxs_SNAP')) { global $nxs_SNAP; if (!isset($nxs_SNAP)) $nxs_SNAP = new nxs_SNAP(); $networks = $nxs_SNAP->nxs_accts; } }
-  } if(!empty($field)) $networks[$nt][$ii][$field] = $ntOptsOrVal; else $networks[$nt][$ii] = $merge?(array_merge($networks[$nt][$ii],$ntOptsOrVal)):$ntOptsOrVal; 
+  } if (empty($networks[$nt][$ii])) $networks[$nt][$ii] = array(); if(!empty($field)) $networks[$nt][$ii][$field] = $ntOptsOrVal; else $networks[$nt][$ii] = $merge?(array_merge($networks[$nt][$ii],$ntOptsOrVal)):$ntOptsOrVal; 
   if (function_exists('nxs_settings_save')) nxs_settings_save($networks); if (isset($nxs_SNAP))  $nxs_SNAP->saveNetworksOptions($networks); // prr($networks[$nt]); var_dump($merge);
 }}
 if (!function_exists("nxs_save_ntwrksOpts")) { function nxs_save_ntwrksOpts($networks) { 

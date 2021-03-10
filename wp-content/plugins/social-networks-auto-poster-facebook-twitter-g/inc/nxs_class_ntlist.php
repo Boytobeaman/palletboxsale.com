@@ -21,6 +21,15 @@ if (!class_exists('nxs_snapClassNT')) { class nxs_snapClassNT {
       $out['nMin'] = !empty($ntOpts['nMin'])?$ntOpts['nMin']:''; $out['qTLng'] = !empty($ntOpts['qTLng'])?$ntOpts['qTLng']:''; if (!empty($ntOpts['wpImgSize'])) $out['wpImgSize'] = $ntOpts['wpImgSize']; $out['v'] = NXS_SETV;     
       return $out;
     }
+    function sepAcc($ntss){ $outAccs = array(); $outNtss = array();
+      foreach ($ntss as $ii=>$acct) {  $k = array_intersect_key($acct, $this->accSets); $k2 = array_diff_key ($acct, $this->accSets); // prr($k);  prr($k2);
+        if (!in_array($k, $outAccs)) { $id=uniqid($this->ntInfo['lcode'], 'true'); $outAccs[$id] = $k; $k2['cid'] = $id; } else  $k2['cid'] = array_search($k, $outAccs);       
+        $outNtss[$ii] = $k2;
+      }
+      return array('c'=>$outAccs, 's'=>$outNtss);
+    }
+    
+    
     
     public function showNTGroup() { $cbo = count($this->nt); $this->doAuth();  ?> <div class="nxs_box" onmouseover="jQuery('.addMore<?php echo $this->ntInfo['code']; ?>').show();" onmouseout="jQuery('.addMore<?php echo $this->ntInfo['code']; ?>').hide();">
         <div class="nxs_box_header">
@@ -62,7 +71,7 @@ if (!class_exists('nxs_snapClassNT')) { class nxs_snapClassNT {
     }
        
     function showNoAPIMsg($ii, $options){ ?> <div id="do<?php echo $this->ntInfo['code'].$ii; ?>Div" class="insOneDiv<?php echo " clNewNTSets"; ?>"><div style="border: 2px solid darkred; padding: 25px 15px 15px 15px; margin: 3px; background-color: #fffaf0;"> 
-            <span style="font-size: 16px; color:darkred;line-height: 24px;"><?php global $nxs_apiLInfo; if ($this->ntInfo['code']=='IG' && $nxs_apiLInfo['noIG']==true) echo $this->noFuncMsg2; else echo $this->noFuncMsg; ?></span><br/><a href="https://www.nextscripts.com/faq/third-party-libraries-autopost-google-pinterest/" target="_blank">More info about third party libraries.</a><br/><hr/> <div style="font-size: 16px; color:#005800; font-weight: bold; margin-top: 12px; margin-bottom: 7px;">You can get this API library from NextScripts.</div>
+            <span style="font-size: 16px; color:darkred;line-height: 24px;"><?php global $nxs_apiLInfo; if (!empty($this->ntInfo) && $this->ntInfo['code']=='IG' && $nxs_apiLInfo['noIG']==true) echo $this->noFuncMsg2; else echo $this->noFuncMsg; ?></span><br/><a href="https://www.nextscripts.com/faq/third-party-libraries-autopost-google-pinterest/" target="_blank">More info about third party libraries.</a><br/><hr/> <div style="font-size: 16px; color:#005800; font-weight: bold; margin-top: 12px; margin-bottom: 7px;">You can get this API library from NextScripts.</div>
             <div style="padding-bottom: 5px;"><a href="https://www.nextscripts.com/snap-api/">SNAP Premium API libraries package</a> adds autoposting to:</div> <span class="nxs_txtIcon nxs_ti_fb">Facebook</span>, <span class="nxs_txtIcon nxs_ti_gp">Google+</span>, <span class="nxs_txtIcon nxs_ti_pn">Pinterest</span>, <span class="nxs_txtIcon nxs_ti_ig">Instagram</span>, <span class="nxs_txtIcon nxs_ti_rd">Reddit</span>, &nbsp;&nbsp;<span class="nxs_txtIcon nxs_ti_yt">YouTube</span>,&nbsp;&nbsp;<span class="nxs_txtIcon nxs_ti_fp">Flipboard</span>, <span class="nxs_txtIcon nxs_ti_li">LinkedIn Groups</span><br><br>          
             <div style="padding-bottom: 10px; padding-top: 7px;" align="center">            
 <b style="color: #008000">[Limited Time Only Offer]</b><br/> Get SNAP PRO Plugin for <b>Free</b> with the order of SNAP Premium API for WordPress</div>
@@ -90,7 +99,15 @@ if (!class_exists('nxs_snapClassNT')) { class nxs_snapClassNT {
         </ul>
         <div class="nsx_tab_container"><?php /* ######################## Account Tab ####################### */ ?>
           <div id="nsx<?php echo $nt.$ii ?>_tab1" class="nsx_tab_content" style="background-image: url(<?php echo NXS_PLURL; ?>img/<?php echo (!empty($this->ntInfo['imgcode']))?$this->ntInfo['imgcode']:$nt; ?>-bg.png); background-repeat: no-repeat;  background-position:90% 10%;">
-            <?php $this->accTab($ii, $options, $isNew); ?>
+            
+            <?php 
+              if (method_exists($this, 'showConn')) $this->showConn($ii, $options, $isNew);  
+              if (method_exists($this, 'showPostSettings')) $this->showPostSettings($ii, $options, $isNew);  
+              if (!method_exists($this, 'showConn')&&method_exists($this, 'accTab')) $this->accTab($ii, $options, $isNew);  //## Old code compatibility
+            ?>
+            
+            
+            
             <?php if ($isNew) { ?> <input type="hidden" name="<?php echo $nt; ?>[<?php echo $ii; ?>][do]" value="1" /> <?php } ?>
             <?php if ($isFin) { ?>  <b><?php _e('Test your settings', 'social-networks-auto-poster-facebook-twitter-g'); ?>:</b>&nbsp;&nbsp;&nbsp; <a href="#" class="NXSButton" onclick="testPost('<?php echo $this->ntInfo['code']; ?>', '<?php echo $ii; ?>'); return false;"><?php printf( __( 'Submit Test Post to %s', 'social-networks-auto-poster-facebook-twitter-g' ), $this->ntInfo['name']); ?></a><?php } ?>
           </div> 
@@ -249,6 +266,8 @@ if (!class_exists('nxs_snapClassNT')) { class nxs_snapClassNT {
       }      
       if (isset($pval['nxs_post_status'])) $o['fltrs']['nxs_post_status'] = $pval['nxs_post_status']; 
       if (!empty($pval['nxs_ie_posttypes'])) $o['fltrs']['nxs_ie_posttypes'] = $pval['nxs_ie_posttypes'];
+      if (!empty($pval['nxs_ie_author'])) $o['fltrs']['nxs_ie_author'] = $pval['nxs_ie_author'];      
+      
       if (isset($pval['nxs_post_type'])) $o['fltrs']['nxs_post_type'] = $pval['nxs_post_type'];
       if (isset($pval['nxs_post_formats'])) $o['fltrs']['nxs_post_formats'] = $pval['nxs_post_formats'];
       if (isset($pval['nxs_user_names'])) $o['fltrs']['nxs_user_names'] = $pval['nxs_user_names']; 
@@ -312,7 +331,7 @@ if (!class_exists('nxs_snapClassNT')) { class nxs_snapClassNT {
     public function showEditNTLine($ii, $pbo, $post) { if(!$this->checkIfFunc()) return;// prr($pbo);
       if (!isset($pbo['aName'])) $pbo['aName'] = ''; if (!isset($pbo['do']) && isset($pbo['do'.$this->ntInfo['code']])) $pbo['do'] = $pbo['do'.$this->ntInfo['code']]; $jj = $pbo['jj']; $cbo = $pbo['cbo']; 
       if (empty($pbo['nName'])) $pbo['nName'] = $this->makeUName($pbo, $ii);  $ntU = $this->ntInfo['code']; $nt = $this->ntInfo['lcode'];  $ntName = $this->ntInfo['name'];
-      $pMeta = maybe_unserialize(get_post_meta( $post->ID, 'snap'.$this->ntInfo['code'], true)); if (is_array($pMeta) && !empty($pMeta[$ii])) $pbo = $this->adjMetaOpt($pbo, $pMeta[$ii]); $pbo['ii'] = $ii; ?>
+      $pMeta = maybe_unserialize(get_post_meta( $post->ID, 'snap'.$this->ntInfo['code'], true)); if (is_array($pMeta) && !empty($pMeta[$ii])) $pbo = $this->adjMetaOpt($pbo, $pMeta[$ii]); $pbo['ii'] = $ii;  ?>
       <div id="dom<?php echo $this->ntInfo['code'].$ii; ?>Div" style=" padding-bottom: 3px;<?php echo ($pbo['hideMe'] || ($cbo>7 && $jj>5))?'display:none;':'';?>" class="nxs_ntGroupWrapper<?php echo ($cbo>7 && $jj>5)?' showMore'.$this->ntInfo['code']:''; ?>"  onmouseover="if(!jQuery('#nxsNTSetDiv<?php echo $this->ntInfo['code'].$ii; ?>').is(':visible')) jQuery('.showInlineMenu<?php echo $this->ntInfo['code'].$ii; ?>').show();jQuery(this).addClass('nxsHiLightBorder');" onmouseout="jQuery('.showInlineMenu<?php echo $this->ntInfo['code'].$ii; ?>').hide();jQuery(this).removeClass('nxsHiLightBorder');">
         <div <?php if (!$this->isMobile) {?>class="nxsEdWrapper"<?php } ?> style=" margin:0px;padding-left:0px; position: relative;"> <img id="<?php echo $this->ntInfo['code'].$ii;?>LoadingImg" style="display: none;" src='<?php echo NXS_PLURL; ?>img/ajax-loader-sm.gif' />
         <?php 

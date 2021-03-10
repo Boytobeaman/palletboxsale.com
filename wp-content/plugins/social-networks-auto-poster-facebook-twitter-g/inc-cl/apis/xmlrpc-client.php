@@ -561,7 +561,7 @@ class NXS_XMLRPC_Client
         curl_close($curl);
 
         // Check for 200 Code in $contents
-        if (!strstr($contents, '200 OK')) {
+        if (!strstr($contents, '200')) {
             //There was no "200 OK" returned - we failed
             $this->error = new NXS_XMLRPC_Error(-32300, 'transport error - HTTP status code was not 200 - '.$err.' - '.$errmsg.' | '.print_r($contents, true));
             return false;
@@ -960,7 +960,7 @@ class NXS_XMLRPC_ClientSSL extends NXS_XMLRPC_Client
         curl_close($curl);
 
         // Check for 200 Code in $contents
-        if (!strstr($contents, '200 OK')) {
+        if (!strstr($contents, '200')) {
             //There was no "200 OK" returned - we failed
             $this->error = new NXS_XMLRPC_Error(-32300, 'transport error - HTTP status code was not 200! - '.$err.' - '.$errmsg.' | '.print_r($contents, true));
             return false;

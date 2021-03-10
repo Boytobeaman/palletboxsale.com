@@ -21,7 +21,17 @@ if (!class_exists("nxs_snapClassYT")) { class nxs_snapClassYT extends nxs_snapCl
   function showNewNTSettings($ii){ $defO = array('nName'=>'', 'do'=>'1', 'uName'=>'', 'uPass'=>'', 'ytPageID'=>'', 'ytGPPageID'=>'', 'msgFormat'=>"New post: %TITLE% - %URL%"); $this->showGNewNTSettings($ii, $defO); }
   //#### Show Unit  Settings  
   function checkIfSetupFinished($options) { return !empty($options['uPass']); }
-  function accTab($ii, $options, $isNew=false){ $ntInfo = $this->ntInfo; $nt = $ntInfo['lcode']; $this->elemUserPass($ii, $options['uName'], $options['uPass']); ?> <br/ >    
+  function accTab($ii, $options, $isNew=false){ $ntInfo = $this->ntInfo; $nt = $ntInfo['lcode']; $this->elemUserPass($ii, $options['uName'], $options['uPass']); 
+  if (empty($options['sid'])) $options['sid']=''; if (empty($options['ssid'])) $options['ssid']=''; if (empty($options['nid'])) $options['nid']=''; if (empty($options['hsid'])) $options['hsid']='';?>
+  
+  <div id="ups<?php echo $nt.$ii; ?>UPS" style="padding-top: 10px;"><a href="#" onclick="jQuery('#ups<?php echo $nt.$ii; ?>S').show();return false;">Use session</a> (Optional - use only if you are having login problems)</div>
+    <div id="ups<?php echo $nt.$ii; ?>S" class="ups<?php echo $nt.$ii; ?>"  style="padding-left: 15px; padding-top: 10px; display:none;">
+       SID:&nbsp;&nbsp;<input style="width:400px;" name="<?php echo $nt; ?>[<?php echo $ii; ?>][sid]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['sid'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /> <br/>
+       SSID:&nbsp;<input style="width:400px;" name="<?php echo $nt; ?>[<?php echo $ii; ?>][ssid]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['ssid'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /> <br/>
+       HSID:&nbsp;<input style="width:400px;" name="<?php echo $nt; ?>[<?php echo $ii; ?>][hsid]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['hsid'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /> <br/>
+    </div>
+  
+    <br/ >   
     <div style="width:100%;"><strong><?php _e('YouTube Channel Feed Page URL', 'social-networks-auto-poster-facebook-twitter-g'); ?>:</strong><i><?php _e('YouTube Channel Page URL', 'social-networks-auto-poster-facebook-twitter-g'); ?></i></div><input name="<?php echo $nt; ?>[<?php echo $ii; ?>][ytPageID]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['ytPageID'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /><br/><br/>    
     <div style="width:100%;"><strong><?php _e('Google+ Page ID', 'social-networks-auto-poster-facebook-twitter-g'); ?>:</strong><i><?php _e('Fill this only if you are posting to youTube as your Google+ page. Please leave this empty otherwise.', 'social-networks-auto-poster-facebook-twitter-g'); ?></i></div><input name="<?php echo $nt; ?>[<?php echo $ii; ?>][ytGPPageID]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['ytGPPageID'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /><br/><br/>    
     
@@ -33,6 +43,13 @@ if (!class_exists("nxs_snapClassYT")) { class nxs_snapClassYT extends nxs_snapCl
   function setNTSettings($post, $options){ 
     foreach ($post as $ii => $pval){       
       if (!empty($pval['uPass']) && !empty($pval['uPass'])){ if (!isset($options[$ii])) $options[$ii] = array(); $options[$ii] = $this->saveCommonNTSettings($pval,$options[$ii]);    
+      
+      //## Uniqe Items        
+        if (isset($pval['sid']))  $options[$ii]['sid'] = trim($pval['sid']);                
+        if (isset($pval['ssid']))  $options[$ii]['ssid'] = trim($pval['ssid']);             
+        if (isset($pval['hsid']))  $options[$ii]['hsid'] = trim($pval['hsid']);                   
+        if (isset($pval['nid']))  $options[$ii]['nid'] = trim($pval['nid']);                
+        
       if (isset($pval['ytPageID']))  $options[$ii]['ytPageID'] = trim($pval['ytPageID']);                
       if (isset($pval['ytGPPageID']))  $options[$ii]['ytGPPageID'] = trim($pval['ytGPPageID']);                
       } elseif ( count($pval)==1 ) if (isset($pval['do'])) $options[$ii]['do'] = $pval['do']; else $options[$ii]['do'] = 0; 

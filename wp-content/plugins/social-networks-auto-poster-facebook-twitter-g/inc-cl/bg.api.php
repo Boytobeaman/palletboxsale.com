@@ -34,7 +34,10 @@ if (!class_exists("nxs_class_SNAP_BG")) { class nxs_class_SNAP_BG {
       //prr($options); // prr($msgT); prr($msg); die();
       if (class_exists('nxsAPI_GP') && !empty($options['uName']) && empty($options['accessToken'])) {           
           $pass = (substr($options['uPass'], 0, 5)=='n5g9a'||substr($options['uPass'], 0, 5)=='g9c1a'||substr($options['uPass'], 0, 5)=='b4d7s')?nsx_doDecode(substr($options['uPass'], 5)):$options['uPass'];      
-          $nt = new nxsAPI_GP(); $loginError = $nt->connect($options['uName'], $pass, 'BG');  
+          $nt = new nxsAPI_GP(); if (!empty($options['proxy'])&&!empty($options['proxyOn'])){ $nt->proxy['proxy'] = $options['proxy']['proxy']; if (!empty($options['proxy']['up'])) $nt->proxy['up'] = $options['proxy']['up']; }      
+          
+          if (!empty($options['sid'])){ $nt->session = array('ssid'=>$options['ssid'], 'sid'=>$options['sid'], 'hsid'=>$options['hsid']); }      
+          $loginError = $nt->connect($options['uName'], $pass, 'BG');  
           if (!$loginError){          
              $result = $nt -> postBG($blogID, $msgT, $msg, $tags);// prr($result); 
           } else {  $badOut['Error'] = "Login/Connection Error: ". print_r($loginError, true); return $badOut; }                 

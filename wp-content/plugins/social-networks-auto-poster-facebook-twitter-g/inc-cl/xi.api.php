@@ -42,17 +42,16 @@ if (!class_exists("nxs_class_SNAP_XI")) { class nxs_class_SNAP_XI {
       
       if (!empty($options['uName'])) {
         $opVal = array(); $opNm = md5('nxs_snap_xi'.$options['uName'].$options['uPass']); $opVal = nxs_getOption($opNm); if (!empty($opVal) & is_array($opVal)) $options = array_merge($options, $opVal); 
-        $nt = new nxsAPI_XI(); if(!empty($options['ck'])) $nt->ck = $options['ck'];  $nt->debug = true;  $loginError = $nt->connect($options['uName'], $pass); 
+        $nt = new nxsAPI_XI(); if(!empty($options['ck'])) $nt->ck = $options['ck'];  $loginError = $nt->connect($options['uName'], $pass); 
         
-        if ($loginError==false){ $opVal['ck'] = $nt->ck; nxs_saveOption($opNm,$opVal);
-        //prr($options); die();
-          switch ( $options['whToPost'] ) { 
-            case 'PR': $result = $nt -> post($msg, $options['postTypeP']=='A'?$message['url']:''); break;
-            case 'C' : $result = $nt -> postC($msg, $msgT, $options['pgcID']); break;
-            case 'G' : $result = $nt -> postG($msg, $msgT, $options['pggID'], $options['gpfID'], $imgURL); break;                
+        if ($loginError==false){ $opVal['ck'] = $nt->ck; nxs_saveOption($opNm,$opVal);//prr($options); die();
+          switch ( $options['whToPost'] ) {
+            case 'PR': $result = $nt -> post($msg, $options['postTypeP']=='A'?$message['url']:'', $options['postTypeP']=='I'?$imgURL:''); break;
+            case 'C' : $result = $nt -> postC($msg,  $options['postTypeC']=='I'?$imgURL:'', $options['pgcID']); break;
+            case 'G' : $result = $nt -> postG($msg, $msgT, $options['pggID'], $options['gpfID'], $options['postTypeG']=='I'?$imgURL:''); break;                
           }
           return $result;
-        }
+        } else return $loginError;
         
       } else {
         if (!isset($options['accessToken']) || trim($options['accessToken'])=='') { $badOut['Error'] = 'Not Authorized'; return $badOut; }         

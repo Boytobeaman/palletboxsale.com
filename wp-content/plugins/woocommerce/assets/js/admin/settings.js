@@ -13,7 +13,7 @@
 				$( this ).closest('tr').next( 'tr' ).hide();
 				$( this ).closest('tr').next().next( 'tr' ).hide();
 			}
-		}).change();
+		}).trigger( 'change' );
 
 		// Ship Countries
 		$( 'select#woocommerce_ship_to_countries' ).change( function() {
@@ -22,7 +22,7 @@
 			} else {
 				$( this ).closest('tr').next( 'tr' ).hide();
 			}
-		}).change();
+		}).trigger( 'change' );
 
 		// Stock management
 		$( 'input#woocommerce_manage_stock' ).change( function() {
@@ -31,7 +31,7 @@
 			} else {
 				$( this ).closest('tbody').find( '.manage_stock_field' ).closest( 'tr' ).hide();
 			}
-		}).change();
+		}).trigger( 'change' );
 
 		// Color picker
 		$( '.colorpick' )
@@ -56,9 +56,9 @@
 					var original_value = $( this ).data( 'original-value' );
 
 					if ( original_value.match( /^\#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/ ) ) {
-						$( this ).val( $( this ).data( 'original-value' ) ).change();
+						$( this ).val( $( this ).data( 'original-value' ) ).trigger( 'change' );
 					} else {
-						$( this ).val( '' ).change();
+						$( this ).val( '' ).trigger( 'change' );
 					}
 				}
 			});
@@ -72,20 +72,15 @@
 			var changed = false;
 
 			$( 'input, textarea, select, checkbox' ).change( function() {
-				changed = true;
-			});
-
-			$( '.woo-nav-tab-wrapper a' ).click( function() {
-				if ( changed ) {
+				if ( ! changed ) {
 					window.onbeforeunload = function() {
 						return params.i18n_nav_warning;
 					};
-				} else {
-					window.onbeforeunload = '';
+					changed = true;
 				}
 			});
 
-			$( '.submit :input' ).click( function() {
+			$( '.submit :input' ).on( 'click', function() {
 				window.onbeforeunload = '';
 			});
 		});
@@ -161,12 +156,28 @@
 				lastRow  = $( this ).find( 'tbody tr:last' ),
 				firstRow = $( this ).find( 'tbody tr:first' );
 
-			table.find( '.wc-item-reorder-nav .wc-move-disabled' ).removeClass( 'wc-move-disabled' ).attr( { 'tabindex': '0', 'aria-hidden': 'false' } );
-			firstRow.find( '.wc-item-reorder-nav .wc-move-up' ).addClass( 'wc-move-disabled' ).attr( { 'tabindex': '-1', 'aria-hidden': 'true' } );
-			lastRow.find( '.wc-item-reorder-nav .wc-move-down' ).addClass( 'wc-move-disabled' ).attr( { 'tabindex': '-1', 'aria-hidden': 'true' } );
+			table.find( '.wc-item-reorder-nav .wc-move-disabled' ).removeClass( 'wc-move-disabled' )
+				.attr( { 'tabindex': '0', 'aria-hidden': 'false' } );
+			firstRow.find( '.wc-item-reorder-nav .wc-move-up' ).addClass( 'wc-move-disabled' )
+				.attr( { 'tabindex': '-1', 'aria-hidden': 'true' } );
+			lastRow.find( '.wc-item-reorder-nav .wc-move-down' ).addClass( 'wc-move-disabled' )
+				.attr( { 'tabindex': '-1', 'aria-hidden': 'true' } );
 		} );
 
 		$( '.wc-item-reorder-nav').closest( 'table' ).trigger( 'updateMoveButtons' );
+
+
+		$( '.submit button' ).on( 'click', function() {
+			if (
+				$( 'select#woocommerce_allowed_countries' ).val() === 'specific' &&
+				! $( '[name="woocommerce_specific_allowed_countries[]"]' ).val()
+			) {
+				if ( window.confirm( woocommerce_settings_params.i18n_no_specific_countries_selected ) ) {
+					return true;
+				}
+				return false;
+			}
+		} );
 
 	});
 })( jQuery, woocommerce_settings_params, wp );

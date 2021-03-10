@@ -15,7 +15,7 @@ if (!class_exists("nxs_snapClassXI")) { class nxs_snapClassXI extends nxs_snapCl
   //#### Show Common Settings
   function showGenNTSettings($ntOpts){ $this->nt = $ntOpts;  $this->showNTGroup(); }  
   //#### Show NEW Settings Page
-  function showNewNTSettings($ii){ $defO = array('nName'=>'', 'do'=>'1', 'appKey'=>'', 'appSec'=>'', 'uName'=>'', 'uPass'=>'', 'inclTags'=>'1', 'postType'=>'A', 'postTypeP'=>'A', 'postTypeG'=>'I', 'msgFormat'=>"%EXCERPT%\r\n\r\n%URL%"); $this->showGNewNTSettings($ii, $defO); }
+  function showNewNTSettings($ii){ $defO = array('nName'=>'', 'do'=>'1', 'appKey'=>'', 'appSec'=>'', 'uName'=>'', 'uPass'=>'', 'inclTags'=>'1', 'postType'=>'A', 'postTypeP'=>'A', 'postTypeC'=>'T', 'postTypeG'=>'T', 'msgFormat'=>"%EXCERPT%\r\n\r\n%URL%"); $this->showGNewNTSettings($ii, $defO); }
   //#### Show Unit  Settings  
   function checkIfSetupFinished($options) { return true;  return ((!empty($options['appAppUserID']) && !empty($options['accessToken'])) || !empty($options['uName']) );   }
   public function doAuth() { $ntInfo = $this->ntInfo; global $nxs_snapSetPgURL; if (isset($_GET['acc'])) $options = $this->nt[$_GET['acc']];
@@ -104,7 +104,8 @@ if (!class_exists("nxs_snapClassXI")) { class nxs_snapClassXI extends nxs_snapCl
         
         <div style="margin-left: 30px;"> <div style="width:100%;"><strong style="font-size: 15px;">Post Type:</strong></div><div style="margin-left: 10px;">
            <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="T" <?php if ($options['postTypeP'] == 'T') echo 'checked="checked"'; ?> /> <?php _e('Text Post', 'social-networks-auto-poster-facebook-twitter-g'); ?> - <i><?php _e('just text message', 'social-networks-auto-poster-facebook-twitter-g'); ?></i><br/>                                  
-           <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="A" <?php if ( !isset($options['postTypeP']) || $options['postTypeP'] == '' || $options['postTypeP'] == 'A') echo 'checked="checked"'; ?> /> <?php _e('Post link to the blogpost', 'social-networks-auto-poster-facebook-twitter-g'); ?><br/>
+           <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="A" <?php if ( !isset($options['postTypeP']) || $options['postTypeP'] == '' || $options['postTypeP'] == 'A') echo 'checked="checked"'; ?> /> <?php _e('Share link to the blogpost', 'social-networks-auto-poster-facebook-twitter-g'); ?><br/>
+           <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="I" <?php if ( !empty($options['postTypeP']) &&  $options['postTypeP'] == 'I') echo 'checked="checked"'; ?> /> <?php _e('Image Post', 'social-networks-auto-poster-facebook-twitter-g'); ?><br/>
          </div><br/>
         </div>
         
@@ -127,7 +128,15 @@ if (!class_exists("nxs_snapClassXI")) { class nxs_snapClassXI extends nxs_snapCl
           <input type="text" style="display: none;" id="xi2InpCst<?php echo $ii; ?>" value="<?php echo !empty($options['pgcID'])?$options['pgcID']:''; ?>" onblur="nxs_InpToDDBlur(jQuery(this));"  onchange="nxs_InpToDDChange(jQuery(this));" data-tid="xi2pgID<?php echo $ii; ?>" />         
           <div style="display: inline-block;"><a onclick="nxs_xi2GetPages(<?php echo $ii;?>, 1); jQuery(this).blur(); return false;" href="#"><img id="<?php echo $nt.$ii;?>2rfrshImg" style="vertical-align: middle;" src='<?php echo NXS_PLURL; ?>img/refresh16.png' /></a></div></div> <img id="<?php echo $nt.$ii;?>2ldImg" style="display: none;vertical-align: middle;" src='<?php echo NXS_PLURL; ?>img/ajax-loader-sm.gif' />
           </div>          
-          </div> <div id="nxsXI2MsgDiv<?php echo $ii; ?>"><?php if (!empty($options['uMsg'])) echo $options['uMsg']; ?><?php if ($isNew) { ?><i style="color: #800080"><?php _e('Please Enter your username and password to select your page', 'nxs_snap'); ?><?php } ?></i></div>                        <div style="margin-top: 10px; margin-bottom: 10px;"><?php $this->elemTitleFormat($ii,'Company Update Title Format','msgCTFormat',empty($options['msgCTFormat'])?'%TITLE%':$options['msgCTFormat']); ?></div>                                                                                                                          
+          </div>
+          
+           <div style="margin-left: 30px;"> <div style="width:100%;"><strong style="font-size: 15px;">Post Type:</strong></div><div style="margin-left: 10px;">
+           <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeC]" value="T" <?php if ($options['postTypeC'] == 'T') echo 'checked="checked"'; ?> /> <?php _e('Text Post', 'social-networks-auto-poster-facebook-twitter-g'); ?> - <i><?php _e('just text message', 'social-networks-auto-poster-facebook-twitter-g'); ?></i><br/>                                             
+           <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeC]" value="I" <?php if ( !empty($options['postTypeC']) &&  $options['postTypeC'] == 'I') echo 'checked="checked"'; ?> /> <?php _e('Image Post', 'social-networks-auto-poster-facebook-twitter-g'); ?><br/>
+         </div><br/>
+        </div>
+          
+                                                                                                                                    
         </div> 
         
         <br/><input class="xiWhereToPost<?php echo $ii; ?>" type="radio" name="xi[<?php echo $ii; ?>][whToPost]" value="G" <?php if ($options['whToPost'] == 'G') echo 'checked="checked"'; ?> /> 
@@ -226,6 +235,7 @@ if (!class_exists("nxs_snapClassXI")) { class nxs_snapClassXI extends nxs_snapCl
         
         if (isset($pval['postTypeP'])) $options[$ii]['postTypeP'] = trim($pval['postTypeP']);  
         if (isset($pval['postTypeG'])) $options[$ii]['postTypeG'] = trim($pval['postTypeG']);  
+        if (isset($pval['postTypeC'])) $options[$ii]['postTypeC'] = trim($pval['postTypeC']);  
         
         if (isset($pval['gpfID'])) $options[$ii]['gpfID'] = trim($pval['gpfID']);  
         if (isset($pval['pggID'])) $options[$ii]['pggID'] = trim($pval['pggID']);  
@@ -278,11 +288,12 @@ if (!class_exists("nxs_snapClassXI")) { class nxs_snapClassXI extends nxs_snapCl
      }
   }
   function showEdPostNTSettingsV4($ntOpt, $post){ $post_id = $post->ID; $nt = $this->ntInfo['lcode']; $ntU = $this->ntInfo['code']; $ii = $ntOpt['ii']; if (!empty($ntOpt['appKey']) && $ntOpt['appKey']=='x5g9a') $ntOpt['appKey']='';//prr($ntOpt['postType']);
-        if (empty($ntOpt['imgToUse'])) $ntOpt['imgToUse'] = ''; if (empty($ntOpt['urlToUse'])) $ntOpt['urlToUse'] = ''; $postType = isset($ntOpt['postType'])?$ntOpt['postType']:'';
+        if (empty($ntOpt['imgToUse'])) $ntOpt['imgToUse'] = ''; if (empty($ntOpt['urlToUse'])) $ntOpt['urlToUse'] = ''; 
+        $postType = isset($ntOpt['postType'])?$ntOpt['postType']:''; $postTypeP = isset($ntOpt['postTypeP'])?$ntOpt['postTypeP']:''; $postTypeG = isset($ntOpt['postTypeG'])?$ntOpt['postTypeG']:'';  $postTypeC = isset($ntOpt['postTypeC'])?$ntOpt['postTypeC']:'';
         $msgFormat = !empty($ntOpt['msgFormat'])?htmlentities($ntOpt['msgFormat'], ENT_COMPAT, "UTF-8"):''; $msgTFormat = !empty($ntOpt['msgTFormat'])?htmlentities($ntOpt['msgTFormat'], ENT_COMPAT, "UTF-8"):'';
         $imgToUse = $ntOpt['imgToUse'];  $urlToUse = $ntOpt['urlToUse'];
     
-        $this->elemEdMsgFormat($ii, __('Message Format:', 'social-networks-auto-poster-facebook-twitter-g'),$msgFormat);     
+        $this->elemEdMsgFormat($ii, __('Message Format:', 'social-networks-auto-poster-facebook-twitter-g'), $msgFormat);     
         
         ?>
         
@@ -294,13 +305,23 @@ if (!class_exists("nxs_snapClassXI")) { class nxs_snapClassXI extends nxs_snapCl
         if (!empty($ntOpt['apiToUse']) && $ntOpt['apiToUse']=='nx') { 
             if (empty($ntOpt['whToPost']) || $ntOpt['whToPost']=='PR') { ?>
         
-        <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="T" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ($postTypeP == 'T') echo 'checked="checked"'; ?> /> <?php _e('Text Post', 'social-networks-auto-poster-facebook-twitter-g') ?>  - <i><?php _e('just text message', 'social-networks-auto-poster-facebook-twitter-g') ?></i><br/>
-        <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="A" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ( !isset($postTypeP) || $postTypeP == '' || $postTypeP == 'A') echo 'checked="checked"'; ?> /><?php _e('Text Post with "attached" blogpost', 'social-networks-auto-poster-facebook-twitter-g') ?>
+        <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="T" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if (isset($postTypeP) && $postTypeP == 'T') echo 'checked="checked"'; ?> /> <?php _e('Text Post', 'social-networks-auto-poster-facebook-twitter-g') ?>  - <i><?php _e('just text message', 'social-networks-auto-poster-facebook-twitter-g') ?></i><br/>
+        <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="A" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ( empty($postTypeP) || $postTypeP == 'A') echo 'checked="checked"'; ?> /><?php _e('Text Post with shared link', 'social-networks-auto-poster-facebook-twitter-g') ?><br/>
+        <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeP]" value="I" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ( !empty($postTypeP) && $postTypeP == 'I') echo 'checked="checked"'; ?> /><?php _e('Image Post', 'social-networks-auto-poster-facebook-twitter-g') ?>
         
-        <?php } elseif( $ntOpt['whToPost']=='C') { $this->elemEdTitleFormat($ii, __('Title Format:', 'social-networks-auto-poster-facebook-twitter-g'), $msgTCFormat);  } else { $this->elemEdTitleFormat($ii, __('Title Format:', 'social-networks-auto-poster-facebook-twitter-g'), $msgTFormat); ?> 
+        <?php } elseif( $ntOpt['whToPost']=='C') {  ?>
+            
+            <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeC]" value="T" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ($postTypeC == 'T') echo 'checked="checked"'; ?> /> <?php _e('Text Post', 'social-networks-auto-poster-facebook-twitter-g') ?>  - <i><?php _e('just text message', 'social-networks-auto-poster-facebook-twitter-g') ?></i><br/>
+            <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeC]" value="I" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ( !isset($postTypeC) || $postTypeC == '' || $postTypeC == 'I') echo 'checked="checked"'; ?> /><?php _e('Image Post', 'social-networks-auto-poster-facebook-twitter-g') ?>
+        
+        <?php
+        
+        
+        
+        } else { $this->elemEdTitleFormat($ii, __('Title Format:', 'social-networks-auto-poster-facebook-twitter-g'), $msgTFormat); ?> 
              
         <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeG]" value="T" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ($postTypeG == 'T') echo 'checked="checked"'; ?> /> <?php _e('Text Post', 'social-networks-auto-poster-facebook-twitter-g') ?>  - <i><?php _e('just text message', 'social-networks-auto-poster-facebook-twitter-g') ?></i><br/>
-        <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeG]" value="A" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ( !isset($postTypeG) || $postTypeG == '' || $postTypeG == 'I') echo 'checked="checked"'; ?> /><?php _e('Image Post', 'social-networks-auto-poster-facebook-twitter-g') ?>
+        <input type="radio" name="<?php echo $nt; ?>[<?php echo $ii; ?>][postTypeG]" value="I" class="nxsEdElem" data-ii="<?php echo $ii; ?>" data-nt="<?php echo $nt; ?>" <?php if ( !isset($postTypeG) || $postTypeG == '' || $postTypeG == 'I') echo 'checked="checked"'; ?> /><?php _e('Image Post', 'social-networks-auto-poster-facebook-twitter-g') ?>
         
         <?php }  } else { ?> 
         
@@ -320,10 +341,14 @@ if (!class_exists("nxs_snapClassXI")) { class nxs_snapClassXI extends nxs_snapCl
   //#### Save Meta Tags to the Post
   function adjMetaOpt($optMt, $pMeta){ $optMt = $this->adjMetaOptG($optMt, $pMeta);     
     if (!empty($pMeta['msgTFormat'])) $optMt['msgCTFormat'] = $pMeta['msgTFormat'];       
+    if (!empty($pMeta['postType'])) $optMt['postType'] = $pMeta['postType'];  
+    if (!empty($pMeta['postTypeP'])) $optMt['postTypeP'] = $pMeta['postTypeP'];  
+    if (!empty($pMeta['postTypeG'])) $optMt['postTypeG'] = $pMeta['postTypeG'];  
+    if (!empty($pMeta['postTypeC'])) $optMt['postTypeC'] = $pMeta['postTypeC'];  
     return $optMt;
   }
   
-  function adjPublishWP(&$options, &$message, $postID){ //prr($message); prr($options);
+  function adjPublishWP(&$options, &$message, $postID){ //prr($message); prr($options); die();
     if (!empty($postID)) { $postType = $options['postType'];
       if ($postType=='A') if (trim($options['imgToUse'])!='') $imgURL = $options['imgToUse']; else $imgURL = nxs_getPostImage($postID, !empty($options['wpImgSize'])?$options['wpImgSize']:'medium');  
       if ($postType=='I') if (trim($options['imgToUse'])!='') $imgURL = $options['imgToUse']; else $imgURL = nxs_getPostImage($postID, !empty($options['wpImgSize'])?$options['wpImgSize']:'full');

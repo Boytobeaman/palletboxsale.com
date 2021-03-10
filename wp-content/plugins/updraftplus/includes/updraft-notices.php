@@ -40,7 +40,7 @@ abstract class Updraft_Notices {
 		return true;
 	}
 	
-	protected function url_start($html_allowed = false, $url, $https = false, $website_home = null) {
+	protected function url_start($html_allowed, $url, $https = false, $website_home = null) {
 		$proto = ($https) ? 'https' : 'http';
 		if (strpos($url, $website_home) !== false) {
 			return $html_allowed ? "<a href=".apply_filters(str_replace('.', '_', $website_home).'_link', $proto.'://'.$url).">" : "";
@@ -127,7 +127,7 @@ abstract class Updraft_Notices {
 		// If a seasonal advert can't be returned then we will return a random advert
 
 		// Here we give a 25% chance for the rate advert to be returned before selecting a random advert from the entire collection which also includes the rate advert
-		if (0 == rand(0, 3)) return $available_notices['rate'];
+		if (0 == rand(0, 3) && isset($available_notices['rate'])) return $available_notices['rate'];
 
 		/*
 			Using shuffle here as something like rand which produces a random number and uses that as the array index fails, this is because in future an advert may not be numbered and could have a string as its key which will then cause errors.
@@ -137,7 +137,7 @@ abstract class Updraft_Notices {
 		return $available_notices[0];
 	}
 
-	protected function skip_seasonal_notices($notice_data) {
+	protected function skip_seasonal_notices($notice_data) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return false;
 	}
 

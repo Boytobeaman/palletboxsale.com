@@ -2,7 +2,7 @@
 //## Define SNAP class
 
 if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class         
-  var $dbOptionsName = "nxsSNAPOptions"; var $dbNtsName = "nxsSNAPNetworks"; var $dbNtsNameU = "nxsSNAPNetworksU"; var $nxs_snapAvNts; var $nxs_options = ""; var $nxs_ntoptions = array(); var $nxs_accts = ""; var $nxs_acctsU = "";
+  var $dbOptionsName = "nxsSNAPOptions"; var $dbNtsName = "nxsSNAPNetworks"; var $dbNtsNameU = "nxsSNAPNetworksU"; var $nxs_snapAvNts; var $nxs_options = ""; var $nxs_ntoptions = array(); var $nxs_accts = ""; var $nxs_acctsU = ""; var $accts;
   var $sMode = array('s'=>'S', 'l'=>'F', 'u'=>'O', 'a'=>'S', 's'=>'S', 't'=>false); var $old_dbOptionsName = "NS_SNAutoPoster";
         
   function __construct($u='') { load_plugin_textdomain('social-networks-auto-poster-facebook-twitter-g', FALSE, substr(dirname( plugin_basename( __FILE__ ) ), 0, -4).'/lang/'); 
@@ -18,6 +18,19 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
     } else { $this->sMode['r'] = true; $snapMgmt->init(); } //  prr($this->nxs_ntoptions);
     //QP Post Type
   }
+  
+  
+  
+  
+  function rfrmAccts($acctsIn){ $conns = array();
+     foreach ($acctsIn as $int=>$ntss) { if (empty($int)) continue; prr($int,'##########################################################'); $clName = 'nxs_snapClass'.strtoupper($int); $nt = new $clName(); $nt->nt = $ntss;     
+       if (property_exists($nt, 'accSets')) { $accs = $nt->sepAcc($ntss); //else $acctsOut = $acctsIn;
+          if (!empty($accs)) { echo "*******************************"; $acctsIn[$int] = $accs['s']; $conns[$int] = $accs['c']; }       
+       }
+     } prr($acctsIn, 'ACCSOUT');     
+     return $acctsIn; 
+  }
+  
   function toLatestVer($options){  global $nxs_snapAvNts; if (!empty($options['v'])) $v = $options['v']; else $v = 340; $optionsOut = array(); // prr($v);
      switch ($v) {
      case 340: 
@@ -44,11 +57,14 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
     } $options['v'] = NXS_SETV; $this->saveNetworksOptions($nts,$options); delete_option($this->old_dbOptionsName); 
     return $options; 
   }   
-  function getAPOptions() { global $nxs_skipSSLCheck, $blog_id; $options = get_option($this->dbOptionsName); $this->nxs_accts = get_option($this->dbNtsName); $this->nxs_acctsU = get_option($this->dbNtsNameU); 
+  function getAPOptions() { global $nxs_skipSSLCheck, $blog_id; $options = get_option($this->dbOptionsName); $this->nxs_accts = get_option($this->dbNtsName); $this->nxs_acctsU = get_option($this->dbNtsNameU); //$this->accts = $this->rfrmAccts($this->nxs_accts); prr($this->accts); die();
     //var_dump($options); // global $nxs_snapAvNts; prr($nxs_snapAvNts); prr($options); prr($this->nxs_accts);// prr($this->nxs_accts, 'RER:');    
+    //## VK Fix    
+    if (!empty($this->nxs_accts)&&!empty($this->nxs_accts['vk'])&&!empty($this->nxs_accts['vk']['pgIntID'])) unset($this->nxs_accts['vk']['pgIntID']); if (!empty($this->nxs_acctsU)&&!empty($this->nxs_acctsU['vk'])&&!empty($this->nxs_acctsU['vk']['pgIntID'])) unset($this->nxs_acctsU['vk']['pgIntID']);
+    //## /VK FIX
     if (empty($options) || empty($options['nxsHTDP'])){ $oldOpts = get_option($this->old_dbOptionsName); if (!empty($oldOpts)) $options = $this->toLatestVer($oldOpts); else {
       $fltrs = array(); $fltrs[0] = array('nxs_ie_posttypes]'=>'0','nxs_post_type][]'=>'post');
-      $options = array('nxsHTDP'=>'S','quDays'=>'0','quHrs'=>'0','quMins'=>'3','quLimitRndMins'=>'2','nxsOverLimit'=>'D','showNTListCats'=>'1','fltrsOn'=>'1','nxsURLShrtnr'=>'O','gglAPIKey'=>'','bitlyUname'=>'','bitlyAPIKey'=>'','xcoAPIKey'=>'','clkimAPIKey'=>'','postAPIKey'=>'','adflyUname'=>'','adflyAPIKey'=>'','adflyDomain'=>'adf.ly','rblyAPIKey'=>'','rblyDomain'=>'','YOURLSURL'=>'','YOURLSKey'=>'','riHowManyPostsToTrack'=>'10','riHowOften'=>'15','addURLParams'=>'','forcessl'=>'','nxsHTSpace'=>'','nxsHTSepar'=>'c_','anounTagLimit'=>'300','ogImgDef'=>'','imgNoCheck'=>'set','imgSizeImg'=>'full','imgSizeAttch'=>'medium','featImgLoc'=>'','featImgLocArrPath'=>'','featImgLocPrefix'=>'','errNotifEmail'=>'', 'fltrs'=>$fltrs, 'v'=>NXS_SETV, 'ver'=>306);            
+      $options = array('nxsHTDP'=>'S','quDays'=>'0','quHrs'=>'0','quMins'=>'3','quLimitRndMins'=>'2','nxsOverLimit'=>'D','showNTListCats'=>'1','fltrsOn'=>'1','nxsURLShrtnr'=>'O','gglAPIKey'=>'','bitlyAPIToken'=>'','xcoAPIKey'=>'','clkimAPIKey'=>'','postAPIKey'=>'','adflyUname'=>'','adflyAPIKey'=>'','adflyDomain'=>'adf.ly','rblyAPIKey'=>'','rblyDomain'=>'','YOURLSURL'=>'','YOURLSKey'=>'','riHowManyPostsToTrack'=>'10','riHowOften'=>'15','addURLParams'=>'','forcessl'=>'','nxsHTSpace'=>'','nxsHTSepar'=>'c_','anounTagLimit'=>'300','ogImgDef'=>'','imgNoCheck'=>'set','imgSizeImg'=>'full','imgSizeAttch'=>'medium','featImgLoc'=>'','featImgLocArrPath'=>'','featImgLocPrefix'=>'','errNotifEmail'=>'', 'fltrs'=>$fltrs, 'v'=>NXS_SETV, 'ver'=>306);            
     }} // prr($options);
     $this->nxs_ntoptions = get_site_option($this->dbOptionsName);  $nxs_UPPath = 'nxs-snap-pro-upgrade'; $dir = plugin_dir_path( __FILE__ ); $dir = explode('social-networks-auto-poster-facebook-twitter-g', $dir); 
     $dir = $dir[0]; $pf = $dir.$nxs_UPPath.'/'.$nxs_UPPath.'.php'; if (file_exists($pf) && !class_exists('nxs_wpAPIEngine') ) require_once $pf; if (class_exists('nxs_wpAPIEngine')) { $cl = new nxs_wpAPIEngine(); $cl->check(); }    
@@ -72,7 +88,7 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
     
     if (isset($_GET['page']) && $_GET['page']=='nxs-help' && isset($_GET['do']) && $_GET['do']=='test'){ 
         error_reporting(E_ALL); ini_set('error_reporting', E_ALL); ini_set('display_errors', 1); echo "Testting... cURL (SSL/HTTPS Connections)<br/>SNAP Ver: ".NextScripts_SNAP_Version.(defined('NXSAPIVER')?"  API: ".NXSAPIVER:'').(defined('NextScripts_UPG_SNAP_Version')?" | SNAP Helper Ver: ".NextScripts_UPG_SNAP_Version:'')."<br/>Deflate - ";  echo (function_exists('gzdeflate'))?"Yes":"No";  echo "<br/><br/>";
-        nxs_cURLTest("https://whatismyip.org/", "HTTPS to whatismyip", 'getMyIP'); 
+        nxs_cURLTest("https://api.ipify.org/", "HTTPS to whatismyip", 'getMyIP'); 
         nxs_cURLTest("https://www.nextscripts.com/", "HTTPS to NXS", "Social Networks");
         nxs_cURLTest("http://35.184.36.171/", "HTTPS to NXSA", "NextScripts Cloud");
         nxs_cURLTest("http://www.google.com/intl/en/contact/", "HTTP to Google", "Mountain View, CA");
@@ -140,7 +156,7 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
   function showAccountsTab(){ global $nxs_snapAvNts, $nxsOne; $nxsOne = ''; $trrd=0; $parts = parse_url( home_url() ); $nxs_snapThisPageUrl = "{$parts['scheme']}://{$parts['host']}" . add_query_arg( NULL, NULL ); $cst=strrev('enifed'); $isMobile = nxs_isMobile();
     if (function_exists('nxs_doSMAS2')) { $rf = new ReflectionFunction('nxs_doSMAS2'); $trrd++; $rff = $rf->getFileName(); if (stripos($rff, "'d code")===false) $cst(chr(100).$trrd,$trrd); }
     //## Import Settings            
-    if (isset($_POST['upload_NS_SNAutoPoster_settings'])) { if (get_magic_quotes_gpc() || $_POST['nxs_mqTest']=="\'") {array_walk_recursive($_POST, 'nsx_stripSlashes');}  array_walk_recursive($_POST, 'nsx_fixSlashes');             
+    if (isset($_POST['upload_NS_SNAutoPoster_settings'])) { if (!empty($_POST['nxs_mqTest']) && $_POST['nxs_mqTest']=="\'") {array_walk_recursive($_POST, 'nsx_stripSlashes');}  array_walk_recursive($_POST, 'nsx_fixSlashes');             
       $secCheck =  wp_verify_nonce($_POST['nxsChkUpl_wpnonce'], 'nxsChkUpl');
       if ($secCheck!==false && isset($_FILES['impFileSettings_button']) && is_uploaded_file($_FILES['impFileSettings_button']['tmp_name'])) { $fileData = trim(file_get_contents($_FILES['impFileSettings_button']['tmp_name']));
         while (substr($fileData, 0,1)!=='a') $fileData = substr($fileData, 1);  
@@ -162,14 +178,11 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
     
     foreach ($nxs_snapAvNts as $avNt) if (isset($networks[$avNt['lcode']]) && is_array($networks[$avNt['lcode']]) && count($networks[$avNt['lcode']])>0) {$isNoNts = false; break;} 
     ?> <form method="post" id="nsStForm" action=""><input type="hidden" name="nxsMainFromSupportFld" id="nxsMainFromSupportFld" value="1" />
-       <input name="action" value="nxs_snap_aj" type="hidden" />
-       <input name="nxsact" value="setNTS" type="hidden" />       
-       <input name="nxs_mqTest" value="'" type="hidden" />
-       <input type="hidden" id="svSetRef" name="_wp_http_referer" value="" />
-       <input type="hidden" id="svSetNounce" name="_wpnonce" value="" />
+       <input name="action" value="nxs_snap_aj" type="hidden" /><input name="nxsact" value="setNTS" type="hidden" /><input name="nxs_mqTest" value="'" type="hidden" />
+       <input type="hidden" id="svSetRef" name="_wp_http_referer" value="" /><input type="hidden" id="svSetNounce" name="_wpnonce" value="" />     
+       
+       <a href="#" class="NXSButton" id="nxs_snapNewAcc"><?php _e('Add new account', 'social-networks-auto-poster-facebook-twitter-g'); ?></a>
      
-      <a href="#" class="NXSButton" id="nxs_snapNewAcc"><?php _e('Add new account', 'social-networks-auto-poster-facebook-twitter-g'); ?></a>
-      
       <?php if (!$isMobile) {?><div class="nxsInfoMsg"><img style="position: relative; top: 8px;" alt="Arrow" src="<?php echo NXS_PLURL; ?>img/arrow_l_green_c1.png"/> You can add Facebook, Twitter, Google+, Pinterest, LinkedIn, Tumblr, Blogger, ... accounts</div><?php } ?><br/>
       
       <div style="padding-bottom: 10px; padding-top: 10px; text-align: right"><a href="#" onclick="jQuery('.nxs_acctcb').attr('checked','checked'); jQuery('.nxs_acctcb').iCheck('update'); return false;">[<?php  _e('Select All Accounts', 'social-networks-auto-poster-facebook-twitter-g'); ?>]</a>&nbsp;&nbsp;<a href="#" onclick="jQuery('.nxs_acctcb').removeAttr('checked'); nxs_showHideMetaBoxBlocks(); jQuery('.nxs_acctcb').iCheck('update'); return false;">[<?php _e('Unselect All Accounts', 'social-networks-auto-poster-facebook-twitter-g'); ?>]</a>&nbsp;&nbsp;<a href="#" id="nxsShowOnlySelected" onclick="return false;">[<?php _e('Show Only Selected', 'social-networks-auto-poster-facebook-twitter-g'); ?>]</a>&nbsp;&nbsp;<a href="#" id="nxsShowOnlySelectedAll" onclick="return false;">[<?php _e('Show All Accounts', 'social-networks-auto-poster-facebook-twitter-g'); ?>]</a></div>  
@@ -448,9 +461,8 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
               </div><?php } ?>
               <!-- ## bitly ##-->
               <div class="itemDiv">
-              <input type="radio" name="nxsURLShrtnr" value="B" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='B') echo 'checked="checked"'; ?> /> <b>bit.ly</b>  - <i>Enter bit.ly username and <a target="_blank" href="http://bitly.com/a/your_api_key">API Key</a> below.</i> (<i style="font-size: 12px;">If https://bitly.com/a/your_api_key is not working, please go for the API key to "Your Account->Advanced Settings->API Support"</i>)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bit.ly Username: <input name="bitlyUname" style="width: 20%;" value="<?php if (isset($options['bitlyUname'])) _e(apply_filters('format_to_edit',$options['bitlyUname']), 'social-networks-auto-poster-facebook-twitter-g') ?>" /><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bit.ly&nbsp;&nbsp;API Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="bitlyAPIKey" style="width: 20%;" value="<?php if (isset($options['bitlyAPIKey'])) _e(apply_filters('format_to_edit',$options['bitlyAPIKey']), 'social-networks-auto-poster-facebook-twitter-g') ?>" />
+              <input type="radio" name="nxsURLShrtnr" value="B" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='B') echo 'checked="checked"'; ?> /> <b>bit.ly</b>  - <i>Enter bit.ly  <a target="_blank" href="https://app.bitly.com/B9bc3l7ZtSy/bitlinks/2xqZo1c?actions=profile&actions=accessToken">Generic Access Token</a> below.</i> (<i style="font-size: 12px;">Please go for the Generic Access Token to "Profile Settings->Generic Access Token"</i>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bit.ly&nbsp;&nbsp;Generic Access Token:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="bitlyAPIToken" style="width: 20%;" value="<?php if (isset($options['bitlyAPIToken'])) _e(apply_filters('format_to_edit',$options['bitlyAPIToken']), 'social-networks-auto-poster-facebook-twitter-g') ?>" />
               </div>
               
               <!-- ## u.to ##-->
@@ -966,7 +978,7 @@ _e('Plugin Version', 'social-networks-auto-poster-facebook-twitter-g'); ?>: <spa
           } ?>
           
           <div id="nxsPostMetaData"><?php // prr($options['tw']); WHAT IS IT?????????????/
-          foreach ($nxs_snapAvNts as $avNt) { $clName = 'nxs_snapClass'.$avNt['code'];
+          foreach ($nxs_snapAvNts as $avNt) if (!empty($avNt) && is_array($avNt)){ $clName = 'nxs_snapClass'.$avNt['code'];
              if ( isset($avNt['lcode']) && isset($accts[$avNt['lcode']]) && count($accts[$avNt['lcode']])>0) { $ntClInst = new $clName(); if (method_exists($ntClInst, 'showPostMeta')) $ntClInst->showPostMeta($accts[$avNt['lcode']], $post); }
           }
           ?></div>
@@ -1043,7 +1055,7 @@ _e('Plugin Version', 'social-networks-auto-poster-facebook-twitter-g'); ?>: <spa
   function NS_SNAP_SavePostMetaTags($id) { global $nxs_snapAvNts, $nxs_SNAP;         
           if (!empty($_POST['nxs_snapPostOptions'])) { $NXS_POSTX = $_POST['nxs_snapPostOptions']; $NXS_POST = array(); $NXS_POST = NXS_parseQueryStr($NXS_POSTX); } else $NXS_POST = $_POST;
           if (count($NXS_POST)<1 || !isset($NXS_POST["snapEdIT"]) || empty($NXS_POST["snapEdIT"])) return; 
-          if (get_magic_quotes_gpc() || (!empty($_POST['nxs_mqTest']) && $_POST['nxs_mqTest']=="\'")){ array_walk_recursive($NXS_POST, 'nsx_stripSlashes'); }  array_walk_recursive($NXS_POST, 'nsx_fixSlashes');  
+          if (!empty($_POST['nxs_mqTest']) && $_POST['nxs_mqTest']=="\'"){ array_walk_recursive($NXS_POST, 'nsx_stripSlashes'); }  array_walk_recursive($NXS_POST, 'nsx_fixSlashes');  
           if (!isset($nxs_SNAP)) return; $options = $nxs_SNAP->nxs_accts; //  echo "| NS_SNAP_SavePostMetaTags - ".$id." |";
           $post = get_post($id); if ($post->post_type=='revision' && $post->post_status=='inherit' && $post->post_parent!='0') return; // prr($NXS_POST);          
           if (empty($NXS_POST["useSURL"])) $NXS_POST["useSURL"] = '2'; delete_post_meta($id, '_snap_forceSURL'); add_post_meta($id, '_snap_forceSURL', $NXS_POST["useSURL"]);  
@@ -1097,8 +1109,8 @@ _e('Plugin Version', 'social-networks-auto-poster-facebook-twitter-g'); ?>: <spa
             if (isset($pvData['forceBrokenCron']))   $options['forceBrokenCron'] = 1;  else $options['forceBrokenCron'] = 0;            
             
             if (isset($pvData['nxsURLShrtnr']))$options['nxsURLShrtnr'] = $pvData['nxsURLShrtnr']; 
-            if (isset($pvData['bitlyUname']))  $options['bitlyUname'] = $pvData['bitlyUname']; 
-            if (isset($pvData['bitlyAPIKey'])) $options['bitlyAPIKey'] = $pvData['bitlyAPIKey']; 
+            
+            if (isset($pvData['bitlyAPIToken'])) $options['bitlyAPIToken'] = $pvData['bitlyAPIToken']; 
             
             if (isset($pvData['adflyUname']))  $options['adflyUname'] = $pvData['adflyUname']; 
             if (isset($pvData['adflyAPIKey'])) $options['adflyAPIKey'] = $pvData['adflyAPIKey']; 
@@ -1119,7 +1131,7 @@ _e('Plugin Version', 'social-networks-auto-poster-facebook-twitter-g'); ?>: <spa
             if (isset($pvData['fltrsOn']))  $options['fltrsOn'] = 1;  else $options['fltrsOn'] = 0;                        
             
             if (!isset($options['nxsURLShrtnr'])) $options['nxsURLShrtnr'] = 'G';                                     
-            if ($options['nxsURLShrtnr']=='B' && (trim($pvData['bitlyAPIKey'])=='' || trim($pvData['bitlyAPIKey'])=='')) $options['nxsURLShrtnr'] = 'G';            
+            if ($options['nxsURLShrtnr']=='B' && (trim($pvData['bitlyAPIToken'])=='' || trim($pvData['bitlyAPIToken'])=='')) $options['nxsURLShrtnr'] = 'G';            
             if ($options['nxsURLShrtnr']=='Y' && (trim($pvData['YOURLSKey'])=='' || trim($pvData['YOURLSURL'])=='')) $options['nxsURLShrtnr'] = 'G';
             if ($options['nxsURLShrtnr']=='A' && (trim($pvData['adflyAPIKey'])=='' || trim($pvData['adflyAPIKey'])=='')) $options['nxsURLShrtnr'] = 'G';          
             

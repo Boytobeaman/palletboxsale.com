@@ -106,6 +106,8 @@ if (!function_exists('nxs_adjFilters')){ function nxs_adjFilters($pval, $o) {
       //$o = nxs_FltrsV3toV4($o);
       if (isset($pval['nxs_post_status'])) $o['fltrs']['nxs_post_status'] = $pval['nxs_post_status'];
       if (!empty($pval['nxs_ie_posttypes'])) $o['fltrs']['nxs_ie_posttypes'] = $pval['nxs_ie_posttypes'];
+      if (!empty($pval['nxs_ie_author'])) $o['fltrs']['nxs_ie_author'] = $pval['nxs_ie_author'];
+      
       if (isset($pval['nxs_post_type'])) $o['fltrs']['nxs_post_type'] = $pval['nxs_post_type'];
       if (isset($pval['nxs_post_formats'])) $o['fltrs']['nxs_post_formats'] = $pval['nxs_post_formats'];
       if (isset($pval['nxs_user_names'])) $o['fltrs']['nxs_user_names'] = $pval['nxs_user_names'];
@@ -132,7 +134,7 @@ if (!function_exists('nxs_adjFilters')){ function nxs_adjFilters($pval, $o) {
         $o['fltrs']['nxs_tax_names'] = (isset($pval['nxs_tax_names']))?$pval['nxs_tax_names']:'';  
         //## Check/insert missing terms
         if (!empty($pval['nxs_term_names']) && !empty($pval['nxs_tax_names']) && is_array($pval['nxs_term_names']) ) { $outT = array();
-            foreach ($pval['nxs_term_names'] as $g) { $term = get_term( $g, $pval['nxs_tax_names'] ); if (!is_object($term)) { $t = wp_insert_term( $g, $pval['nxs_tax_names']);  $outT[] = $t['term_id']; } else  $outT[] = $g; }
+            foreach ($pval['nxs_term_names'] as $g) { $term = get_term( $g, $pval['nxs_tax_names'] ); if (!is_object($term)) { $t = wp_insert_term( $g, $pval['nxs_tax_names']);  $outT[] = $t['term_id']; } else  $outT[] = $g; } 
             $pval['nxs_term_names'] = $outT;
         } $o['fltrs']['nxs_term_names'] = (isset($pval['nxs_term_names']))?$pval['nxs_term_names']:'';
         $o['fltrs']['nxs_term_operator'] = (isset($pval['nxs_term_operator']))?$pval['nxs_term_operator']:'';
@@ -153,13 +155,15 @@ if (!function_exists('nxs_adjFilters')){ function nxs_adjFilters($pval, $o) {
  }}
 //##
 if (!function_exists("nxs_clean_string")) { function nxs_clean_string($string) { $s = trim($string); 
-  if (function_exists("iconv")) $s = iconv("UTF-8", "UTF-8//IGNORE", $s); elseif (function_exists("mb_convert_encoding") && function_exists("mb_split")) $s = mb_convert_encoding($s, "UTF-8", mb_detect_encoding($s)); // drop all non utf-8 characters
+  $ic = ''; if (function_exists("iconv")) $ic = iconv("UTF-8", "UTF-8//IGNORE", $s);  if ($ic!==false) $s = $ic;
+  if ((!function_exists("iconv") || $ic===false) && (function_exists("mb_convert_encoding") && function_exists("mb_split"))) $s = mb_convert_encoding($s, "UTF-8", mb_detect_encoding($s)); // drop all non utf-8 characters
   //## this is some bad utf-8 byte sequence that makes mysql complain - control and formatting i think
   $s = preg_replace('/(?>[\x00-\x1F]|\xC2[\x80-\x9F]|\xE2[\x80-\x8F]{2}|\xE2\x80[\xA4-\xA8]|\xE2\x81[\x9F-\xAF])/', ' ', $s);
   $s = preg_replace('/\s+/', ' ', $s); // reduce all multiple whitespace to a single space
   $s = preg_replace("/[^[:alnum:][:space:]]/u", '', $s); // Leave only letters and numbers (Unicode)
   return $s;
 }}
+if (!function_exists("nxs_uarr_string")) { function nxs_uarr_string(&$item,$key){ if (is_string($item)) $item = preg_replace("/[^[:alnum:][:space:][:punct:]]/u", '', $item); }}
 
 //## Tests
 function nxs_cURLTestCode($url){  
@@ -167,11 +171,9 @@ function nxs_cURLTestCode($url){
 }
 function nxs_cURLTest($url, $msg, $testText){ if ($testText=='getMyIP') echo 'Getting IP... <br/>'; else echo "<br/>--== Test Requested ... ".$url."<br/>";  $ch = curl_init(); curl_setopt($ch, CURLOPT_URL, $url); 
   curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.39 Safari/537.36"); 
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); curl_setopt($ch, CURLOPT_TIMEOUT, 10); curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); curl_setopt($ch, CURLOPT_TIMEOUT, 10); curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); curl_setopt($ch, CURLOPT_HEADER, true);
   $response = curl_exec($ch); $errmsg = curl_error($ch); $cInfo = curl_getinfo($ch); curl_close($ch);  
-  if ($testText=='getMyIP') { //prr($response); 
-  if (stripos($response, 'Your IP Address:')!==false) $ip = strip_tags(CutFromTo($response,'Your IP Address:', '</span>')); elseif (stripos($response, '<span>Your IP</span>:')!==false) $ip = strip_tags(CutFromTo($response,'<span>Your IP</span>:', '</span>')); 
-    if (!empty($ip)) echo "Your Server IP:".$ip.'<br/>'; } else { echo "Testing ... ".$url." - ".$cInfo['url']."<br/>";
+  if ($testText=='getMyIP')  echo "Your Server IP:".$response.'<br/>';  else { echo "Testing ... ".$url." - ".$cInfo['url']."<br/>";
     if (stripos($response, $testText)!==false) echo "....".$msg." - OK<br/>"; else { echo "....<b style='color:red;'>".$msg." - Problem</b><br/>"; prr($response); prr($errmsg); prr($cInfo); echo nxs_cURLTestCode($url);  }
   }
 }
@@ -315,13 +317,12 @@ class NXS_HtmlFixer { public $dirtyhtml; public $fixedhtml; public $allowed_styl
 if (!function_exists("nxs_mkShortURL")) { function nxs_mkShortURL($url, $postID=''){ $rurl = '';  global $nxs_SNAP;  if (!isset($nxs_SNAP)) return; $options = $nxs_SNAP->nxs_options; if (empty($options['nxsURLShrtnr'])) $options['nxsURLShrtnr'] = 'G'; $exSLinks = array();
     ///$ar = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT,3); $ar = print_r($ar, true); nxs_LogIt('W','SURLX','','','SURLX',$ar); echo '<pre>'; echo $ar; echo '</pre>'; nxs_LogIt('W','SURL','','','SURL','NUI');     
     $murl =  md5($options['nxsURLShrtnr'].'-'.$url); $exSLinks = get_post_meta( $postID, '_nxs_slinks', true ); if (!empty($exSLinks) && is_array($exSLinks) && !empty($exSLinks[$murl])) return $exSLinks[$murl]; if (!is_array($exSLinks)) $exSLinks = array();
-    if ($options['nxsURLShrtnr']=='B' && trim($options['bitlyUname']!='') && trim($options['bitlyAPIKey']!='')) {      
-      $response  = nxs_remote_get('http://api-ssl.bitly.com/v3/shorten?login='.$options['bitlyUname'].'&apiKey='.$options['bitlyAPIKey'].'&longUrl='.urlencode($url), nxs_mkRemOptsArr('')); 
+    if ($options['nxsURLShrtnr']=='B' && !empty($options['bitlyAPIToken'])) { $hdrsArr=nxs_getNXSHeaders();  $hdrsArr['Authorization'] = 'Bearer '.$options['bitlyAPIToken'];  $hdrsArr['content-type'] = "application/json";
+      $response  = nxs_remote_post('https://api-ssl.bitly.com/v4/shorten', array('body' => '{"long_url":"'.$url.'"}',  'headers' => $hdrsArr));
       if (is_nxs_error($response)) { nxs_LogIt('E', 'bit.ly', '', '', '-=ERROR=- '.print_r($response, true),'');  return $url; }
-      $rtr = json_decode($response['body'],true);
-      if ($rtr['status_code']=='200') $rurl = $rtr['data']['url']; else nxs_LogIt('E', '', 'bit.ly','','Error - bit.ly', print_r($rtr, true));
+      $rtr = json_decode($response['body'],true); if (!empty($rtr['link'])) $rurl = $rtr['link']; else nxs_LogIt('E', '', 'bit.ly','','Error - bit.ly', print_r($rtr, true));
     } //echo "###".$rurl;
-    if ($options['nxsURLShrtnr']=='A' && trim($options['adflyUname']!='') && trim($options['adflyAPIKey']!='')) {      
+    if ($options['nxsURLShrtnr']=='A' && !empty($options['adflyUname']) && !empty($options['adflyAPIKey'])) {      
       $response  = nxs_remote_get('http://api.adf.ly/api.php?key='.$options['adflyAPIKey'].'&uid='.$options['adflyUname'].'&advert_type=int&domain='.$options['adflyDomain'].'&url='.urlencode($url), nxs_mkRemOptsArr(''));       
       if (is_nxs_error($response)) {   nxs_addToLogN('E', 'adf.ly', '', '-=ERROR=- '.print_r($response, true));  return $url; }     
       if ( $response['body']!='error')  $rurl = $response['body']; else {  nxs_addToLogN('E', 'adf.ly', '', '-=ERROR=- '.print_r($response, true)); return $url; }

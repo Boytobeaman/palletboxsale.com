@@ -571,7 +571,7 @@ class nxs_Filters {
             self::print_select( (!empty( $current_post->ID))?$current_post->ID:0, $formats, 'nxs_post_formats', !empty($metaSettings['nxs_post_formats'])?$metaSettings['nxs_post_formats']:'', true, true, self::makeInputName('nxs_post_formats', $nt, $ii) ); echo '</div>';
         } echo "</div>";
     }
-    public static function print_author_section( $current_post, $metaSettings, $nt='', $ii='' ) { $isVis = !empty($metaSettings['nxs_user_names']); $ntN = $nt.$ii;
+    public static function print_author_section( $current_post, $metaSettings, $nt='', $ii='' ) { $isVis = !empty($metaSettings['nxs_user_names']); $ntN = $nt.$ii; $selCI = empty($metaSettings['nxs_ie_author']) ? 'checked="checked"' : ''; $selCE = $selCI=='' ? 'checked="checked"' : '';
     // ## Author    
         echo '<h4 onclick="jQuery(\'#nxs_sec_author'.$ntN.'\').toggle();"; style="cursor:pointer; background-image: url(\''.NXS_PLURL.'img/icons/user24.png\');background-repeat: no-repeat; padding-top: 2px; padding-left: 28px; height:24px;">'. 
           __( 'Author', 'social-networks-auto-poster-facebook-twitter-g' ) .'&nbsp;&nbsp;&gt;&gt; </h4><div id="nxs_sec_author'.$ntN.'" class="nxsLftPad" style="display:'.($isVis?'block':'none').';">';
@@ -582,6 +582,9 @@ class nxs_Filters {
         if( $users ) foreach( $users as $user )  $user_names[$user->ID] = $user->display_name." (".$user->user_login.")";
         if( !empty( $user_names ) ) {            
             echo '<div><label class="field_title" for="'. 'nxs_user_names">'. __( 'Author', 'social-networks-auto-poster-facebook-twitter-g' ) . ':</label>&nbsp;&nbsp;<span class="description">'. __( 'Author' ) .'</span><br/>';
+            
+            echo '&nbsp;<input type="radio" '.$selCI.' name="'.self::makeInputName('nxs_ie_author', $nt, $ii).'" value="0">Include (Post only ...)&nbsp;&nbsp;<input type="radio" '.$selCE.' name="'.self::makeInputName('nxs_ie_author', $nt, $ii).'" value="1">Exclude (Do not post ...)<br/>';
+            
             self::print_select( (!empty( $current_post->ID))?$current_post->ID:0, $user_names, 'nxs_user_names', !empty($metaSettings['nxs_user_names'])?$metaSettings['nxs_user_names']:'', true, true, self::makeInputName('nxs_user_names', $nt, $ii) ); echo '</div>';
         }
         echo "</div>";
@@ -914,20 +917,19 @@ if (!function_exists("nxsAnalyzePostFilters")) { function nxsAnalyzePostFilters(
     if (!empty($filter['nxs_user_names'])) { $fltT = ''; $author = '';
       if (!empty($post)) { $author = get_user_by('id', $post->post_author); $author = $author->user_login."(".$author->user_nicename.")"; }
       foreach ($filter['nxs_user_names'] as $cctts) { $cInfo = get_user_by( 'id', $cctts); $fltT .= $cInfo->user_login."(".$cInfo->user_nicename.")"; }
-      $out .= "<br/>\r\n".'&nbsp;&nbsp;&nbsp;&nbsp;Filter: Users (Autopost Only): '.$fltT .(!empty($author)?' | Post Author: '.$author:'');
-    }
+      $out .= "<br/>\r\n".'&nbsp;&nbsp;&nbsp;&nbsp;Filter: Users('.(empty($filter['nxs_ie_author'])?'Autopost Only':'Excluded').'): '.$fltT .(!empty($author)?' | Post Author: '.$author:'');
+    } 
     //## Language
     if (!empty($filter['nxs_langs'])) { $fltT = ''; $lang = '';
       if (!empty($post)) { 
           //## PolyLang 
           if (function_exists("pll_get_post_language")) $pLang = pll_get_post_language($post->ID);
-          //## WPML
-          if (function_exists("wpml_get_language_information")) { $pLang = wpml_get_language_information($post->ID); $pLang = $pLang['locale']; }
-          
-          
+          //## WPML                  
+          if (function_exists("wpml_post_language_details")) { $pLang = apply_filters('wpml_post_language_details', NULL, $post->ID); if (is_array($pLang)) $pLang = $pLang['locale']; }          
+            elseif (function_exists("wpml_get_language_information")) { $pLang = wpml_get_language_information($post->ID); if (is_array($pLang)) $pLang = $pLang['locale']; }
           //$author = get_user_by('id', $post->post_author); $author = $author->user_login."(".$author->user_nicename.")"; 
       }
-      foreach ($filter['nxs_langs'] as $cctts) { $fltT .= $cctts.' | '; }
+      if (!empty($filter['nxs_langs'])) foreach ($filter['nxs_langs'] as $cctts) { $fltT .= $cctts.' | '; }  if (!empty($pLang) && is_wp_error($pLang)) $pLang = 'Unknown';
       $out .= "<br/>\r\n".'&nbsp;&nbsp;&nbsp;&nbsp;Filter: Language (Autopost Only): '.$fltT .(!empty($pLang)?' | Post Language: '.$pLang:'');
     }
     
@@ -992,8 +994,9 @@ function get_posts_ids_by_filter( $filter ) { $args = array('fields' => 'ids'); 
     //## Do info first, we temporary cange $filters to process.....
     $outInfo = !empty($filter['fullreturn'])?nxsAnalyzePostFilters($filter):''; 
     //## Set args
-    if( !empty( $filter['nxs_postID'] ) ) $args['p'] = $filter['nxs_postID'];
-    if( !empty( $filter['nxs_user_names'] ) ) $args['author__in'] = $filter['nxs_user_names'];    
+    if( !empty( $filter['nxs_postID'] ) ) $args['p'] = $filter['nxs_postID'];    
+    if( !empty( $filter['nxs_user_names'] ) ) { if( !empty($filter['nxs_ie_author']) ) $args['author__not_in'] = $filter['nxs_user_names']; else  $args['author__in'] = $filter['nxs_user_names']; }
+    
     if( !empty( $filter['nxs_langs'] ) ) $args['lang'] = $filter['nxs_langs'];    
     if( !empty( $filter['nxs_cats_names'] ) ) { if (empty($filter['nxs_ie_cats_names'])) $args['category__in'] = $filter['nxs_cats_names']; else $args['category__not_in'] = $filter['nxs_cats_names'];} 
     if( !empty( $filter['nxs_tags_names'] ) ) { if (empty($filter['nxs_ie_tags_names'])) $args['tag__in'] = $filter['nxs_tags_names']; else $args['tag__not_in'] = $filter['nxs_tags_names'];}
@@ -1092,7 +1095,8 @@ function get_posts_ids_by_filter( $filter ) { $args = array('fields' => 'ids'); 
         } $post_ids = $pii;
     }   
     // $la = array('msg'=>'FLT Res', 'extInfo'=>print_r($filter, true)." | ".print_r($post_ids, true));   nxsLogIt($la);    
-    //prr($qu);  prr($post_ids);  prr($args, 'ARGS');  prr($outInfo, 'OutINFO'); prr($filter, 'FILTER');
+    //prr($qu);  prr($post_ids);  prr($args, 'ARGS');  prr($outInfo, 'OutINFO'); prr($filter, 'FILTER');    
+    global $acf; if (!empty($acf)) add_filter('posts_where', array($acf, 'posts_where'), 10, 2 );    
     if (!empty($filter['fullreturn'])) return array('p'=>$post_ids, 'q'=>$qu, 'a'=>$args, 'i'=>$outInfo, 'f'=>$filter); else return $post_ids;    
 }
 

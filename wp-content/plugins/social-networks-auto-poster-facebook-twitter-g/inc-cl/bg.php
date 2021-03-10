@@ -52,7 +52,7 @@ if (!class_exists("nxs_snapClassBG")) { class nxs_snapClassBG extends nxs_snapCl
     } 
   }    
   
-  function accTab($ii, $options, $isNew=false){ global $nxs_snapSetPgURL; $ntInfo = $this->ntInfo; $nt = $ntInfo['lcode'];?>
+  function accTab($ii, $options, $isNew=false){ global $nxs_snapSetPgURL; $ntInfo = $this->ntInfo; $nt = $ntInfo['lcode']; if (empty($options['sid'])) $options['sid']=''; if (empty($options['ssid'])) $options['ssid']=''; if (empty($options['nid'])) $options['nid']=''; if (empty($options['hsid'])) $options['hsid']='';?>
     <div style="width:100%;"><strong><?php _e('Blogger Blog ID', 'social-networks-auto-poster-facebook-twitter-g'); ?>:</strong><i><?php _e('Log to your Blogger management panel and look at the URL of your blog: http://www.blogger.com/blogger.g?blogID=8959085979163812093#allposts. Your Blog ID will be: 8959085979163812093', 'social-networks-auto-poster-facebook-twitter-g'); ?></i></div><input name="<?php echo $nt; ?>[<?php echo $ii; ?>][blogID]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['blogID'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /><br/><br/>     
     <div style="display: <?php echo (empty($options['apiToUse']))?"block":"none"; ?>;">    
       <div style="width:100%; text-align: center; color:#005800; font-weight: bold; font-size: 14px;">You can choose what API you would like to use. </div>          
@@ -79,6 +79,16 @@ if (!class_exists("nxs_snapClassBG")) { class nxs_snapClassBG extends nxs_snapCl
     <div id="nxsAPINX<?php echo $ii; ?>" class="nxs_bg_nxapi_<?php echo $ii; ?>" style="display: <?php echo (!empty($options['apiToUse']) && $options['apiToUse'] =='nx')?"block":"none"; ?>;"><h3>NextScripts API</h3>
     <?php if (class_exists('nxsAPI_GP')) { ?>                 
         <div class="subDiv" id="sub<?php echo $ii; ?>DivN" style="display: block;"><?php $this->elemUserPass($ii, $options['uName'], $options['uPass']); ?></div>          
+        
+        
+    <div id="ups<?php echo $nt.$ii; ?>UPS" style="padding-top: 10px;"><a href="#" onclick="jQuery('#ups<?php echo $nt.$ii; ?>S').show();return false;">Use session</a> (Optional - use only if you are having login problems)</div>
+    <div id="ups<?php echo $nt.$ii; ?>S" class="ups<?php echo $nt.$ii; ?>"  style="padding-left: 15px; padding-top: 10px; display:none;">
+       SID:&nbsp;&nbsp;<input style="width:400px;" name="<?php echo $nt; ?>[<?php echo $ii; ?>][sid]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['sid'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /> <br/>
+       SSID:&nbsp;<input style="width:400px;" name="<?php echo $nt; ?>[<?php echo $ii; ?>][ssid]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['ssid'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /> <br/>
+       HSID:&nbsp;<input style="width:400px;" name="<?php echo $nt; ?>[<?php echo $ii; ?>][hsid]" style="width: 30%;" value="<?php _e(apply_filters('format_to_edit', htmlentities($options['hsid'], ENT_COMPAT, "UTF-8")), 'social-networks-auto-poster-facebook-twitter-g') ?>" /> <br/>
+    </div>
+        
+        
         <?php } else { nxs_show_noLibWrn('"NextScripts API Library for Blogger" is NOT installed'); } ?>           
     </div><br/>
     
@@ -96,6 +106,11 @@ if (!class_exists("nxs_snapClassBG")) { class nxs_snapClassBG extends nxs_snapCl
     foreach ($post as $ii => $pval){       
       if (!empty($pval['blogID']) && !empty($pval['blogID'])){ if (!isset($options[$ii])) $options[$ii] = array(); $options[$ii] = $this->saveCommonNTSettings($pval,$options[$ii]);
         //## Uniqe Items        
+        if (isset($pval['sid']))  $options[$ii]['sid'] = trim($pval['sid']);                
+        if (isset($pval['ssid']))  $options[$ii]['ssid'] = trim($pval['ssid']);             
+        if (isset($pval['hsid']))  $options[$ii]['hsid'] = trim($pval['hsid']);                   
+        if (isset($pval['nid']))  $options[$ii]['nid'] = trim($pval['nid']);                
+        
         if (isset($pval['inclTags'])) $options[$ii]['inclTags'] = trim($pval['inclTags']); else $options[$ii]['inclTags'] = 0;                               
         if (isset($pval['apiToUse'])) $options[$ii]['apiToUse'] = trim($pval['apiToUse']);
         if (isset($pval['blogID'])) $options[$ii]['blogID'] = trim($pval['blogID']);

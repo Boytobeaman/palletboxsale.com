@@ -19,7 +19,7 @@ jQuery( function( $ ) {
 				.on( 'click', 'h3 .sort', this.set_menu_order )
 				.on( 'reload', this.reload );
 
-			$( 'input.variable_is_downloadable, input.variable_is_virtual, input.variable_manage_stock' ).change();
+			$( 'input.variable_is_downloadable, input.variable_is_virtual, input.variable_manage_stock' ).trigger( 'change' );
 			$( '#woocommerce-product-data' ).on( 'woocommerce_variations_loaded', this.variations_loaded );
 			$( document.body ).on( 'woocommerce_variations_added', this.variation_added );
 		},
@@ -62,11 +62,16 @@ jQuery( function( $ ) {
 		 */
 		variable_manage_stock: function() {
 			$( this ).closest( '.woocommerce_variation' ).find( '.show_if_variation_manage_stock' ).hide();
-			$( this ).closest( '.woocommerce_variation' ).find( '.hide_if_variation_manage_stock' ).show();
+			$( this ).closest( '.woocommerce_variation' ).find( '.variable_stock_status' ).show();
 
 			if ( $( this ).is( ':checked' ) ) {
 				$( this ).closest( '.woocommerce_variation' ).find( '.show_if_variation_manage_stock' ).show();
-				$( this ).closest( '.woocommerce_variation' ).find( '.hide_if_variation_manage_stock' ).hide();
+				$( this ).closest( '.woocommerce_variation' ).find( '.variable_stock_status' ).hide();
+			}
+
+			// Parent level.
+			if ( $( 'input#_manage_stock:checked' ).length ) {
+				$( this ).closest( '.woocommerce_variation' ).find( '.variable_stock_status' ).hide();
 			}
 		},
 
@@ -90,7 +95,7 @@ jQuery( function( $ ) {
 
 			if ( ! needsUpdate ) {
 				// Show/hide downloadable, virtual and stock fields
-				$( 'input.variable_is_downloadable, input.variable_is_virtual, input.variable_manage_stock', wrapper ).change();
+				$( 'input.variable_is_downloadable, input.variable_is_virtual, input.variable_manage_stock', wrapper ).trigger( 'change' );
 
 				// Open sale schedule fields when have some sale price date
 				$( '.woocommerce_variation', wrapper ).each( function( index, el ) {
@@ -99,7 +104,7 @@ jQuery( function( $ ) {
 						date_to   = $( '.sale_price_dates_to', $el ).val();
 
 					if ( '' !== date_from || '' !== date_to ) {
-						$( 'a.sale_schedule', $el ).click();
+						$( 'a.sale_schedule', $el ).trigger( 'click' );
 					}
 				});
 
@@ -113,11 +118,12 @@ jQuery( function( $ ) {
 			// Init TipTip
 			$( '#tiptip_holder' ).removeAttr( 'style' );
 			$( '#tiptip_arrow' ).removeAttr( 'style' );
-			$( '.woocommerce_variations .tips, .woocommerce_variations .help_tip, .woocommerce_variations .woocommerce-help-tip', wrapper ).tipTip({
-				'attribute': 'data-tip',
-				'fadeIn':    50,
-				'fadeOut':   50,
-				'delay':     200
+			$( '.woocommerce_variations .tips, .woocommerce_variations .help_tip, .woocommerce_variations .woocommerce-help-tip', wrapper )
+				.tipTip({
+					'attribute': 'data-tip',
+					'fadeIn':    50,
+					'fadeOut':   50,
+					'delay':     200
 			});
 
 			// Datepicker fields
@@ -132,7 +138,7 @@ jQuery( function( $ ) {
 						date   = $( this ).datepicker( 'getDate' );
 
 					dates.not( this ).datepicker( 'option', option, date );
-					$( this ).change();
+					$( this ).trigger( 'change' );
 				}
 			});
 
@@ -176,7 +182,7 @@ jQuery( function( $ ) {
 
 			if ( value != null ) {
 				// Set value, save changes and reload view
-				$menu_order.val( parseInt( value, 10 ) ).change();
+				$menu_order.val( parseInt( value, 10 ) ).trigger( 'change' );
 				wc_meta_boxes_product_variations_ajax.save_variations();
 			}
 		},
@@ -190,7 +196,10 @@ jQuery( function( $ ) {
 				offset       = parseInt( ( current_page - 1 ) * woocommerce_admin_meta_boxes_variations.variations_per_page, 10 );
 
 			$( '.woocommerce_variations .woocommerce_variation' ).each( function ( index, el ) {
-				$( '.variation_menu_order', el ).val( parseInt( $( el ).index( '.woocommerce_variations .woocommerce_variation' ), 10 ) + 1 + offset ).change();
+				$( '.variation_menu_order', el )
+					.val( parseInt( $( el )
+					.index( '.woocommerce_variations .woocommerce_variation' ), 10 ) + 1 + offset )
+					.trigger( 'change' );
 			});
 		}
 	};
@@ -253,15 +262,17 @@ jQuery( function( $ ) {
 
 			if ( $button.is( '.remove' ) ) {
 
-				$( '.upload_image_id', wc_meta_boxes_product_variations_media.setting_variation_image ).val( '' ).change();
-				wc_meta_boxes_product_variations_media.setting_variation_image.find( 'img' ).eq( 0 ).attr( 'src', woocommerce_admin_meta_boxes_variations.woocommerce_placeholder_img_src );
+				$( '.upload_image_id', wc_meta_boxes_product_variations_media.setting_variation_image ).val( '' ).trigger( 'change' );
+				wc_meta_boxes_product_variations_media.setting_variation_image.find( 'img' ).eq( 0 )
+					.attr( 'src', woocommerce_admin_meta_boxes_variations.woocommerce_placeholder_img_src );
 				wc_meta_boxes_product_variations_media.setting_variation_image.find( '.upload_image_button' ).removeClass( 'remove' );
 
 			} else {
 
 				// If the media frame already exists, reopen it.
 				if ( wc_meta_boxes_product_variations_media.variable_image_frame ) {
-					wc_meta_boxes_product_variations_media.variable_image_frame.uploader.uploader.param( 'post_id', wc_meta_boxes_product_variations_media.setting_variation_image_id );
+					wc_meta_boxes_product_variations_media.variable_image_frame.uploader.uploader
+						.param( 'post_id', wc_meta_boxes_product_variations_media.setting_variation_image_id );
 					wc_meta_boxes_product_variations_media.variable_image_frame.open();
 					return;
 				} else {
@@ -286,10 +297,12 @@ jQuery( function( $ ) {
 				// When an image is selected, run a callback.
 				wc_meta_boxes_product_variations_media.variable_image_frame.on( 'select', function () {
 
-					var attachment = wc_meta_boxes_product_variations_media.variable_image_frame.state().get( 'selection' ).first().toJSON(),
+					var attachment = wc_meta_boxes_product_variations_media.variable_image_frame.state()
+						.get( 'selection' ).first().toJSON(),
 						url = attachment.sizes && attachment.sizes.thumbnail ? attachment.sizes.thumbnail.url : attachment.url;
 
-					$( '.upload_image_id', wc_meta_boxes_product_variations_media.setting_variation_image ).val( attachment.id ).change();
+					$( '.upload_image_id', wc_meta_boxes_product_variations_media.setting_variation_image ).val( attachment.id )
+						.trigger( 'change' );
 					wc_meta_boxes_product_variations_media.setting_variation_image.find( '.upload_image_button' ).addClass( 'remove' );
 					wc_meta_boxes_product_variations_media.setting_variation_image.find( 'img' ).eq( 0 ).attr( 'src', url );
 
@@ -323,7 +336,8 @@ jQuery( function( $ ) {
 			$( '#variable_product_options' )
 				.on( 'click', 'button.save-variation-changes', this.save_variations )
 				.on( 'click', 'button.cancel-variation-changes', this.cancel_variations )
-				.on( 'click', '.remove_variation', this.remove_variation );
+				.on( 'click', '.remove_variation', this.remove_variation )
+				.on( 'click','.downloadable_files a.delete', this.input_changed );
 
 			$( document.body )
 				.on( 'change', '#variable_product_options .woocommerce_variations :input', this.input_changed )
@@ -333,7 +347,7 @@ jQuery( function( $ ) {
 
 			postForm.on( 'submit', this.save_on_submit );
 
-			$( 'input:submit', postForm ).bind( 'click keypress', function() {
+			$( 'input:submit', postForm ).on( 'click keypress', function() {
 				postForm.data( 'callerid', this.id );
 			});
 
@@ -534,9 +548,9 @@ jQuery( function( $ ) {
 				callerid = postForm.data( 'callerid' );
 
 			if ( 'publish' === callerid ) {
-				postForm.append('<input type="hidden" name="publish" value="1" />').submit();
+				postForm.append('<input type="hidden" name="publish" value="1" />').trigger( 'submit' );
 			} else {
-				postForm.append('<input type="hidden" name="save-post" value="1" />').submit();
+				postForm.append('<input type="hidden" name="save-post" value="1" />').trigger( 'submit' );
 			}
 		},
 
@@ -548,7 +562,8 @@ jQuery( function( $ ) {
 		cancel_variations: function() {
 			var current = parseInt( $( '#variable_product_options' ).find( '.woocommerce_variations' ).attr( 'data-page' ), 10 );
 
-			$( '#variable_product_options' ).find( '.woocommerce_variations .variation-needs-update' ).removeClass( 'variation-needs-update' );
+			$( '#variable_product_options' ).find( '.woocommerce_variations .variation-needs-update' )
+				.removeClass( 'variation-needs-update' );
 			$( '.variations-defaults select' ).each( function() {
 				$( this ).val( $( this ).attr( 'data-current' ) );
 			});
@@ -577,6 +592,7 @@ jQuery( function( $ ) {
 				var variation = $( response );
 				variation.addClass( 'variation-needs-update' );
 
+				$( '.woocommerce-notice-invalid-variation' ).remove();
 				$( '#variable_product_options' ).find( '.woocommerce_variations' ).prepend( variation );
 				$( 'button.cancel-variation-changes, button.save-variation-changes' ).removeAttr( 'disabled' );
 				$( '#variable_product_options' ).trigger( 'woocommerce_variations_added', 1 );
@@ -612,7 +628,9 @@ jQuery( function( $ ) {
 					$.post( woocommerce_admin_meta_boxes_variations.ajax_url, data, function() {
 						var wrapper      = $( '#variable_product_options' ).find( '.woocommerce_variations' ),
 							current_page = parseInt( wrapper.attr( 'data-page' ), 10 ),
-							total_pages  = Math.ceil( ( parseInt( wrapper.attr( 'data-total' ), 10 ) - 1 ) / woocommerce_admin_meta_boxes_variations.variations_per_page ),
+							total_pages  = Math.ceil( (
+								parseInt( wrapper.attr( 'data-total' ), 10 ) - 1
+							) / woocommerce_admin_meta_boxes_variations.variations_per_page ),
 							page         = 1;
 
 						$( '#woocommerce-product-data' ).trigger( 'woocommerce_variations_removed' );
@@ -721,7 +739,8 @@ jQuery( function( $ ) {
 					if ( window.confirm( woocommerce_admin_meta_boxes_variations.i18n_delete_all_variations ) ) {
 						if ( window.confirm( woocommerce_admin_meta_boxes_variations.i18n_last_warning ) ) {
 							data.allowed = true;
-							changes      = parseInt( $( '#variable_product_options' ).find( '.woocommerce_variations' ).attr( 'data-total' ), 10 ) * -1;
+							changes      = parseInt( $( '#variable_product_options' ).find( '.woocommerce_variations' )
+								.attr( 'data-total' ), 10 ) * -1;
 						}
 					}
 					break;
@@ -959,7 +978,7 @@ jQuery( function( $ ) {
 		 * Set page
 		 */
 		set_page: function( page ) {
-			$( '.variations-pagenav .page-selector' ).val( page ).first().change();
+			$( '.variations-pagenav .page-selector' ).val( page ).first().trigger( 'change' );
 		},
 
 		/**

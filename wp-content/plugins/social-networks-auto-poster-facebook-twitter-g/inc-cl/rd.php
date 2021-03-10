@@ -128,9 +128,10 @@ if (!class_exists("nxs_snapClassRD")) { class nxs_snapClassRD extends nxs_snapCl
       
   } 
    //## RD Specific
-  function getListOfSubReddits($networks){ $opVal = array(); $pass = 'g9c1a'.nsx_doEncode($_POST['p']); $opNm = 'nxs_snap_rd_'.sha1('nxs_snap_rd'.$_POST['u'].$pass); $opVal = nxs_getOption($opNm); $ii = $_POST['ii']; $nt = new nxsAPI_RD(); $nt->debug = false; // prr($opVal);
+  function getListOfSubReddits($networks){ $opVal = array(); $pass = 'g9c1a'.nsx_doEncode($_POST['p']); $opNm = 'nxs_snap_rd_'.sha1('nxs_snap_rd'.$_POST['u'].$pass); $opVal = nxs_getOption($opNm); $ii = $_POST['ii']; $nt = new nxsAPI_RD();  // prr($opVal);
      $currPstAs = !empty($_POST['rdSR'])?$_POST['rdSR']:(!empty($networks['rd'][$ii])?$networks['rd'][$ii]['rdSubReddit']:'');
-     if (empty($_POST['force']) && !empty($opVal['ck']) && !empty($opVal['rdSubRedditsList']) ) $pgs = $opVal['rdSubRedditsList']; else { if (!empty($opVal['ck'])) $nt->ck = $opVal['ck']; $loginError=$nt->connect($_POST['u'],$_POST['p']);// var_dump($loginError);
+     if (empty($_POST['force']) && !empty($opVal['ck']) && !empty($opVal['rdSubRedditsList']) ) $pgs = $opVal['rdSubRedditsList']; else { if (!empty($opVal['ck'])) $nt->ck = $opVal['ck']; 
+       if (!empty($networks['rd'][$ii]['proxy'])&&!empty($networks['rd'][$ii]['proxyOn'])){ $nt->proxy['proxy'] = $networks['rd'][$ii]['proxy']['proxy']; if (!empty($networks['rd'][$ii]['proxy']['up'])) $nt->proxy['up'] = $networks['rd'][$ii]['proxy']['up']; } $loginError=$nt->connect($_POST['u'],$_POST['p']);// var_dump($loginError);
        if (!$loginError){ $opVal['ck'] = $nt->ck; $nt->getSubReddits($currPstAs); $pgs = $nt->srList; }
          else { $outMsg = '<b style="color:red;">'.__('Login Problem').'&nbsp;-&nbsp;'.$loginError.'</b>'; if (!empty($_POST['isOut'])) echo $outMsg; return $outMsg; }
      } $pgCust = (!empty($pgs) && !empty($currPstAs) && stripos($pgs,$currPstAs)===false)?'<option selected="selected" value="'.$currPstAs.'">'.$currPstAs.'</option>':'';     

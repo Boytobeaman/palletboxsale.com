@@ -19,33 +19,30 @@
 					?>                 
 				</div>
 			<?php endif; ?>
-			<div class="row">
-				<div class="col-md-3">
-					<div class="follow-buttons">
-						<a class="twitter" href="https://twitter.com/PalletBoxSale"><span>Follow us on Twitter</span></a>
-						<a class="facebook" href="http://www.facebook.com/"><span>Follow Us on Facebook</span></a>
-						<a class="instagram" href="http://www.instagram.com/"><span>Follow Us on Instagram</span></a>
-						<a class="linkedIn" href="http://www.linkedin.com/"><span>Follow Us on LinkedIn</span></a>
-						
-					</div>
-				</div>
-				<div class="col-md-9">
-					<div id="footerLink">
-						<a href="http://www.ebay.co.uk/bhp/pallet-box" target="_blank" >Ebay pallet box</a> <b>|</b>
-						<a href="https://dir.indiamart.com/impcat/wooden-pallet-box.html" target="_blank" >Wooden pallet box</a> <b>|</b>
-						<a href="https://www.moving-dolly.com" target="_blank" >Moving dolly</a>
-						<b>|</b>
-						<a href="https://www.plastic-crate.com/" target="_blank" >Plastic moving box</a>
-						<b>|</b>
-						<a href="http://www.orbiscorporation.com/products/bulk-containers" target="_blank" >Orbis</a>
-						<b>|</b>
-						<a href="https://www.plastic-crate.co.uk" target="_blank" >Euro crates</a>
-						<b>|</b>
-						<a href="http://www.joinplastic.com/products/foldableBox/foldablePlasticCrates.php" target="_blank" >Collapsible crate</a>
-					</div>
-				</div>
-			</div>
 		</div>
+            <div class="row text-center" style="padding-bottom: 10px">
+            <div class="col-md-3">
+                <div class="follow-buttons">
+                    <a class="twitter" href="https://twitter.com/PalletBoxSale"><span>Follow us on Tw
+                            itter</span></a>
+                    <a class="facebook" href="http://www.facebook.com/"><span>Follow Us on Facebook</ span></a>
+                    <a class="instagram" href="http://www.instagram.com/"><span>Follow Us on Instagra
+                            m</span></a>
+                    <a class="linkedIn" href="http://www.linkedin.com/"><span>Follow Us on LinkedIn</ span></a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="footerLink">
+                    <a href="https://www.vegcrates.com/" target="_blank">fruit crates wholesale</ a>
+                    <b>|</b>
+                    <a href="https://www.plastic-crate.com/" target="_blank">plastic moving box</a>
+                    <b>|</b>
+                    <a href="https://www.plastic-crate.co.uk" target="_blank">Euro crates</a>
+                    <b>|</b>
+                    <a href="https://www.joinplastic.com/product-category/folding-crate/" target="_blank">Collapsible crate</a>
+                </div>
+            </div>
+        </div>
 	</div>       
 </footer> 
 <p id="back-top">

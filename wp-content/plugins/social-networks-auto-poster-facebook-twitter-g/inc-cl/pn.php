@@ -21,7 +21,7 @@ if (!class_exists("nxs_snapClassPN")) { class nxs_snapClassPN extends nxs_snapCl
   //#### Show Common Settings
   function showGenNTSettings($ntOpts){ $this->nt = $ntOpts; $this->showNTGroup(); return; }  
   //#### Show NEW Settings Page
-  function showNewNTSettings($ii){ $defO = array('nName'=>'', 'do'=>'1', 'uName'=>'', 'uPass'=>'',  'cImgURL'=>'', 'isAttachVid'=>'', 'isAttachVid'=>'', 'defImg'=>'', 'msgFormat'=>"%EXCERPT%"); $this->showGNewNTSettings($ii, $defO); }
+  function showNewNTSettings($ii){ $defO = array('nName'=>'', 'do'=>'1', 'uName'=>'', 'uPass'=>'',  'cImgURL'=>'', 'isAttachVid'=>'', 'isAttachVid'=>'', 'defImg'=>'', 'msgFormat'=>"%EXCERPT%", 'msgTFormat'=>"%TITLE%",); $this->showGNewNTSettings($ii, $defO); }
   //#### Show Unit  Settings  
   function checkIfSetupFinished($options) { return !empty($options['uPass']); }
   
@@ -34,6 +34,16 @@ if (!class_exists("nxs_snapClassPN")) { class nxs_snapClassPN extends nxs_snapCl
   }
   
   function accTab($ii, $options, $isNew=false){  $ntInfo = $this->ntInfo; $nt = $ntInfo['lcode']; $this->elemUserPass($ii, $options['uName'], $options['uPass']); $options = $this->getMergeOptInfo($options, $ii); ?>
+
+      <div class="container nxsNtSetContainer">
+          <?php if (empty($options['session'])) $options['session'] = ''; //prr($conn); ?>
+          <br/><div style="width:100%;"><strong><?php _e('Session Info', 'social-networks-auto-poster-facebook-twitter-g'); ?>:</strong>
+              <div style="font-size: 11px; margin: 0px;"><?php _e('[Optional] Please use this only if you are having troubles to login/post without it.', 'social-networks-auto-poster-facebook-twitter-g'); ?></div>
+          </div>
+          <label for="sesDiv<?php echo $nt; ?><?php echo $ii; ?>session">Session ID</label>
+          <input style="max-width:400px;" class="nxAccEdElem form-control" id="sesDiv<?php echo $nt; ?><?php echo $ii; ?>session" name="<?php echo $nt; ?>[<?php echo $ii; ?>][session]" value="<?php echo($options['session']); ?>" /><br/>
+
+      </div>
     
      <br/ ><div style="width:100%;"><b><?php _e('Board', 'nxs_snap'); ?></b>&nbsp;(<?php _e('Please select the board to post to', 'nxs_snap'); ?>)</div>
     <div id="nxsPNInfoDiv<?php echo $ii; ?>">
@@ -70,7 +80,7 @@ if (!class_exists("nxs_snapClassPN")) { class nxs_snapClassPN extends nxs_snapCl
              
              <div style="margin-bottom: 5px; margin-left: 0px; "><input value="1"  id="isAttachVid" type="checkbox" name="pn[<?php echo $ii; ?>][isAttachVid]"  <?php if (isset($options['isAttachVid']) && (int)$options['isAttachVid'] == 1) echo "checked"; ?> />    <strong><?php _e('If post has a video use it instead of image.', 'social-networks-auto-poster-facebook-twitter-g'); ?></strong><br/><i><?php _e('Video will be pinned instead of featured image. Only Youtube is supported at this time.', 'social-networks-auto-poster-facebook-twitter-g'); ?></i>
     <br/><br/></div>  
-    <?php $this->elemMsgFormat($ii,'Post Text Format','msgFormat',$options['msgFormat']);?><br/ ><?php
+    <?php $this->elemTitleFormat($ii,'Post Title Format','msgTFormat',$options['msgTFormat']); $this->elemMsgFormat($ii,'Post Text Format','msgFormat',$options['msgFormat']);?><br/ ><?php
   }
   function advTab($ii, $options){ $this->showProxies($this->ntInfo['lcode'], $ii, $options); }
   //#### Set Unit Settings from POST
@@ -78,7 +88,8 @@ if (!class_exists("nxs_snapClassPN")) { class nxs_snapClassPN extends nxs_snapCl
     foreach ($post as $ii => $pval){       
       if (!empty($pval['uPass']) && !empty($pval['uPass'])){ if (!isset($options[$ii])) $options[$ii] = array(); $options[$ii] = $this->saveCommonNTSettings($pval,$options[$ii]); 
         
-        if (isset($pval['cImgURL'])) $options[$ii]['cImgURL'] = trim($pval['cImgURL']); 
+        if (isset($pval['cImgURL'])) $options[$ii]['cImgURL'] = trim($pval['cImgURL']);
+     //   if (isset($pval['session'])) $options[$ii]['session'] = trim($pval['session']);
         if (isset($pval['pnBoard'])) $options[$ii]['pnBoard'] = trim($pval['pnBoard']); 
         if (isset($pval['isAttachVid'])) $options[$ii]['isAttachVid'] = trim($pval['isAttachVid']); else  $options[$ii]['isAttachVid'] = '0';
         if (isset($pval['defImg'])) $options[$ii]['defImg'] = trim($pval['defImg']); 
@@ -114,6 +125,7 @@ if (!class_exists("nxs_snapClassPN")) { class nxs_snapClassPN extends nxs_snapCl
         $msgFormat = !empty($ntOpt['msgFormat'])?htmlentities($ntOpt['msgFormat'], ENT_COMPAT, "UTF-8"):''; $msgTFormat = !empty($ntOpt['msgTFormat'])?htmlentities($ntOpt['msgTFormat'], ENT_COMPAT, "UTF-8"):'';
         $imgToUse = $ntOpt['imgToUse'];  $urlToUse = $ntOpt['urlToUse'];
         
+        $this->elemEdTitleFormat($ii, __('Title Format:', 'social-networks-auto-poster-facebook-twitter-g'),$msgTFormat);        
         $this->elemEdMsgFormat($ii, __('Message Format:', 'social-networks-auto-poster-facebook-twitter-g'),$msgFormat);            
         ?>
         
@@ -143,9 +155,12 @@ if (!class_exists("nxs_snapClassPN")) { class nxs_snapClassPN extends nxs_snapCl
   } 
    //## PN Specific
   function getListOfPNBoards($networks){ $opVal = array(); $pass = 'g9c1a'.nsx_doEncode($_POST['p']); $opNm = 'nxs_snap_pn_'.sha1('nxs_snap_pn'.$_POST['u'].$pass); $opVal = nxs_getOption($opNm); $ii = $_POST['ii']; 
-     if (!class_exists("nxsAPI_PN")) { $outMsg = '<b style="color:red;">'.__('API Not Found').'&nbsp;-&nbsp;'.$loginError.'</b>'; if (!empty($_POST['isOut'])) echo $outMsg; return $outMsg; }  $nt = new nxsAPI_PN(); $nt->debug = false; // prr($opVal);
+     if (!class_exists("nxsAPI_PN")) { $outMsg = '<b style="color:red;">'.__('API Not Found').'&nbsp;-&nbsp;'.$loginError.'</b>'; if (!empty($_POST['isOut'])) echo $outMsg; return $outMsg; }  $nt = new nxsAPI_PN(); // prr($opVal);
      $currPstAs = !empty($_POST['pnBoard'])?$_POST['pnBoard']:(!empty($networks['pn'][$ii])?$networks['pn'][$ii]['pnBoard']:'');
-     if (empty($_POST['force']) && !empty($opVal['ck']) && !empty($opVal['pnBoardsList']) ) $pgs = $opVal['pnBoardsList']; else { if (!empty($opVal['ck'])) $nt->ck = $opVal['ck']; $loginError=$nt->connect($_POST['u'],$_POST['p']);// var_dump($loginError);
+     if (empty($_POST['force']) && !empty($opVal['ck']) && !empty($opVal['pnBoardsList']) ) $pgs = $opVal['pnBoardsList']; else { if (!empty($opVal['ck'])) $nt->ck = $opVal['ck'];
+     if(!empty($_POST['s'])&& property_exists ('nxsAPI_PN', 'sess')) $nt->sess['sid'] = $_POST['s'];
+     if (!empty($networks['pn'][$ii]['proxy'])&&!empty($networks['pn'][$ii]['proxyOn'])){ $nt->proxy['proxy'] = $networks['pn'][$ii]['proxy']['proxy']; if (!empty($networks['pn'][$ii]['proxy']['up'])) $nt->proxy['up'] = $networks['pn'][$ii]['proxy']['up']; }
+     $loginError=$nt->connect($_POST['u'],$_POST['p']);// var_dump($loginError);
        if (!$loginError){ $opVal['ck'] = $nt->ck; $pgs = $nt->getBoards($currPstAs); }
          else { $outMsg = '<b style="color:red;">'.__('Login Problem').'&nbsp;-&nbsp;'.$loginError.'</b>'; if (!empty($_POST['isOut'])) echo $outMsg; return $outMsg; }
      } $pgCust = (!empty($pgs) && !empty($currPstAs) && stripos($pgs,$currPstAs)===false)?'<option selected="selected" value="'.$currPstAs.'">'.$currPstAs.'</option>':'';     

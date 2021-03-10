@@ -36,7 +36,11 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 
 		if ( ! in_array($order, array('DESC', 'ASC'))){
 			$order = 'DESC';
-		}		
+		}
+
+		if ( in_array($order_by, array('name'))){
+			$order_by = 'friendly_name ' . $order . ', name';
+		}
 		
 		$list = new PMXI_Import_List();
 		$post = new PMXI_Post_Record();
@@ -70,20 +74,19 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 	/**
 	* delete all posts, media, files, and whatever value was in the 'Unique ID' field
 	*/
-	public function delete_and_edit()
-	{
+	public function delete_and_edit() {
 		$get = $this->input->get(array(
 			'id' => '',			
 		));
-		if ( ! empty($get['id']) )
-		{
+		if ( ! empty($get['id']) ) {
 			$import = new PMXI_Import_Record();
 			$import->getById($get['id']);
-			if ( ! $import->isEmpty() )
-			{
+			if ( ! $import->isEmpty() ) {
 				$import->deletePosts(false);
 				$options = $import->options;
-				$options['unique_key'] = '';
+				if ( empty($import->options['custom_type']) || $import->options['custom_type'] != 'shop_order') {
+					$options['unique_key'] = '';
+				}
 				$import->set(array(
 					'options'  => $options,
 					'imported' => 0,
@@ -91,12 +94,42 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 					'updated'  => 0,
 					'skipped'  => 0,
 					'deleted'  => 0
-				))->save();				
+				))->save();
 			}
 		}
-		wp_redirect(add_query_arg(array('id' => $import->id, 'action' => 'options'), $this->baseUrl)); die();
+		if ( ! empty($import->options['custom_type']) && $import->options['custom_type'] == 'shop_order') {
+			wp_redirect(add_query_arg(array('id' => $import->id, 'action' => 'edit'), $this->baseUrl)); die();
+		} else {
+			wp_redirect(add_query_arg(array('id' => $import->id, 'action' => 'options'), $this->baseUrl)); die();
+		}
 	}
-	
+
+    /**
+     * Disable `Skip posts if their data in your file has not changed` option.
+     */
+    public function disable_skip_posts() {
+        $get = $this->input->get(array(
+            'id' => '',
+        ));
+        if ( ! empty($get['id']) ) {
+            $import = new PMXI_Import_Record();
+            $import->getById($get['id']);
+            if ( ! $import->isEmpty() ) {
+                $options = $import->options;
+                $options['is_selective_hashing'] = 0;
+                $import->set(array(
+                    'options'  => $options,
+                    'imported' => 0,
+                    'created'  => 0,
+                    'updated'  => 0,
+                    'skipped'  => 0,
+                    'deleted'  => 0
+                ))->save();
+            }
+            wp_redirect(add_query_arg(array('id' => $import->id, 'action' => 'update'), $this->baseUrl)); die();
+        }
+    }
+
 	/**
 	 * Edit Template
 	 */
@@ -257,7 +290,7 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 
 		}	
 	}
-	
+
 	/**
 	 * Cron Scheduling
 	 */
@@ -341,7 +374,7 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 		$history->setColumns('id', 'name', 'registered_on', 'path')->getBy(array('import_id' => $item->id), 'id DESC');				
 		if ($history->count()){
 			foreach ($history as $file){
-                if (@file_exists(wp_all_import_get_absolute_path($file['path']))) {
+				if (@file_exists(wp_all_import_get_absolute_path($file['path']))) {
 					$this->data['locfilePath'] = wp_all_import_get_absolute_path($file['path']);
 					break;
 				}				
@@ -407,7 +440,10 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 								$dom->loadXML($xml); // FIX: libxml xpath doesn't handle default namespace properly, so remove it upon XML load							
 								libxml_use_internal_errors($old);
 								$xpath = new DOMXPath($dom);
-								if (($elements = @$xpath->query($item->xpath)) and !empty($elements) and !empty($elements->length)) $chunks += $elements->length;
+								if (($elements = @$xpath->query($item->xpath)) and !empty($elements) and !empty($elements->length)){
+                                    $chunks += $elements->length;
+                                }
+
 								unset($dom, $xpath, $elements);										
 						    }
 						}	
@@ -428,7 +464,8 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 						$this->errors->add('root-element-validation', __('No matching elements found for Root element and XPath expression specified', 'wp_all_import_plugin'));						
 					}
 				}													   							
-			}							
+
+			}
 			
 			if ( $chunks ) { // xml is valid						
 				
@@ -520,7 +557,7 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 			}
 			else
 			{			
-				wp_redirect(add_query_arg(array('pmxi_nt' => urlencode(__('File does not exists.', 'wp_all_import_plugin'))), $this->baseUrl)); die();
+				wp_redirect(add_query_arg(array('pmxi_nt' => urlencode(__('File does not exist.', 'wp_all_import_plugin'))), $this->baseUrl)); die();
 			}
 		}
 	}
