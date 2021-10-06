@@ -1,0 +1,1397 @@
+2021-05-19T00:01:31+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10125)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10125)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T00:15:03+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10126)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10126)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T00:29:05+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10127)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10127)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T00:39:25+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10128)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10128)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T00:54:02+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10129)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10129)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T01:07:41+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10130)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10130)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T01:18:17+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10131)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10131)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T01:32:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10132)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10132)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T01:45:37+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10133)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10133)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T01:56:44+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10134)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10134)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T02:07:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10135)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10135)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T02:18:23+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10136)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10136)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T02:29:04+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10137)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10137)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T02:39:10+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10138)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10138)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T02:49:19+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10139)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10139)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T03:04:32+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10140)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10140)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T03:19:12+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10141)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10141)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T03:30:16+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10142)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10142)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T03:40:59+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10143)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10143)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T03:52:17+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10144)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10144)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T04:02:40+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10145)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10145)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T04:13:17+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10146)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10146)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T04:27:16+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10147)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10147)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T04:38:04+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10148)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10148)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T04:48:35+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10149)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10149)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T04:59:27+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10150)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10150)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T05:10:12+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10151)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10151)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T05:20:36+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10152)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10152)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T05:30:37+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10153)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10153)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T05:41:27+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10154)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10154)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T05:54:59+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10155)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10155)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T06:07:14+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10156)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10156)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T06:18:00+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10157)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10157)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T06:28:04+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10158)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10158)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T06:39:26+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10159)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10159)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T06:50:06+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10160)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10160)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:03:42+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10161)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10161)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:16:02+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10162)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10162)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10169)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10169)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10168)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10168)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10166)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10166)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10164)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10164)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10165)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10165)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10167)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10167)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10163)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10163)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:26:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10170)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10170)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:37:07+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10171)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10171)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T07:50:56+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10172)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10172)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T08:01:50+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10173)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10173)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T08:15:01+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10174)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10174)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T08:29:19+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10175)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10175)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T08:39:21+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10176)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10176)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T08:49:30+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10177)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10177)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T09:01:48+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10178)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10178)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T09:12:03+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10179)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10179)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T09:23:52+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10180)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10180)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T09:34:27+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10181)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10181)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T09:45:30+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10182)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10182)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T09:56:39+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10183)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10183)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T10:07:45+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10184)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10184)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T10:19:28+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10185)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10185)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T10:33:30+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10186)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10186)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T10:44:12+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10187)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10187)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T10:55:03+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10188)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10188)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T11:06:41+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10189)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10189)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T11:21:06+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10190)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10190)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T11:31:50+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10191)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10191)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T11:42:24+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10192)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10192)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T11:53:06+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10193)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10193)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T12:03:22+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10194)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10194)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T12:14:18+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10195)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10195)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T12:24:36+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10196)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10196)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T12:35:05+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10197)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10197)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T12:46:14+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10198)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10198)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T12:56:50+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10199)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10199)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T13:07:28+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10200)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10200)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T13:22:24+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10201)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10201)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T13:34:15+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10202)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10202)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T13:47:39+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10203)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10203)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T13:57:54+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10204)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10204)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T14:07:58+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10205)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10205)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T14:21:56+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10206)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10206)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T14:35:29+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10207)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10207)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T14:45:47+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10208)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10208)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T14:59:01+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10209)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10209)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T15:18:32+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10210)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10210)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T15:31:39+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10211)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10211)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T15:43:13+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10212)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10212)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T16:10:34+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10213)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10213)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T16:25:58+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10214)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10214)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T16:36:12+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10215)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10215)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T16:47:01+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10216)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10216)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T17:08:08+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10217)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10217)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T17:19:25+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10218)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10218)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T17:32:56+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10219)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10219)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T17:43:36+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10220)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10220)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T17:55:24+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10221)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10221)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T18:06:48+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10222)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10222)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T18:17:29+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10223)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10223)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T18:31:49+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10224)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10224)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T18:43:52+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10225)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10225)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T18:58:46+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10226)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10226)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T19:09:11+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10227)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10227)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T19:20:48+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10228)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10228)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T19:35:41+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10229)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10229)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T19:46:47+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10230)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10230)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T19:57:06+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10231)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10231)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T20:10:26+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10232)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10232)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T20:24:31+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10233)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10233)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T20:35:17+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10234)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10234)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T20:46:05+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10235)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10235)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T20:57:00+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10236)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10236)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T21:07:51+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10237)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10237)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T21:18:05+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10238)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10238)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T21:32:21+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10239)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10239)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T21:46:40+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10240)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10240)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T21:57:52+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10241)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10241)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T22:16:40+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10242)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10242)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T22:28:49+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10243)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10243)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T22:42:52+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10244)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10244)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T22:53:55+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10245)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10245)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T23:04:04+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10246)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10246)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T23:14:31+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10247)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10247)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T23:25:24+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10248)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10248)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T23:36:17+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10249)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10249)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T23:47:17+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10250)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10250)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+
+2021-05-19T23:59:33+00:00 CRITICAL Uncaught Exception: Table 'palletboxsale.com.wp_pmxi_images' doesn't exist in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php:78
+Stack trace:
+#0 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/actions/add_attachment.php(22): PMXI_Model_Record->insert()
+#1 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(292): pmxi_add_attachment(10251)
+#2 /data/wwwroot/www.palletboxsale.com/wp-includes/class-wp-hook.php(316): WP_Hook->apply_filters('', Array)
+#3 /data/wwwroot/www.palletboxsale.com/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(4317): do_action('add_attachment', 10251)
+#5 /data/wwwroot/www.palletboxsale.com/wp-includes/post.php(5979): wp_insert_post(Array, false, true)
+#6 /data/wwwroot/www.palletboxsale.com/wp-content/plugins/woocommerce/includes/class-wc-install.php(1335): wp_insert_attachment(Array, '/data/wwwroot/w...')
+#7 /data/wwwroot/www.palletboxsale.com/ in /data/wwwroot/www.palletboxsale.com/wp-content/plugins/wp-all-import/models/model/record.php on line 78
+

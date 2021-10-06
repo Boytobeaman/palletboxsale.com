@@ -1,5 +1,5 @@
 <?php exit; ?>{
-    "version": "2.1.1",
+    "version": "2.1.8",
     "cluster.messagebus.debug": false,
     "cluster.messagebus.enabled": false,
     "cluster.messagebus.sns.region": "",
@@ -57,7 +57,9 @@
         "\\bsql_calc_found_rows\\b",
         "\\bfound_rows\\(\\)"
     ],
+    "docroot_fix.enable": false,
     "lazyload.enabled": false,
+    "lazyload.threshold": "",
     "lazyload.process_img": true,
     "lazyload.process_background": true,
     "lazyload.googlemaps.google_maps_easy": false,
@@ -159,24 +161,40 @@
         "wp-links-opml.php",
         "wp-locations.php"
     ],
-    "pgcache.accept.qs": [],
+    "pgcache.accept.qs": [
+        ""
+    ],
     "pgcache.late_init": false,
     "pgcache.late_caching": false,
     "pgcache.mirrors.enabled": false,
-    "pgcache.mirrors.home_urls": [],
+    "pgcache.mirrors.home_urls": [
+        ""
+    ],
     "pgcache.reject.front_page": false,
     "pgcache.reject.logged": true,
     "pgcache.reject.logged_roles": false,
-    "pgcache.reject.roles": [],
+    "pgcache.reject.roles": [
+        ""
+    ],
     "pgcache.reject.uri": [
         "wp-.*\\.php",
         "index\\.php"
     ],
-    "pgcache.reject.categories": [],
-    "pgcache.reject.tags": [],
-    "pgcache.reject.authors": [],
-    "pgcache.reject.custom": [],
-    "pgcache.reject.ua": [],
+    "pgcache.reject.categories": [
+        ""
+    ],
+    "pgcache.reject.tags": [
+        ""
+    ],
+    "pgcache.reject.authors": [
+        ""
+    ],
+    "pgcache.reject.custom": [
+        ""
+    ],
+    "pgcache.reject.ua": [
+        ""
+    ],
     "pgcache.reject.cookie": [
         "wptouch_switch_toggle"
     ],
@@ -198,7 +216,9 @@
         "rss2"
     ],
     "pgcache.purge.postpages_limit": 10,
-    "pgcache.purge.pages": [],
+    "pgcache.purge.pages": [
+        ""
+    ],
     "pgcache.purge.sitemap_regex": "([a-z0-9_\\-]*?)sitemap([a-z0-9_\\-]*)?\\.xml",
     "pgcache.prime.enabled": false,
     "pgcache.prime.interval": 900,
@@ -268,7 +288,7 @@
     "minify.symlinks": [],
     "minify.lifetime": 86400,
     "minify.upload": true,
-    "minify.html.enable": false,
+    "minify.html.enable": true,
     "minify.html.engine": "html",
     "minify.html.reject.feed": false,
     "minify.html.inline.css": false,
@@ -334,10 +354,18 @@
     "minify.htmltidy.options.hide-comments": true,
     "minify.htmltidy.options.wrap": 0,
     "minify.reject.logged": false,
-    "minify.reject.ua": [],
-    "minify.reject.uri": [],
-    "minify.reject.files.js": [],
-    "minify.reject.files.css": [],
+    "minify.reject.ua": [
+        ""
+    ],
+    "minify.reject.uri": [
+        ""
+    ],
+    "minify.reject.files.js": [
+        ""
+    ],
+    "minify.reject.files.css": [
+        ""
+    ],
     "minify.cache.files": [
         ""
     ],
@@ -751,6 +779,7 @@
             ]
         }
     },
+    "robots_block.enable": false,
     "common.track_usage": true,
     "common.tweeted": false,
     "config.check": "1",

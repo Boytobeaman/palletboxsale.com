@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-9">
                 <div id="footerLink">
-                    <a href="https://www.vegcrates.com/" target="_blank">fruit crates wholesale</ a>
+                    <a href="https://www.vegcrates.com/" target="_blank">fruit crates wholesale</a>
                     <b>|</b>
                     <a href="https://www.plastic-crate.com/" target="_blank">plastic moving box</a>
                     <b>|</b>

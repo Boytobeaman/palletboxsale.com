@@ -161,9 +161,18 @@ $keys = array(
 		)
 	),
 
+	'docroot_fix.enable' => array(
+		'type' => 'boolean',
+		'default' => false,
+	),
+
 	'lazyload.enabled' => array(
 		'type' => 'boolean',
 		'default' => false
+	),
+	'lazyload.threshold' => array(
+		'type' => 'string',
+		'default' => ''
 	),
 	'lazyload.process_img' => array(
 		'type' => 'boolean',
@@ -316,7 +325,6 @@ $keys = array(
 	'objectcache.groups.nonpersistent' => array(
 		'type' => 'array',
 		'default' => array(
-			'comment',
 			'counts',
 			'plugins'
 		)
@@ -2315,7 +2323,10 @@ $keys = array(
 		)
 	),
 
-
+	'robots_block.enable' => array(
+		'type' => 'boolean',
+		'default' => false
+	),
 	'common.track_usage' => array(
 		'type' => 'boolean',
 		'default' => false

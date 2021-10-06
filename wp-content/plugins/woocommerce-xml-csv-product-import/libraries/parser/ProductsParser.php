@@ -120,7 +120,8 @@ class ProductsParser extends ProductsParserBase  {
         return array(
             'product_allow_backorders' => 'single_product_allow_backorders',
             'product_sold_individually' => 'single_product_sold_individually',
-            'default_attributes_type' => 'default_attributes_xpath'
+            'default_attributes_type' => 'default_attributes_xpath',
+	        'grouped_product_children' => 'grouped_product_children_xpath'
         );
     }
 }

@@ -3,9 +3,9 @@
 Plugin Name: WP All Import - WooCommerce Add-On
 Plugin URI: http://www.wpallimport.com/woocommerce-product-import/?utm_source=import-wooco-products-addon-free&utm_medium=wp-plugins-page&utm_campaign=upgrade-to-pro
 Description: An extremely easy, drag & drop importer to import WooCommerce simple products. A paid upgrade is available for premium support and support for Variable, Grouped, and External/Affiliate products
-Version: 1.4.7
+Version: 1.4.9
 Author: Soflyy
-WC tested up to: 4.5.2
+WC tested up to: 5.5.1
 */
 
 if ( ! function_exists( 'is_plugin_active' ) ) {
@@ -25,7 +25,7 @@ if ( is_plugin_active('wpai-woocommerce-add-on/wpai-woocommerce-add-on.php') ) {
 }
 else {
 
-    define('PMWI_FREE_VERSION', '1.4.7');
+    define('PMWI_FREE_VERSION', '1.4.9');
 
     define('PMWI_EDITION', 'free');
 
@@ -276,21 +276,25 @@ else {
                             // Update Options
                             switch ($options['update_custom_fields_logic']){
                                 case 'only':
-                                    $fields_list = explode(',', $options['custom_fields_only_list']);
-                                    if ( ! in_array('_featured', $fields_list) ){
-                                        $options['is_update_featured_status'] = 0;
-                                    }
-                                    if ( ! in_array('_visibility', $fields_list) ){
-                                        $options['is_update_catalog_visibility'] = 0;
+                                    if (!empty($options['custom_fields_only_list']) && !is_array($options['custom_fields_only_list'])) {
+                                        $fields_list = explode(',', $options['custom_fields_only_list']);
+                                        if (!in_array('_featured', $fields_list)) {
+                                            $options['is_update_featured_status'] = 0;
+                                        }
+                                        if (!in_array('_visibility', $fields_list)) {
+                                            $options['is_update_catalog_visibility'] = 0;
+                                        }
                                     }
                                     break;
                                 case 'all_except':
-                                    $fields_list = explode(',', $options['custom_fields_except_list']);
-                                    if ( in_array('_featured', $fields_list) ){
-                                        $options['is_update_featured_status'] = 0;
-                                    }
-                                    if ( in_array('_visibility', $fields_list) ){
-                                        $options['is_update_catalog_visibility'] = 0;
+                                    if (!empty($options['custom_fields_except_list']) && !is_array($options['custom_fields_except_list'])) {
+                                        $fields_list = explode(',', $options['custom_fields_except_list']);
+                                        if (in_array('_featured', $fields_list)) {
+                                            $options['is_update_featured_status'] = 0;
+                                        }
+                                        if (in_array('_visibility', $fields_list)) {
+                                            $options['is_update_catalog_visibility'] = 0;
+                                        }
                                     }
                                     break;
                             }
@@ -402,9 +406,9 @@ else {
                 $actionName = str_replace('-', '_', $action);
                 if (method_exists($controllerName, $actionName)) {
 
-                    if ( ! get_current_user_id() or ! current_user_can('manage_options')) {
-                        // This nonce is not valid.
-                        die( 'Security check' );
+					if ( ! get_current_user_id() or ! current_user_can(PMXI_Plugin::$capabilities)) {
+					    // This nonce is not valid.
+					    die( 'Security check' );
 
                     } else {
 
@@ -834,10 +838,12 @@ else {
                 'single_product_subscription_length' => '',
                 'is_multiple_product_subscription_limit' => 'yes',
                 'multiple_product_subscription_limit' => 'no',
-                'single_product_subscription_limit' => ''
-            );
-        }
-    }
+                'single_product_subscription_limit' => '',
+				'grouped_product_children' => 'xpath',
+				'grouped_product_children_xpath' => ''
+			);
+		}
+	}
 
     PMWI_Plugin::getInstance();
 }

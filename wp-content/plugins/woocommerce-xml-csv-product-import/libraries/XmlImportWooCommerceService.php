@@ -72,8 +72,7 @@ final class XmlImportWooCommerceService {
             $taxonomies = array('post_format', 'product_type', 'product_shipping_class', 'product_visibility');
             $taxonomies = apply_filters('wp_all_import_variation_taxonomies', $taxonomies);
             $this->product_taxonomies = array_diff_key(get_taxonomies_by_object_type(array('product'), 'object'), array_flip($taxonomies));
-        }
-        catch(\Exception $e) {
+        } catch(\Exception $e) {
             self::getLogger() && call_user_func(self::getLogger(), '<b>ERROR:</b> ' . $e->getMessage());
         }
     }
@@ -189,6 +188,9 @@ final class XmlImportWooCommerceService {
                 if ($parentAttribute['is_taxonomy']) {
                     $taxonomy_name = strpos($name, "%") !== FALSE ? urldecode($name) : $name;
                     $terms = [];
+                    if (isset($variation_attributes[$name]) && is_array($variation_attributes[$name])) {
+	                    $variation_attributes[$name] = array_filter($variation_attributes[$name]);
+                    }
                     if (!empty($variation_attributes[$name])) {
                         foreach ($variation_attributes[$name] as $attribute_term_slug) {
                             $term = get_term_by('slug', $attribute_term_slug, $taxonomy_name);
@@ -230,7 +232,7 @@ final class XmlImportWooCommerceService {
                     if ($this->getImport()->options['default_attributes_type'] == 'instock') {
                         /** @var \WC_Product_Variation $variation */
                         foreach ($variations as $variation) {
-                            if ($variation->is_in_stock()) {
+                            if ($variation->get_stock_status() == 'instock') {
                                 $defaultVariation = $variation;
                                 break;
                             }
@@ -270,7 +272,7 @@ final class XmlImportWooCommerceService {
         }
         // Sync custom fields for variation created from parent row.
         $firstVariationID = get_post_meta($product->get_id(), self::FIRST_VARIATION, TRUE);
-        if ($firstVariationID) {
+        if ($firstVariationID && in_array($this->getImport()->options['matching_parent'], array('first_is_parent_id', 'first_is_variation')) ) {
             $parentMeta = get_post_meta($product->get_id(), '');
             if ("manual" !== $this->getImport()->options['duplicate_matching']) {
                 foreach ($this->getImport()->options['custom_name'] as $customFieldName) {
@@ -279,17 +281,20 @@ final class XmlImportWooCommerceService {
                     }
                 }
             }
-            // Sync all ACF fields.
-            foreach ($parentMeta as $parentMetaKey => $parentMetaValue) {
-                if (strpos($parentMetaValue[0], 'field_') === 0) {
-                    update_post_meta($firstVariationID, $parentMetaKey, $parentMetaValue[0]);
-                    $acfFieldKey = preg_replace("%^_(.*)%", "$1", $parentMetaKey);
-                    foreach ($parentMeta as $key => $value) {
-                        if (strpos($key, $acfFieldKey) === 0) {
-                            update_post_meta($firstVariationID, $key, $value[0]);
-                        }
-                    }
-                }
+            $sync_parent_acf_with_first_variation = apply_filters('wp_all_import_sync_parent_acf_with_first_variation', true);
+            if ($sync_parent_acf_with_first_variation) {
+	            // Sync all ACF fields.
+	            foreach ($parentMeta as $parentMetaKey => $parentMetaValue) {
+		            if (strpos($parentMetaValue[0], 'field_') === 0) {
+			            update_post_meta($firstVariationID, $parentMetaKey, $parentMetaValue[0]);
+			            $acfFieldKey = preg_replace("%^_(.*)%", "$1", $parentMetaKey);
+			            foreach ($parentMeta as $key => $value) {
+				            if (strpos($key, $acfFieldKey) === 0) {
+					            update_post_meta($firstVariationID, $key, $value[0]);
+				            }
+			            }
+		            }
+	            }
             }
 	        delete_post_meta($firstVariationID, '_variation_updated');
         }
@@ -362,8 +367,7 @@ final class XmlImportWooCommerceService {
                 $stock_quantity = get_post_meta($product->get_id(), '_stock', TRUE);
                 $data_store = WC_Data_Store::load( 'product' );
                 $data_store->update_product_stock( $product->get_id(), $stock_quantity, 'set' );
-            }
-            catch(\Exception $e) {
+            } catch(\Exception $e) {
                 self::getLogger() && call_user_func(self::getLogger(), '<b>ERROR:</b> ' . $e->getMessage());
             }
             // Delete all variations.
@@ -417,11 +421,11 @@ final class XmlImportWooCommerceService {
                 if ($attribute->is_taxonomy()) {
                     $attribute_values = $attribute->get_terms();
                     if (!empty($attribute_values)) {
-                    $terms = [];
-                    foreach ($attribute_values as $key => $object) {
-                        $terms[] = $object->term_id;
-                    }
-                    wp_update_term_count_now($terms, $attributeName);
+	                    $terms = [];
+	                    foreach ($attribute_values as $key => $object) {
+	                        $terms[] = $object->term_id;
+	                    }
+	                    wp_update_term_count_now($terms, $attributeName);
                     }
                 }
             }
@@ -472,7 +476,7 @@ final class XmlImportWooCommerceService {
                 return FALSE;
             }
             if ($this->getImport()->options['update_all_data'] == "no" && $this->getImport()->options['update_categories_logic'] == "only" && ((!empty($this->getImport()->options['taxonomies_list'])
-                        && is_array($this->getImport()->options['taxonomies_list']) && ! in_array($tx_name, $this->getImport()->options['taxonomies_list'])) || empty($this->getImport()->options['taxonomies_list']))) {
+				&& is_array($this->getImport()->options['taxonomies_list']) && ! in_array($tx_name, $this->getImport()->options['taxonomies_list'])) || empty($this->getImport()->options['taxonomies_list']))) {
                 return FALSE;
             }
         }
@@ -511,17 +515,13 @@ final class XmlImportWooCommerceService {
      * @return bool
      */
     public function isUpdateCustomField($meta_key) {
-
         $options = $this->getImport()->options;
-
         if ($options['update_all_data'] == 'yes') {
             return TRUE;
         }
-
         if (!$options['is_update_custom_fields']) {
             return FALSE;
         }
-
         if ($options['update_custom_fields_logic'] == "full_update") {
             return TRUE;
         }
@@ -562,57 +562,48 @@ final class XmlImportWooCommerceService {
      * @return array
      */
     public static function arrayCartesian($input) {
-
         $result = array();
+        foreach ($input as $key => $values) {
+	        // If a sub-array is empty, it doesn't affect the cartesian product
+	        if ( empty( $values ) ) {
+		        continue;
+	        }
+	        // Special case: seeding the product array with the values from the first sub-array
+	        if ( empty( $result ) ) {
+		        foreach ( $values as $value ) {
+			        $result[] = array( $key => $value );
+		        }
+	        } else {
+		        // Second and subsequent input sub-arrays work like this:
+		        //   1. In each existing array inside $product, add an item with
+		        //      key == $key and value == first item in input sub-array
+		        //   2. Then, for each remaining item in current input sub-array,
+		        //      add a copy of each existing array inside $product with
+		        //      key == $key and value == first item in current input sub-array
 
-        while ( list( $key, $values ) = each( $input ) ) {
-            // If a sub-array is empty, it doesn't affect the cartesian product
-            if ( empty( $values ) ) {
-                continue;
-            }
-
-            // Special case: seeding the product array with the values from the first sub-array
-            if ( empty( $result ) ) {
-                foreach ( $values as $value ) {
-                    $result[] = array( $key => $value );
-                }
-            }
-            else {
-                // Second and subsequent input sub-arrays work like this:
-                //   1. In each existing array inside $product, add an item with
-                //      key == $key and value == first item in input sub-array
-                //   2. Then, for each remaining item in current input sub-array,
-                //      add a copy of each existing array inside $product with
-                //      key == $key and value == first item in current input sub-array
-
-                // Store all items to be added to $product here; adding them on the spot
-                // inside the foreach will result in an infinite loop
-                $append = array();
-                foreach( $result as &$product ) {
-                    // Do step 1 above. array_shift is not the most efficient, but it
-                    // allows us to iterate over the rest of the items with a simple
-                    // foreach, making the code short and familiar.
-                    $product[ $key ] = array_shift( $values );
-
-                    // $product is by reference (that's why the key we added above
-                    // will appear in the end result), so make a copy of it here
-                    $copy = $product;
-
-                    // Do step 2 above.
-                    foreach( $values as $item ) {
-                        $copy[ $key ] = $item;
-                        $append[] = $copy;
-                    }
-
-                    // Undo the side effecst of array_shift
-                    array_unshift( $values, $product[ $key ] );
-                }
-
-                // Out of the foreach, we can add to $results now
-                $result = array_merge( $result, $append );
-            }
+		        // Store all items to be added to $product here; adding them on the spot
+		        // inside the foreach will result in an infinite loop
+		        $append = array();
+		        foreach( $result as &$product ) {
+			        // Do step 1 above. array_shift is not the most efficient, but it
+			        // allows us to iterate over the rest of the items with a simple
+			        // foreach, making the code short and familiar.
+			        $product[ $key ] = array_shift( $values );
+			        // $product is by reference (that's why the key we added above
+			        // will appear in the end result), so make a copy of it here
+			        $copy = $product;
+			        // Do step 2 above.
+			        foreach( $values as $item ) {
+				        $copy[ $key ] = $item;
+				        $append[] = $copy;
+			        }
+			        // Undo the side effecst of array_shift
+			        array_unshift( $values, $product[ $key ] );
+		        }
+		        // Out of the foreach, we can add to $results now
+		        $result = array_merge( $result, $append );
+	        }
         }
-
         return $result;
     }
 

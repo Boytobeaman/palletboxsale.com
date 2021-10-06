@@ -1,6 +1,6 @@
 <?php   
 //## NXS/OWS Common Functions.
-if (!function_exists('prr')){ function prr($str,$id='') { echo $id."<pre>"; print_r($str); echo "</pre>\r\n"; }}
+if (!function_exists('prr')){ function prr($str,$id='') { $f = ''; $t = debug_backtrace(); if (isset($t[2])) $f = $t[2]['function']; echo $f.(!empty($id)?' ('.$id.')':'')."<br/><pre>"; print_r($str); echo "</pre>\r\n"; }}
 if (!function_exists('nsx_stripSlashes')){ function nsx_stripSlashes(&$value){$value = stripslashes($value);}}
 if (!function_exists('nsx_fixSlashes')){ function nsx_fixSlashes(&$value){ while (strpos($value, '\\\\')!==false) $value = str_replace('\\\\','\\',$value);
    if (strpos($value, "\\'")!==false) $value = str_replace("\\'","'",$value); if (strpos($value, '\\"')!==false) $value = str_replace('\\"','"',$value);
@@ -28,8 +28,9 @@ if (!function_exists('nxs_convertEntity')){ function nxs_convertEntity($matches,
 if (!function_exists('nsTrnc')){ function nsTrnc($string, $limit, $break=" ", $pad=" ...") { if(nxs_strLen($string) <= $limit) return $string; if(nxs_strLen($pad) >= $limit) return ''; $string = nxs_substr($string, 0, $limit-nxs_strLen($pad)); 
   $brLoc = strripos($string, $break);  if ($brLoc===false) return $string.$pad; else return nxs_substr($string, 0, $brLoc).$pad; 
 }}
-
-if (!function_exists("NXS_mkRandomStr")) { function NXS_mkRandomStr($l=32){ $rStr = ''; $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; $cl = strlen($chars); for ($i = 0; $i < $l; $i++) $rStr .= $chars[rand(0, $cl - 1)]; return $rStr; }}
+if (!function_exists("nxs_mkRandomStr")) { function nxs_mkRandomStr($l=32){ $rStr = ''; $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; $cl = strlen($chars); for ($i = 0; $i < $l; $i++) $rStr .= $chars[rand(0, $cl - 1)]; return $rStr; }}
+if (!function_exists("nxs_mkRndLStr")) { function nxs_mkRndLStr($l=3){ $rStr = ''; $chars = '0123456789abcdefghijklmnopqrstuvwxyz'; $cl = strlen($chars); for ($i = 0; $i < $l; $i++) $rStr .= $chars[rand(0, $cl - 1)]; return $rStr; }}
+if (!function_exists("nxs_mkRndNum")) { function nxs_mkRndNum($l=3){ $rStr = ''; $chars = '0123456789'; $cl = strlen($chars); for ($i = 0; $i < $l; $i++) $rStr .= $chars[rand(0, $cl - 1)]; return $rStr; }}
 //##=============================
 if (!function_exists("NXS_doSetArrRecursive")) { function NXS_doSetArrRecursive(&$array, $path, $value){ $key = array_shift($path); //prr($path); prr($key); echo "|-"; prr($array); echo "-|";
   if (empty($path)) if (trim($key)=='')  $array[] = $value;  else  $array[$key] = $value; else { if (!isset($array[$key]) || !is_array($array[$key])) $array[$key] = array(); NXS_doSetArrRecursive($array[$key], $path, $value); }
@@ -73,7 +74,7 @@ if (!function_exists('nxs_curlUploadImg')){ function nxs_curlUploadImg($imgURL, 
   $tmpX=array_search('uri', @array_flip(stream_get_meta_data($GLOBALS[mt_rand()]=tmpfile()))); 
   if (!is_writable($tmpX)) { $msg = "Can't upload image. Your temporary folder or file (file - ".$tmpX.") is not writable.";
     if (function_exists('wp_upload_dir')) { $uDir = wp_upload_dir(); $tmpX = tempnam($uDir['path'], "nx"); if (!is_writable($tmpX)) return $msg." Your UPLOADS folder or file (file - ".$tmpX.") is not writable. ";} else return $msg;
-  } rename($tmpX, $tmpX.='.'.$imgType); if (version_compare(PHP_VERSION, '7.0.0', '<')) register_shutdown_function(create_function('', "@unlink('{$tmpX}');")); else register_shutdown_function(function ($tmpX) { @unlink($tmpX); }, $tmpX); file_put_contents($tmpX, $imgData);  
+  } rename($tmpX, $tmpX.='.'.$imgType); register_shutdown_function('unlink', $tmpX); file_put_contents($tmpX, $imgData);
   $hdrsArr['Content-type'] = 'multipart/form-data'; $hdrsArr['nxsUplFile'] = $tmpX; $hdrsArr['nxsPstArr'] = serialize($pstArray); $hdrsArr['nxsPstField'] = $pstField;  $advSet = nxs_mkRemOptsArr($hdrsArr, $ck, $pstArray); $advSet['postAsArray'] = 1; //prr($advSet);
   $rep = nxs_remote_post($uplURL, $advSet);  @unlink($tmpX); if(is_nxs_error($rep)) return array('err'=>print_r($rep, true)); else return $rep;  
 }}
@@ -169,15 +170,22 @@ if (!function_exists("nxs_uarr_string")) { function nxs_uarr_string(&$item,$key)
 function nxs_cURLTestCode($url){  
   $out = 'There is a problem with cURL. You need to contact your server admin or hosting provider. Here is the PHP code to reproduce the problem:<br/><pre style="color:#005800">&lt;?php '."\r\n".' $ch = curl_init(); '."\r\n".' curl_setopt($ch, CURLOPT_URL, "'.$url.'"); '."\r\n".' curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"); '."\r\n".' curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); '."\r\n".' curl_setopt($ch, CURLOPT_TIMEOUT, 10); '."\r\n".' curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); '."\r\n".' $response = curl_exec($ch); '."\r\n".' $errmsg = curl_error($ch); '."\r\n".' $cInfo = curl_getinfo($ch); '."\r\n".' curl_close($ch); '."\r\n".' print_r($errmsg); '."\r\n".' print_r($cInfo); '."\r\n".' print_r($response); '."\r\n".'?&gt;</pre>'; return $out; 
 }
-function nxs_cURLTest($url, $msg, $testText){ if ($testText=='getMyIP') echo 'Getting IP... <br/>'; else echo "<br/>--== Test Requested ... ".$url."<br/>";  $ch = curl_init(); curl_setopt($ch, CURLOPT_URL, $url); 
-  curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.39 Safari/537.36"); 
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); curl_setopt($ch, CURLOPT_TIMEOUT, 10); curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); curl_setopt($ch, CURLOPT_HEADER, true);
-  $response = curl_exec($ch); $errmsg = curl_error($ch); $cInfo = curl_getinfo($ch); curl_close($ch);  
-  if ($testText=='getMyIP')  echo "Your Server IP:".$response.'<br/>';  else { echo "Testing ... ".$url." - ".$cInfo['url']."<br/>";
-    if (stripos($response, $testText)!==false) echo "....".$msg." - OK<br/>"; else { echo "....<b style='color:red;'>".$msg." - Problem</b><br/>"; prr($response); prr($errmsg); prr($cInfo); echo nxs_cURLTestCode($url);  }
-  }
+function nxs_cURLTest($url, $msg, $testText){ if ($testText=='getMyIP') echo 'Getting IP... <br/>'; else echo "<br/>--== Test Requested ... ".$url."<br/>";  $ch = curl_init(); curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); curl_setopt($ch, CURLOPT_TIMEOUT, 10); curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); curl_setopt($ch, CURLOPT_HEADER, true);
+    $response = curl_exec($ch); $errmsg = curl_error($ch); $cInfo = curl_getinfo($ch); curl_close($ch);
+    if ($testText=='getMyIP')  echo "Your Server IP:".$response.'<br/>';  else { echo "Testing ... ".$url." - ".$cInfo['url']."<br/>";
+        if (stripos($response, $testText)!==false) echo "....".$msg." - OK<br/>"; else { echo "....<b style='color:red;'>".$msg." - Problem</b><br/>"; prr($response); prr($errmsg); prr($cInfo); echo nxs_cURLTestCode($url);  }
+    }
 }
-
+//## Get Client IP
+if (!function_exists("nxs_getClientIP")){ function nxs_getClientIP($loc=false) {
+    if (isset($_SERVER['HTTP_CLIENT_IP'])) $ip['ip'] = $_SERVER['HTTP_CLIENT_IP']; else if(isset($_SERVER['REMOTE_ADDR'])) $ip['ip'] = $_SERVER['REMOTE_ADDR']; else $ip['ip'] = 'UNKNOWN';
+    if ($loc){
+        $rq = new nxsHttp; $ret = $rq->request('http://ip-api.com/php/'.$ip['ip'].'?fields=countryCode,region', nxs_mkRmReqArgs()); $ip['loc'] = unserialize($ret['body']);
+    }
+    return $ip;
+}}
 if (!function_exists("nxs_html_to_utf8")){ function nxs_html_to_utf8($str){ $str = html_entity_decode($str, ENT_QUOTES, "utf-8"); return $str;} }
 
 if (!function_exists('nsx_doEncode')){ function nsx_doEncode($string,$key='NSX') { $key = sha1($key); $strLen = strlen($string);$keyLen = strlen($key); $j = 0; $hash = '';

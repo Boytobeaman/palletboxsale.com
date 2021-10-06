@@ -8,8 +8,7 @@
 		<div class="wpallimport-header">
 			<div class="wpallimport-logo"></div>
 			<div class="wpallimport-title">
-				<p><?php _e('WP All Import', 'wp_all_import_plugin'); ?></p>
-				<h2><?php _e('Import XML / CSV', 'wp_all_import_plugin'); ?></h2>					
+				<h2><?php _e('Confirm & Run', 'wp_all_import_plugin'); ?></h2>
 			</div>
 			<div class="wpallimport-links">
 				<a href="http://www.wpallimport.com/support/?utm_source=import-plugin-free&utm_medium=help&utm_campaign=premium-support" target="_blank"><?php _e('Support', 'wp_all_import_plugin'); ?></a> | <a href="http://www.wpallimport.com/documentation/?utm_source=import-plugin-free&utm_medium=help&utm_campaign=docs" target="_blank"><?php _e('Documentation', 'wp_all_import_plugin'); ?></a>
@@ -157,7 +156,7 @@
 						
 						<?php if ( "new" == $post['wizard_type']): ?>
 						
-							<p><?php printf(__('Your unique key is <span style="color:#000; font-weight:bold;">%s</span>', 'wp_all_import_plugin'), $post['unique_key']); ?></p>
+							<p><?php printf(__('Your unique key is <span style="color:#000; font-weight:bold;">%s</span>', 'wp_all_import_plugin'), wp_all_import_clear_xss($post['unique_key'])); ?></p>
 							
 							<?php if ( ! $isWizard and !empty($custom_type)): ?>
 								
@@ -226,7 +225,16 @@
 									<?php endif; ?>
 									<?php if ( $post['is_update_content']): ?>
 									<li> <?php _e('content', 'wp_all_import_plugin'); ?></li>
-									<?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if ( $post['is_update_author']): ?>
+                                        <li> <?php _e('author', 'wp_all_import_plugin'); ?></li>
+                                    <?php endif; ?>
+                                    <?php if ( $post['is_update_comment_status']): ?>
+                                        <li> <?php _e('comment status', 'wp_all_import_plugin'); ?></li>
+                                    <?php endif; ?>
+                                    <?php if ( $post['is_update_post_format']): ?>
+                                        <li> <?php _e('post format', 'wp_all_import_plugin'); ?></li>
+                                    <?php endif; ?>
 									<?php if ( $post['is_update_excerpt']): ?>
 									<li> <?php _e('excerpt', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>

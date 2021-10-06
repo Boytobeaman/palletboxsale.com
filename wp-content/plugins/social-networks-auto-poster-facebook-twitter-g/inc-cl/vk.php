@@ -72,12 +72,21 @@ if (!class_exists("nxs_snapClassVK")) { class nxs_snapClassVK extends nxs_snapCl
           $options[$ii]['appAuthToken'] = trim( CutFromTo($pval['authResp'].'&', 'access_token=','&')); 
           $options[$ii]['appAuthUser'] = trim( CutFromTo($pval['authResp']."&", 'user_id=','&')); 
           if (!empty($pval['authResp']))  { $hdrsArr = nxs_getNXSHeaders($pval['url']); $advSet = nxs_mkRemOptsArr($hdrsArr); $response = nxs_remote_get($pval['url'], $advSet); //prr($response);
-            if (is_nxs_error($response)) { echo "ERROR: <br/>"; prr($response); nxsLogIt(array('type'=>'E', 'msg'=>'VK Auth Validation Error:', 'extInfo'=>print_r($response, true))); return $options; } $contents = $response['body']; $contents = utf8_decode($contents);    
-             $options[$ii]['pgIntID'] = '';
-            if (stripos($contents, '"group_id":')!==false) { $options[$ii]['pgIntID'] =  '-'.CutFromTo($contents, '"group_id":', ','); $type='all'; }  
-            if (stripos($contents, '"public_id":')!==false) { $options[$ii]['pgIntID'] =  '-'.CutFromTo($contents, '"public_id":', ','); $type='all'; }  
-            if (stripos($contents, '"user_id":')!==false) {   $options[$ii]['pgIntID'] =  CutFromTo($contents, '"user_id":', ','); $type='own'; }  
-            if (empty($options[$ii]['pgIntID'])) $options[$ii]['pgIntID'] = $options[$ii]['appAuthUser'];
+            if (is_nxs_error($response)) { echo "ERROR: <br/>"; prr($response); nxsLogIt(array('type'=>'E', 'msg'=>'VK Auth Validation Error:', 'extInfo'=>print_r($response, true))); return $options; }
+            $contents = $response['body']; $contents = utf8_decode($contents); $options[$ii]['pgIntID'] = ''; // prr($contents);
+            //## Lets Get an ID (First try from OG, then from ID)
+              if (stripos($contents, '<meta property="og:url" content="https://vk.com/')!==false) {
+                  $k = CutFromTo($contents, '<meta property="og:url" content="https://vk.com/', '"'); // prr($k);
+                  if (stripos($k, 'club')!==false) { $options[$ii]['pgIntID'] =  '-'.str_ireplace('club','', $k); $type='all'; } //## club aka group
+                  if (stripos($k, 'public')!==false) { $options[$ii]['pgIntID'] =  '-'.str_ireplace('public','', $k); $type='all'; } //## public
+                  if (stripos($k, 'id')!==false) { $options[$ii]['pgIntID'] =  str_ireplace('id','', $k); $type='own'; } // id aka user_id
+              } //prr($options[$ii]['pgIntID']);
+              if (empty($options[$ii]['pgIntID'])) {
+                  if (stripos($contents, '{"group_id":') !== false) { $options[$ii]['pgIntID'] = '-' . CutFromTo($contents, '"group_id":', ','); $type = 'all'; }
+                  if (stripos($contents, '{"public_id":') !== false) { $options[$ii]['pgIntID'] = '-' . CutFromTo($contents, '"public_id":', ','); $type = 'all'; }
+                  if (stripos($contents, '"user_id":') !== false) { $options[$ii]['pgIntID'] = CutFromTo($contents, '"user_id":', ','); $type = 'own'; }
+              }
+              if (empty($options[$ii]['pgIntID'])) $options[$ii]['pgIntID'] = $options[$ii]['appAuthUser'];
           } $options[$ii]['pgIntID'] = str_replace('"','',$options[$ii]['pgIntID']);
         } else $options[$ii]['authResp'] = ''; 
       } elseif ( count($pval)==1 ) if (isset($pval['do'])) $options[$ii]['do'] = $pval['do']; else $options[$ii]['do'] = 0; 

@@ -16,7 +16,9 @@ if (!function_exists("nxs_snapAjax")) { function nxs_snapAjax() { check_ajax_ref
     } $nxs_SNAP->saveNetworksOptions($networks); /* prr($nxs_SNAP->nxs_options); /* prr($_POST); prr($nxs_SNAP->nxs_accts);  */ die('OK');
   }
   if ($_POST['nxsact']=='delNTAcc' && isset($_POST['id'])) { $indx = (int)$_POST['id']; unset($networks[$_POST['nt']][$indx]); $nxs_SNAP->saveNetworksOptions($networks); die('OK'); }
-  
+  if ($_POST['nxsact']=='nxsnFavChange' && isset($_POST['nt'])) { $stt = (int)$_POST['stt']; if ($stt) unset($networks[$_POST['nt']][$_POST['ii']]['fav']); else $networks[$_POST['nt']][$_POST['ii']]['fav'] = true;
+        $nxs_SNAP->saveNetworksOptions($networks); die('OK');
+  }
   if ($_POST['nxsact']=='nsDupl') { $indx = (int)$_POST['id']; $no = $networks[$_POST['nt']][$indx]; $no['nName'] .= ' [Copy]';    $networks[$_POST['nt']][] = $no;
     if (is_array($networks)) { nxs_save_ntwrksOpts($networks);  $nxs_SNAP->nxs_accts = $networks;  echo "OK"; }
   }
@@ -218,7 +220,7 @@ if (!function_exists("nsFormatMessage")) { function nsFormatMessage($msg, $postI
       if (!empty($exc)) $excerpt = strip_shortcodes(nxs_doQTrans($exc, $lng)); else $excerpt= nsTrnc(strip_tags(strip_shortcodes(nxs_doQTrans($post->post_content, $lng))), 300, " ", "..."); 
        $msg = str_ireplace("%RAWEXCERPTHTML%", $excerpt, $msg);
   }
-  $tagsExclFrmHT = $options['tagsExclFrmHT']; $tagsExclFrmHT = explode(',',$tagsExclFrmHT); foreach ($tagsExclFrmHT as $i=>$et) $tagsExclFrmHT[$i] = trim(strtolower($et));  
+  $tagsExclFrmHT = !empty($options['tagsExclFrmHT'])?$options['tagsExclFrmHT']:''; $tagsExclFrmHT = explode(',',$tagsExclFrmHT); foreach ($tagsExclFrmHT as $i=>$et) $tagsExclFrmHT[$i] = trim(strtolower($et));
   if (stripos($msg, '%TAGS%')!==false) { $t = wp_get_object_terms($postID, 'product_tag'); if ( empty($t) || is_wp_error($t) || !is_array($t) ) $t = wp_get_post_tags($postID);
     $tggs = array(); foreach ($t as $tagA) { $tg = $tagA->name;  if (!in_array(strtolower($tg), $tagsExclFrmHT)) $tggs[] = $tg; }     
     $tags = implode(', ',$tggs); $msg = str_ireplace("%TAGS%", $tags, $msg);
@@ -226,32 +228,38 @@ if (!function_exists("nsFormatMessage")) { function nsFormatMessage($msg, $postI
   if (stripos($msg, '%CATS%')!==false) { $t = wp_get_post_categories($postID); $cats = array();  foreach($t as $c){ $cat = get_category($c); $tg = str_ireplace('&','&amp;',$cat->name);  if (!in_array(strtolower($tg), $tagsExclFrmHT)) $cats[] = $tg; } 
           $ctts = implode(', ',$cats); $msg = str_ireplace("%CATS%", $ctts, $msg);
   }
-  if (stripos($msg, '%HCATS%')!==false) { $t = wp_get_post_categories($postID); $cats = array();  
-    foreach($t as $c){ $cat = get_category($c);  $tg = trim(str_replace(' ',$htS, str_replace('  ', ' ', trim(str_ireplace('&','',str_ireplace('&amp;','',$cat->name)))))); if (!in_array(strtolower($tg), $tagsExclFrmHT)) $cats[] = '#'.$tg; } 
-    $ctts = implode($htSep,$cats); $msg = str_ireplace("%HCATS%", $ctts, $msg);
-  }  
-  if (stripos($msg, '%HTAGS%')!==false) { $t = wp_get_object_terms($postID, 'product_tag'); if ( empty($t) || is_wp_error($t) || !is_array($t) ) $t = wp_get_post_tags($postID);    
-    $tggs = array(); foreach ($t as $tagA) { $tg = trim(str_replace(' ', $htS, nxs_clean_string(trim(nxs_ucwords(str_ireplace('&','',str_ireplace('&amp;','',$tagA->name))))))); if (!in_array(strtolower($tg), $tagsExclFrmHT)) $tggs[] = '#'.$tg; }
-    $tags = implode($htSep,$tggs); $msg = str_ireplace("%HTAGS%", $tags, $msg);
-  } 
-  if (preg_match('/%+CF-[a-zA-Z0-9-_]+%/', $msg)) { $msgA = explode('%CF', $msg); $mout = '';
-    foreach ($msgA as $mms) { 
-        if (substr($mms, 0, 1)=='-' && stripos($mms, '%')!==false) { $mGr = CutFromTo($mms, '-', '%'); $cfItem =  get_post_meta($postID, $mGr, true);  $mms = str_ireplace("-".$mGr."%", $cfItem, $mms); } $mout .= $mms; 
-    } $msg = $mout; 
-  }  
-  $mm = array(); if (preg_match_all('/%H?CT-[a-zA-Z0-9_-]+%/', $msg, $mm)) { $msgA = explode('%CT', str_ireplace("%HCT", "%CT", $msg)); $mout = ''; $i = 0;
-    foreach ($msgA as $mms) { 
-      if (substr($mms, 0, 1)=='-' && stripos($mms, '%')!==false){ $h = strpos($mm[0][$i],'%HCT-')!==false; $i++; $mGr=CutFromTo($mms,'-','%'); $cfItem=wp_get_post_terms($postID,$mGr,array("fields"=>"names"));
-        if (is_nxs_error($cfItem)) {nxs_addToLogN('E', 'Error', 'MSG', '-=ERROR=- '.$mGr.'|'.print_r($cfItem, true), '');  $mms=str_ireplace("-".$mGr."%",'',$mms);   } else { $tggs = array(); 
-          //foreach ($cfItem as $frmTag) { if ($h) $frmTag = trim(str_replace(' ', $htS, preg_replace('/[^a-zA-Z0-9\p{L}\p{N}\s]/u', '', trim(nxs_ucwords(str_ireplace('&','',str_ireplace('&amp;','',$frmTag)))))));
-          foreach ($cfItem as $frmTag) { if ($h) $frmTag = trim(str_replace(' ', $htS, nxs_clean_string(trim(nxs_ucwords(str_ireplace('&','',str_ireplace('&amp;','',$frmTag)))))));
-          
-              $tggs[] = ($h?'#':'').$frmTag; 
-          } $cfItem = implode(' ',$tggs); $mms=str_ireplace("-".$mGr."%",$cfItem,$mms);    
+    if (stripos($msg, '%HCATS%')!==false) { $t = wp_get_post_categories($postID); $cats = array();
+        foreach($t as $c){ $cat = get_category($c);
+            $tg = trim(str_replace(' ',$htS, str_replace('  ', ' ', trim(str_ireplace('&','',str_ireplace('&amp;','',str_ireplace('-','',$cat->name)))))));
+            if (!in_array(strtolower($tg), $tagsExclFrmHT)) $cats[] = '#'.$tg;
         }
-      } $mout.=$mms;  
-    } $msg = $mout; 
-  }
+        $ctts = implode($htSep,$cats); $msg = str_ireplace("%HCATS%", $ctts, $msg);
+    }
+    if (stripos($msg, '%HTAGS%')!==false) { $t = wp_get_object_terms($postID, 'product_tag'); if ( empty($t) || is_wp_error($t) || !is_array($t) ) $t = wp_get_post_tags($postID);
+        $tggs = array(); foreach ($t as $tagA) {
+            $tg = trim(str_replace(' ', $htS, nxs_clean_string(trim(nxs_ucwords(str_ireplace('&','',str_ireplace('&amp;','',str_ireplace('-;','',$tagA->name))))))));
+            if (!in_array(strtolower($tg), $tagsExclFrmHT)) $tggs[] = '#'.$tg;
+        }
+        $tags = implode($htSep,$tggs); $msg = str_ireplace("%HTAGS%", $tags, $msg);
+    }
+    if (preg_match('/%+CF-[a-zA-Z0-9-_]+%/', $msg)) { $msgA = explode('%CF', $msg); $mout = '';
+        foreach ($msgA as $mms) {
+            if (substr($mms, 0, 1)=='-' && stripos($mms, '%')!==false) { $mGr = CutFromTo($mms, '-', '%'); $cfItem =  get_post_meta($postID, $mGr, true);  $mms = str_ireplace("-".$mGr."%", $cfItem, $mms); } $mout .= $mms;
+        } $msg = $mout;
+    }
+    $mm = array(); if (preg_match_all('/%H?CT-[a-zA-Z0-9_-]+%/', $msg, $mm)) { $msgA = explode('%CT', str_ireplace("%HCT", "%CT", $msg)); $mout = ''; $i = 0;
+        foreach ($msgA as $mms) {
+            if (substr($mms, 0, 1)=='-' && stripos($mms, '%')!==false){ $h = strpos($mm[0][$i],'%HCT-')!==false; $i++; $mGr=CutFromTo($mms,'-','%'); $cfItem=wp_get_post_terms($postID,$mGr,array("fields"=>"names"));
+                if (is_nxs_error($cfItem)) {nxs_addToLogN('E', 'Error', 'MSG', '-=ERROR=- '.$mGr.'|'.print_r($cfItem, true), '');  $mms=str_ireplace("-".$mGr."%",'',$mms);   } else { $tggs = array();
+                    //foreach ($cfItem as $frmTag) { if ($h) $frmTag = trim(str_replace(' ', $htS, preg_replace('/[^a-zA-Z0-9\p{L}\p{N}\s]/u', '', trim(nxs_ucwords(str_ireplace('&','',str_ireplace('&amp;','',$frmTag)))))));
+                    foreach ($cfItem as $frmTag) {
+                        if ($h) $frmTag = trim(str_replace(' ', $htS, nxs_clean_string(trim(nxs_ucwords(str_ireplace('&','',str_ireplace('&amp;','',str_ireplace('-;','',$frmTag))))))));
+                        $tggs[] = ($h?'#':'').$frmTag;
+                    } $cfItem = implode(' ',$tggs); $mms=str_ireplace("-".$mGr."%",$cfItem,$mms);
+                }
+            } $mout.=$mms;
+        } $msg = $mout;
+    }
   if (stripos($msg, '%FULLTEXT%')!==false) { $postContent = apply_filters('the_content', nxs_doQTrans($post->post_content, $lng)); $msg = str_ireplace("%FULLTEXT%", $postContent, $msg);}                    
   if (stripos($msg, '%RAWTEXT%')!==false) { $postContent = nxs_doQTrans($post->post_content, $lng); $msg = str_ireplace("%RAWTEXT%", $postContent, $msg);}
   if (stripos($msg, '%SITENAME%')!==false) { $siteTitle = htmlspecialchars_decode(get_bloginfo('name'), ENT_QUOTES); $msg = str_ireplace("%SITENAME%", $siteTitle, $msg);}      

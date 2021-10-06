@@ -4,8 +4,8 @@ Contributors: NextScripts, okapy
 Donate link: https://www.nextscripts.com/social-networks-auto-poster-for-wordpress
 Tags: automation, autopost, auto-post, auto post, socialnetworks, socialnetwork, social networks, social network, facebook, Flipboard, google,  Flickr, twitter, pinterest, google my business, 500px, tumblr, blogger, blogspot, linkedin, reddit, reddit.com, plugin, links, Post, posts, api, automatic, seo, scoop.it, integration, bookmark, bookmarks, admin, images, image, social, sharing, share, repost, re-post, wordpress.com, Diigo, vBulletin, Plurk, forums, vKontakte, open graph, LiveJournal, SETT, YouTube, Telegram, Instagram, xing, medium, yo, Weibo, mailchimp, line, Odnoklassniki, ok.ru
 Requires at least: 3.4
-Tested up to: 5.6.1
-Stable tag: 4.3.20
+Tested up to: 5.8.1
+Stable tag: 4.3.23
 License: GPLv2 or later
 
 Automatically publishes blogposts to profiles/pages/groups on Facebook, Twitter, Instagram, Google+, Pinterest, LinkedIn, Blogger, Tumblr ... 22 more
@@ -26,7 +26,7 @@ Automatically publishes blogposts to profiles/pages/groups on Facebook, Twitter,
 * **Flipboard** (*with third party API library*) - post to your magazines.
 * **Instagram** - (*with third party API library*) - Post your blogpost's featured image to your Instagram account.
 * **Instapaper** - Auto-submit bookmark to your account. 
-* **Google+ for G Suite** (*with third party API library*) - Autopost to your profile, business page or community. Ability to attach your blogpost to Google+ post. Ability to make "Image" posts.
+* **Google Currents (ex Google+ for G Suite)** (*with third party API library*) - Autopost to your profile, business page or community. Ability to attach your blogpost to Google+ post. Ability to make "Image" posts.
 * **Google My Business** (*with third party API library*) - Autopost to your Google My Business listings.
 * **Line** - Autopost to your channel, group or room.
 * **LinkedIn** - Autopost to your account. Ability to attach your blogpost to LinkedIn post. Autopost to LinkedIn Company pages and/or Groups (*with third party API library*)
@@ -183,6 +183,22 @@ Please see more <a href="https://www.nextscripts.com/faq/">Frequently asked ques
 = Details = 
 
 == Changelog ==
+
+= 4.3.23 [10/04/2022] =
+
+* Bug Fix - Message in the footer has been removed.
+* Bug Fix - Plugin was breaking "Site Health" section. 
+
+= 4.3.21 [10/04/2021] =
+
+* New - Favorite accounts.
+* New - Quick post to favorite accounts.
+* New/Improvement - [Wordpress Based Sites] - Ability to make an exact copy of the post. 
+* New - WordPress 5.8 support.
+* Improvement - Support for hashtags with hyphen.
+* Bug Fix - [Blogger] Fatal Error with incorrect token.
+* Bug Fix - [vk.com] Outdated API error message
+* Bug Fix - Possible XSS security issue 
 
 = 4.3.20 [02/05/2021] =
 
@@ -547,7 +563,7 @@ Author: Next Scripts
 
 Author URL: https://www.nextscripts.com
 
-Copyright 2012-2014  Next Scripts, Inc
+Copyright 2012-2021  Next Scripts, Inc
 
 PHP Twitter API: Copyright 2012 -  themattharris - tmhOAuth
 

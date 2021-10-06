@@ -6,17 +6,20 @@
  * 		Deliver a message to install CF7 if not.
  * 
  */
-add_action( 'admin_init', 'honeypot4cf7_has_parent_plugin' );
-function honeypot4cf7_has_parent_plugin() {
+add_action( 'admin_init', 'honeypot4cf7_init' );
+function honeypot4cf7_init() {
 	// Get Options
-	$honeypot4cf7_config = get_option( 'honeypot4cf7_config' );
+	$honeypot4cf7_config = honeypot4cf7_get_config();
 
-	if ( ! $honeypot4cf7_config ) {
-		$honeypot4cf7_config = honeypot4cf7_restore_config();
-	}
-
+	// CF7 is not enabled
 	if ( is_admin() && current_user_can( 'activate_plugins' ) &&  !is_plugin_active( HONEYPOT4CF7_DEP_PLUGIN ) && empty( $honeypot4cf7_config['honeypot_cf7_req_msg_dismissed'] ) ) {
 		add_action( 'admin_notices', 'honeypot4cf7_nocf7_notice' );
+	}
+
+	// CF7 is enabled, but it is OOOOOLD. Display message and deactivate Honeypot.
+	if ( is_admin() && current_user_can( 'activate_plugins' ) && is_plugin_active( HONEYPOT4CF7_DEP_PLUGIN ) && defined('WPCF7_VERSION') && version_compare(WPCF7_VERSION, '3.0', '<' ) ) {
+		add_action( 'admin_notices', 'honeypot4cf7_oldcf7_notice' );
+		deactivate_plugins( HONEYPOT4CF7_PLUGIN_BASENAME );
 	}
 
 	// This resets dismissed notice
@@ -42,11 +45,26 @@ function honeypot4cf7_nocf7_notice() {
 	<?php
 }
 
+function honeypot4cf7_oldcf7_notice() { 
+	?>
+	<div class="notice error">
+		<p>
+			<?php 
+			printf(
+				/* translators: %s: Link to Contact Form 7 plugin page. */
+				__('The version of %s that is installed will not work with this version of Honeypot for CF7.', 'contact-form-7-honeypot'),
+				'<a href="'.admin_url('plugin-install.php?tab=search&s=contact+form+7').'">'.__('Contact Form 7','contact-form-7-honeypot').'</a>'
+			); 
+			?>
+		</p>
+	</div>
+	<?php
+}
+
 
 add_action( 'wp_ajax_honeypot4cf7_dismiss_notice', 'honeypot4cf7_dismiss_notice' );
-
 function honeypot4cf7_dismiss_notice() {
-	$honeypot4cf7_config = get_option( 'honeypot4cf7_config' );
+	$honeypot4cf7_config = honeypot4cf7_get_config();
 	$honeypot4cf7_config['honeypot_cf7_req_msg_dismissed'] = 1;
 	update_option( 'honeypot4cf7_config', $honeypot4cf7_config );
 }
@@ -77,7 +95,7 @@ function honeypot4cf7_on_activation() {
     check_admin_referer( "activate-plugin_{$plugin}" );
 
 	// Initialize option values
-	return honeypot4cf7_restore_config( 'init' );
+	return honeypot4cf7_get_config();
 }
 
 register_activation_hook( HONEYPOT4CF7_PLUGIN, 'honeypot4cf7_on_activation' );
@@ -101,35 +119,28 @@ function honeypot4cf7_settings_link( $links ) {
 
 /* ***********
 *
-* Restore built-in defaults, optionally overwriting existing values
+* Set / Get / Restore Config
 *
 *********** */
-function honeypot4cf7_restore_config( $type = false ) {
-	// Make sure the current user can manage options
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
+function honeypot4cf7_get_config( $context = false ) {
 
-	$honeypot4cf7_config = get_option( 'honeypot4cf7_config' );
+	$honeypot4cf7_config = get_option( 'honeypot4cf7_config' );	
+
+	$honeypot4cf7_config = array(
+		'store_honeypot'					=> ( 'reset' == $context || empty( $honeypot4cf7_config['store_honeypot'] ) ) ?  0 : $honeypot4cf7_config['store_honeypot'],
+		'placeholder'						=> ( 'reset' == $context || empty( $honeypot4cf7_config['placeholder'] ) ) ?  '' : $honeypot4cf7_config['placeholder'],
+		'accessibility_message'				=> ( 'reset' == $context || empty( $honeypot4cf7_config['accessibility_message'] ) ) ?  '' : $honeypot4cf7_config['accessibility_message'],
+		'w3c_valid_autocomplete'			=> ( 'reset' == $context || empty( $honeypot4cf7_config['w3c_valid_autocomplete'] ) ) ?  array( 'false' ) : $honeypot4cf7_config['w3c_valid_autocomplete'],
+		'move_inline_css'					=> ( 'reset' == $context || empty( $honeypot4cf7_config['move_inline_css'] ) ) ?  array( 'false' ) : $honeypot4cf7_config['move_inline_css'],
+		'nomessage'							=> ( 'reset' == $context || empty( $honeypot4cf7_config['nomessage'] ) ) ?  array( 'false' ) : $honeypot4cf7_config['nomessage'],
+		'timecheck_enabled'					=> ( 'reset' == $context || empty( $honeypot4cf7_config['timecheck_enabled'] ) ) ?  array( 'false' ) : $honeypot4cf7_config['timecheck_enabled'],
+		'timecheck_value'					=> ( 'reset' == $context || empty( $honeypot4cf7_config['timecheck_value'] ) ) ?  4 : $honeypot4cf7_config['timecheck_value'],
+		'honeypot_count'					=> ( empty( $honeypot4cf7_config['honeypot_count'] ) ) ? 0 : $honeypot4cf7_config['honeypot_count'],
+		'honeypot_install_date'				=> ( empty( $honeypot4cf7_config['honeypot_install_date'] ) ) ? time() : $honeypot4cf7_config['honeypot_install_date'],
+		'honeypot_cf7_req_msg_dismissed'	=> ( 'reset' == $context || empty( $honeypot4cf7_config['honeypot_cf7_req_msg_dismissed'] ) ) ? 0 : $honeypot4cf7_config['honeypot_cf7_req_msg_dismissed'],
+		'honeypot4cf7_version'				=> HONEYPOT4CF7_VERSION,
+	);
 	
-	if (empty($honeypot4cf7_config) || 'reset' == $type) {
-
-		$honeypot4cf7_config_defaults = array(
-			'store_honeypot'					=> 0,
-			'placeholder'						=> '',
-			'accessibility_message'				=> '',
-			'w3c_valid_autocomplete'			=> array( 'false' ),
-			'move_inline_css'					=> array( 'false' ),
-			'nomessage'							=> array( 'false' ),
-			'honeypot_count'					=> ( ! empty( $honeypot4cf7_config['honeypot_count'] ) ) ? $honeypot4cf7_config['honeypot_count'] : 0,
-			'honeypot_install_date'				=> ( ! empty( $honeypot4cf7_config['honeypot_install_date'] ) ) ? $honeypot4cf7_config['honeypot_install_date'] : time(),
-			'honeypot_cf7_req_msg_dismissed'	=> 0,
-			'honeypot4cf7_version'				=> HONEYPOT4CF7_VERSION,
-		);
-	
-		$honeypot4cf7_config = $honeypot4cf7_config_defaults;
-	}
-
 	update_option( 'honeypot4cf7_config', $honeypot4cf7_config );
 
 	return $honeypot4cf7_config;
@@ -155,36 +166,32 @@ function honeypot4cf7_admin_menu() {
 
 function honeypot4cf7_admin_page() {
 	// Reset Values
-	if ( ! empty( $_POST['clear'] ) ) {
-		honeypot4cf7_restore_config( 'reset' );
+	if ( ! empty( $_POST['clear'] ) && check_admin_referer( 'honeypot4cf7-submit', 'honeypot4cf7_nonce' ) && current_user_can( 'manage_options' ) ) {
+		$honeypot4cf7_config = honeypot4cf7_get_config( 'reset' );
 		echo '<div id="message" class="updated"><p>'.esc_html( __('The settings have been reset to their defaults.', 'contact-form-7-honeypot' ) ).'</p></div>';
-	}
 
-	// Get Options
-	$honeypot4cf7_config = $honeypot4cf7_config = get_option( 'honeypot4cf7_config' );
+	} elseif ( ! empty( $_POST['save'] ) && check_admin_referer( 'honeypot4cf7-submit', 'honeypot4cf7_nonce' ) && current_user_can( 'manage_options' ) ) {
+		$honeypot4cf7_config = honeypot4cf7_get_config();
 
-	// Save Values
-	if ( ! empty( $_POST['save'] ) ) {
-		
-		// Check nonce and user ability
-		if (check_admin_referer( 'honeypot4cf7-submit', 'honeypot4cf7_nonce' ) && current_user_can( 'manage_options' ) ) {
+		// Validate & Sanitize
+		$honeypot4cf7_config_update = array(
+			'store_honeypot' 			=> ( isset( $_POST['honeypot4cf7_store'] ) ) ? $_POST['honeypot4cf7_store'] : 0,
+			'placeholder' 				=> ( isset( $_POST['honeypot4cf7_placeholder'] ) ) ? $_POST['honeypot4cf7_placeholder'] : '',
+			'accessibility_message'		=> ( isset( $_POST['honeypot4cf7_accessibility_message'] ) ) ? $_POST['honeypot4cf7_accessibility_message'] : '',
+			'w3c_valid_autocomplete'	=> ( isset( $_POST['honeypot4cf7_w3c_valid_autocomplete'] ) ) ? $_POST['honeypot4cf7_w3c_valid_autocomplete'] : array( 'false' ),
+			'move_inline_css'			=> ( isset( $_POST['honeypot4cf7_move_inline_css'] ) ) ? $_POST['honeypot4cf7_move_inline_css'] : array( 'false' ),
+			'nomessage'					=> ( isset( $_POST['honeypot4cf7_nomessage'] ) ) ? $_POST['honeypot4cf7_nomessage'] : array( 'false' ),
+			'timecheck_enabled'			=> ( isset( $_POST['honeypot4cf7_timecheck_enabled'] ) ) ? $_POST['honeypot4cf7_timecheck_enabled'] : array( 'false' ),
+			'timecheck_value'			=> ( isset( $_POST['honeypot4cf7_timecheck_value'] ) ) ? $_POST['honeypot4cf7_timecheck_value'] : 0,
+		);
+	
+		$honeypot4cf7_config = array_replace( $honeypot4cf7_config, $honeypot4cf7_config_update );
 
-			// Validate & Sanitize
-			$honeypot4cf7_config_update = array(
-				'store_honeypot' 			=> ( isset( $_POST['honeypot4cf7_store'] ) ) ? $_POST['honeypot4cf7_store'] : 0,
-				'placeholder' 				=> ( isset( $_POST['honeypot4cf7_placeholder'] ) ) ? $_POST['honeypot4cf7_placeholder'] : '',
-				'accessibility_message'		=> ( isset( $_POST['honeypot4cf7_accessibility_message'] ) ) ? $_POST['honeypot4cf7_accessibility_message'] : '',
-				'w3c_valid_autocomplete'	=> ( isset( $_POST['honeypot4cf7_w3c_valid_autocomplete'] ) ) ? $_POST['honeypot4cf7_w3c_valid_autocomplete'] : array( 'false' ),
-				'move_inline_css'			=> ( isset( $_POST['honeypot4cf7_move_inline_css'] ) ) ? $_POST['honeypot4cf7_move_inline_css'] : array( 'false' ),
-				'nomessage'					=> ( isset( $_POST['honeypot4cf7_nomessage'] ) ) ? $_POST['honeypot4cf7_nomessage'] : array( 'false' ),
-			);
-		
-			$honeypot4cf7_config = array_replace( $honeypot4cf7_config, $honeypot4cf7_config_update );
+		update_option( 'honeypot4cf7_config', $honeypot4cf7_config );
 
-			update_option( 'honeypot4cf7_config', $honeypot4cf7_config );
-
-			echo '<div id="message" class="updated"><p>' . esc_html( __( 'The changes have been saved.', 'contact-form-7-honeypot' ) ).'</p></div>';
-		}
+		echo '<div id="message" class="updated"><p>' . esc_html( __( 'The changes have been saved.', 'contact-form-7-honeypot' ) ).'</p></div>';
+	} else {
+		$honeypot4cf7_config = honeypot4cf7_get_config();
 	}
 	?>
 		
@@ -201,6 +208,7 @@ function honeypot4cf7_admin_page() {
 						<?php esc_html_e( 'Get Support', 'contact-form-7-honeypot' ); ?>
 					</a>
 					<h3><span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'Honeypot Settings', 'contact-form-7-honeypot' ); ?></h3>
+					<p class="honeypot4cf7-admin__introduction"><?php esc_html_e( 'Below are global settings for the Honeypot plugin. Many of these settings can be overridden when inserting the Honeypot field shortcode when creating your CF7 contact form.', 'contact-form-7-honeypot' ); ?></p>
 					<table class="form-table">
 						<tbody>
 							<tr valign="top">
@@ -278,6 +286,16 @@ function honeypot4cf7_admin_page() {
 							<tr valign="top">
 								<td class="description" colspan="2"><?php esc_html_e( 'If checked, the accessibility label will not be generated. This is not recommended, but may improve spam blocking. If you\'re unsure, leave this unchecked.', 'contact-form-7-honeypot' ); ?></td>
 							</tr>
+
+							<tr valign="top">
+								<th><label for="honeypot4cf7__timecheck_enabled"><?php esc_html_e( 'Enable Time Check', 'contact-form-7-honeypot' ); ?></label></th>
+								<td>
+									<input type="checkbox" name="honeypot4cf7_timecheck_enabled[]" id="honeypot4cf7__timecheck_enabled" value="true" <?php checked( $honeypot4cf7_config['timecheck_enabled'][0], 'true' ); ?>>&nbsp;&nbsp;<input type="number" class="small-text" name="honeypot4cf7_timecheck_value" id="honeypot4cf7__timecheck_value" value="<?php echo sanitize_text_field( $honeypot4cf7_config['timecheck_value'] ); ?>" step="1" min="1"> <?php esc_html_e('seconds', 'contact-form-7-honeypot'); ?>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td class="description" colspan="2"><?php esc_html_e( 'If enabled, this will perform an additional check for spam bots using the time it takes to submit the form under the idea that bots submit forms faster than people. The value is set to 4 seconds by default, but adjust based on your needs. If you\'re not sure, leave this unchecked.', 'contact-form-7-honeypot' ); ?></td>
+							</tr>
 						</tbody>
 					</table>
 					<p class="submit">
@@ -318,17 +336,10 @@ function honeypot4cf7_admin_page() {
 				</p>
 			</div>
 			<div class="honeypot4cf7-admin__box">
-				<p class="honeypot4cf7__banner-ad-message">
-					<?php 
-					printf(
-						/* translators: %s: Affiliate Link */
-						__( 'We use %s and find it incredibly valuable. If you choose to use them too (even for free), you are helping continued development and support of this plugin. Thank you!', 'contact-form-7-honeypot' ),
-						'<a href="https://shareasale.com/r.cfm?b=1537039&u=2748065&m=97231&urllink=&afftrack=0" target="_blank">Semrush</a>'
-					); 
-					?>
-				</p>
+				<h3><?php esc_html_e( 'Recommended', 'contact-form-7-honeypot' ); ?></h3>
 				<div class="honeypot4cf7__banner-ad honeypot4cf7__banner-ad--2">
-					<a target="_blank" href="https://shareasale.com/r.cfm?b=1550765&amp;u=2748065&amp;m=97231&amp;urllink=&amp;afftrack="><img src="<?php echo HONEYPOT4CF7_PLUGIN_DIR_URL; ?>/includes/images/banners/semrush-2_300x250.png" border="0" alt="position tracking" /></a>
+					<a target="_blank" href="https://www.amazon.com/dp/0316380520?&tag=nocean-hp-20"><img src="<?php echo HONEYPOT4CF7_PLUGIN_DIR_URL; ?>/includes/images/banners/art-of-invisibility-cover.jpg" border="0" /></a>
+					<p>Not spam related, but an essential read for anyone that values online privacy and digital security.</p>
 				</div>
 			</div>
 

@@ -185,7 +185,7 @@ abstract class ImportProduct extends ImportProductBase {
                                 $order = new \WC_Order($orderID);
                                 foreach ($_file_paths as $download_id => $download_data) {
                                     // Grant permission if it doesn't already exist.
-                                    if ( ! $wpdb->get_var( $wpdb->prepare( "SELECT 1=1 FROM {$wpdb->prefix}woocommerce_downloadable_product_permissions WHERE order_id = %d AND product_id = %d AND download_id = %s", $order->id, $this->getPid(), $download_id ) ) ) {
+                                    if ( ! $wpdb->get_var( $wpdb->prepare( "SELECT 1=1 FROM {$wpdb->prefix}woocommerce_downloadable_product_permissions WHERE order_id = %d AND product_id = %d AND download_id = %s", $order->get_id(), $this->getPid(), $download_id ) ) ) {
                                         wc_downloadable_file_permission( $download_id, $this->getPid(), $order );
                                     }
                                 }
@@ -306,8 +306,7 @@ abstract class ImportProduct extends ImportProductBase {
         $attributes = $this->getAttributesData();
         if (!empty($attributes['attribute_names'])) {
             $attributes = \WC_Meta_Box_Product_Data::prepare_attributes($attributes);
-        }
-        else {
+        } else {
             $attributes = array();
         }
         return $attributes;
@@ -326,7 +325,6 @@ abstract class ImportProduct extends ImportProductBase {
             'attribute_variation' => array(),
             'attribute_position' => array()
         );
-        $is_any_attribute = apply_filters('wp_all_import_variation_any_attribute', false, $this->getImport()->id);
         $max_attribute_length = apply_filters('wp_all_import_max_woo_attribute_term_length', 199);
         $parsedAttributes = array();
         $attributesToImport = $this->getParsedDataOption('serialized_attributes');
@@ -402,16 +400,13 @@ abstract class ImportProduct extends ImportProductBase {
                             }
                         }
                     }
-                    if ($is_any_attribute && count($values) > 1 && $this->getProduct() instanceof \WC_Product_Variation) {
-                        $values = '';
-                    }
-                    $parsedAttributes[strtolower(urlencode($attributeName))] = array(
-                        'name' => $attributeName,
-                        'value' => $values,
-                        'is_visible' => intval($attribute['is_visible']),
-                        'in_variation' => intval($attribute['in_variation']),
-                        'position' => $attribute_position
-                    );
+	                $parsedAttributes[strtolower(urlencode($attributeName))] = array(
+		                'name' => $attributeName,
+		                'value' => $values,
+		                'is_visible' => intval($attribute['is_visible']),
+		                'in_variation' => intval($attribute['in_variation']),
+		                'position' => $attribute_position
+	                );
                 }
             }
         }
@@ -503,7 +498,6 @@ abstract class ImportProduct extends ImportProductBase {
                     $shipping_class = (int) $term['term_id'];
                 }
             }
-
             if (empty($term) || is_wp_error($term)) {
                 $shipping_class = '';
             }
@@ -548,8 +542,7 @@ abstract class ImportProduct extends ImportProductBase {
                             @unlink($file);
                         }
                         $newSKU = substr(md5($unique_keys[$this->getIndex()]), 0, 12);
-                    }
-                    catch(\Exception $e){
+                    } catch(\Exception $e){
                         $this->log('<b>ERROR:</b> ' . $e->getMessage());
                     }
                 }
@@ -580,7 +573,7 @@ abstract class ImportProduct extends ImportProductBase {
         // Group products by Parent.
         if (in_array($this->productType, array( 'simple', 'external', 'variable', 'variable-subscription' ))) {
             // Group all product to one parent ( no XPath provided ).
-            if ($this->getImport()->options['is_multiple_grouping_product'] != 'yes') {
+            if ($this->getImport()->options['is_multiple_grouping_product'] == 'no') {
                 // Trying to find parent product according to matching options.
                 if ($this->getImport()->options['grouping_indicator'] == 'xpath' && !is_numeric($this->getValue('product_grouping_parent'))) {
                     $post = pmxi_findDuplicates(array(
@@ -591,17 +584,14 @@ abstract class ImportProduct extends ImportProductBase {
                     ));
                     if (!empty($post)) {
                         $this->setValue('product_grouping_parent', $post[0]);
-                    }
-                    else {
+                    } else {
                         $this->setValue('product_grouping_parent', 0);
                     }
-                }
-                elseif ($this->getImport()->options['grouping_indicator'] != 'xpath') {
+                } elseif ($this->getImport()->options['grouping_indicator'] != 'xpath') {
                     $post = pmxi_findDuplicates($this->getArticle(), $this->getValue('custom_grouping_indicator_name'), $this->getValue('custom_grouping_indicator_value'), 'custom field');
                     if (!empty($post)) {
                         $this->setValue('product_grouping_parent', array_shift($post));
-                    }
-                    else {
+                    } else {
                         $this->setValue('product_grouping_parent', 0);
                     }
                 }
@@ -619,6 +609,23 @@ abstract class ImportProduct extends ImportProductBase {
                 }
             }
         }
+	    if (in_array($this->productType, array( 'grouped' ))) {
+	    	$children = $this->getValue('grouped_product_children');
+		    if (!is_array($children)) {
+			    $children = explode(",", $children);
+			    $children = array_map('trim', $children);
+		    }
+		    $grouped = [];
+		    if (!empty($children)) {
+		    	foreach ($children as $child) {
+				    $product_id = wc_get_product_id_by_sku($child);
+				    if (!empty($product_id)) {
+					    $grouped[] = $product_id;
+				    }
+			    }
+		    }
+		    $this->setProperty('children', $grouped);
+	    }
     }
 
     /*
@@ -693,7 +700,7 @@ abstract class ImportProduct extends ImportProductBase {
                 }
                 break;
             case 'shipping_class_id':
-                if ($this->getImportService()->isUpdateTaxonomy('product_shipping_class', $this->isNewProduct())) {
+                if ($this->isNewProduct() || $this->getImportService()->isUpdateTaxonomy('product_shipping_class', $this->isNewProduct()) && $this->getImport()->options['update_categories_logic'] !== "add_new") {
                     $this->productProperties[$property] = $value;
                 }
                 break;

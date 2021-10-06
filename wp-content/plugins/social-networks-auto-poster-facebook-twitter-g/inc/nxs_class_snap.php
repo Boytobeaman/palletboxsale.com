@@ -86,19 +86,22 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
     //## CHeck for V4 API Update
     $g = get_site_option('nxs_v4APIMn'); if (empty($g) && defined('NXSAPIVER') && stripos(NXSAPIVER, 'NXSID')===false && (int)substr(NXSAPIVER,0,1)<4 && function_exists('nxs_doChAPIU')) { nxs_doChAPIU(); update_site_option('nxs_v4APIMn', 1); }
     
-    if (isset($_GET['page']) && $_GET['page']=='nxs-help' && isset($_GET['do']) && $_GET['do']=='test'){ 
-        error_reporting(E_ALL); ini_set('error_reporting', E_ALL); ini_set('display_errors', 1); echo "Testting... cURL (SSL/HTTPS Connections)<br/>SNAP Ver: ".NextScripts_SNAP_Version.(defined('NXSAPIVER')?"  API: ".NXSAPIVER:'').(defined('NextScripts_UPG_SNAP_Version')?" | SNAP Helper Ver: ".NextScripts_UPG_SNAP_Version:'')."<br/>Deflate - ";  echo (function_exists('gzdeflate'))?"Yes":"No";  echo "<br/><br/>";
-        nxs_cURLTest("https://api.ipify.org/", "HTTPS to whatismyip", 'getMyIP'); 
+    if (isset($_GET['page']) && $_GET['page']=='nxs-help' && isset($_GET['do']) && $_GET['do']=='test'){
+        error_reporting(E_ALL); ini_set('error_reporting', E_ALL); ini_set('display_errors', 1);
+        echo "Testting... cURL (SSL/HTTPS Connections)<br/>SNAP Ver: ".NextScripts_SNAP_Version.(defined('NXSAPIVER')?"  API: ".NXSAPIVER:'').(defined('NextScripts_UPG_SNAP_Version')?" | SNAP Helper Ver: ".NextScripts_UPG_SNAP_Version:'')."<br/>Deflate - ";
+        echo (function_exists('gzdeflate'))?"Yes":"No";  echo "<br/><br/>";
+        $info = curl_version();  echo 'cURL Version: '.$info["version"].' | SSL Vesrion: '.$info["ssl_version"].' | libz Version: '.$info["libz_version"].' | libSSH Ver: '.$info["libssh_version"].' | Host: '.$info["host"].'<br/><br/>';
+        nxs_cURLTest("https://api.ipify.org/", "HTTPS to whatismyip", 'getMyIP');
         nxs_cURLTest("https://www.nextscripts.com/", "HTTPS to NXS", "Social Networks");
         nxs_cURLTest("http://35.184.36.171/", "HTTPS to NXSA", "NextScripts Cloud");
-        nxs_cURLTest("http://www.google.com/intl/en/contact/", "HTTP to Google", "Mountain View, CA");
-        nxs_cURLTest("https://www.google.com/intl/en/contact/", "HTTPS to Google", "Mountain View, CA");
+        nxs_cURLTest("https://about.google/intl/en/contact-google/", "HTTP to Google", "Mountain View, CA");
+        nxs_cURLTest("https://about.google/intl/en/contact-google/", "HTTPS to Google", "Mountain View, CA");
         nxs_cURLTest("https://www.facebook.com/", "HTTPS to Facebook", 'id="facebook"');
-        nxs_cURLTest("https://graph.facebook.com/", "HTTPS to API (Graph) Facebook", 'get');  
+        nxs_cURLTest("https://graph.facebook.com/", "HTTPS to API (Graph) Facebook", 'get');
         nxs_cURLTest("https://www.linkedin.com/", "HTTPS to LinkedIn", 'rel="canonical" href="https://www.linkedin.com/');
         nxs_cURLTest("https://twitter.com/", "HTTPS to Twitter", '<link rel="canonical" href="https://twitter.com');
         nxs_cURLTest("https://www.pinterest.com/", "HTTPS to Pinterest", 'content="Pinterest"');
-        nxs_cURLTest("https://www.livejournal.com/login.bml", "HTTPS to LiveJournal", 'livejournal.com/about');   
+        nxs_cURLTest("https://www.livejournal.com/login.bml", "HTTPS to LiveJournal", 'livejournal.com/about');
         die('Done');
     }
     if (isset($_GET['page']) && $_GET['page']=='nxs-help' && isset($_GET['do']) && $_GET['do']=='crtest'){ 
@@ -469,17 +472,17 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
               <div class="itemDiv">
                 <input type="radio" name="nxsURLShrtnr" value="U" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='U') echo 'checked="checked"'; ?> /> <b>u.to</b>  <i>Simple and anonymous (no accounts, no stats) use only, No additional configuration required.</i>
               </div>
-              
-              <!-- ## x.co ##-->
-              <div class="itemDiv">
-              <input type="radio" name="nxsURLShrtnr" value="X" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='X') echo 'checked="checked"'; ?> /> <b>x.co</b>  - <i>Enter x.co <a target="_blank" href="http://app.x.co/Settings.aspx">API Key</a> below. You can get API key from your x.co settings page: <a target="_blank" href="http://app.x.co/Settings.aspx">http://app.x.co/Settings.aspx</a>.</i><br/>              
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.co&nbsp;&nbsp;API Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="xcoAPIKey" style="width: 20%;" value="<?php if (isset($options['xcoAPIKey'])) _e(apply_filters('format_to_edit',$options['xcoAPIKey']), 'social-networks-auto-poster-facebook-twitter-g') ?>" />
-              </div>
-              <!-- ## clk.im ##-->
-              <div class="itemDiv">
-              <input type="radio" name="nxsURLShrtnr" value="C" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='C') echo 'checked="checked"'; ?> /> <b>clk.im</b>  - <i>Enter clk.im <a target="_blank" href="http://clk.im/apikey">API Key</a> below. You can get API key from your clk.im page: <a target="_blank" href="http://clk.im/apikey">http://clk.im/apikey</a>. Please see the "Developers/Publishers" section on the right</i><br/>              
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clk.im&nbsp;&nbsp;API Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="clkimAPIKey" style="width: 20%;" value="<?php if (isset($options['clkimAPIKey'])) _e(apply_filters('format_to_edit',$options['clkimAPIKey']), 'social-networks-auto-poster-facebook-twitter-g') ?>" />
-              </div>
+
+                <!-- ## x.co ##-->
+                <div class="itemDiv">
+                    <input type="radio" name="nxsURLShrtnr" value="X" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='X') echo 'checked="checked"'; ?> /> <b>x.co</b>  - <i>Enter x.co <a target="_blank" href="https://app.x.co/Settings.aspx">API Key</a> below. You can get API key from your x.co settings page: <a target="_blank" href="http://app.x.co/Settings.aspx">http://app.x.co/Settings.aspx</a>.</i><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.co&nbsp;&nbsp;API Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="xcoAPIKey" style="width: 20%;" value="<?php if (isset($options['xcoAPIKey'])) _e(apply_filters('format_to_edit',$options['xcoAPIKey']), 'social-networks-auto-poster-facebook-twitter-g') ?>" />
+                </div>
+                <!-- ## clk.im ##-->
+                <div class="itemDiv">
+                    <input type="radio" name="nxsURLShrtnr" value="C" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='C') echo 'checked="checked"'; ?> /> <b>clk.im</b>  - <i>Enter clk.im <a target="_blank" href="https://clk.im/apikey">API Key</a> below. You can get API key from your clk.im page: <a target="_blank" href="http://clk.im/apikey">http://clk.im/apikey</a>. Please see the "Developers/Publishers" section on the right</i><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clk.im&nbsp;&nbsp;API Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="clkimAPIKey" style="width: 20%;" value="<?php if (isset($options['clkimAPIKey'])) _e(apply_filters('format_to_edit',$options['clkimAPIKey']), 'social-networks-auto-poster-facebook-twitter-g') ?>" />
+                </div>
               <!-- ## po.st ##-->
               <div class="itemDiv">
               <input type="radio" name="nxsURLShrtnr" value="P" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='P') echo 'checked="checked"'; ?> /> <b>po.st</b>  - <i>Enter po.st <a target="_blank" href="https://re.po.st/partner/campaigns">API Key</a> below. You can get API key from your "Campaigns" page: <a target="_blank" href="https://re.po.st/partner/campaigns">https://re.po.st/partner/campaigns</a></i><br/>
@@ -504,14 +507,22 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
              </div>
               
               <div class="itemDiv">
-              <input type="radio" name="nxsURLShrtnr" value="Y" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='Y')  echo 'checked="checked"'; ?> /> <b>YOURLS (Your Own URL Shortener)</b> - 
-            &nbsp;<i>YOURLS API URL - usually sonething like http://yourdomain.cc/yourls-api.php; YOURLS API Secret Signature Token can be found in your YOURLS Admin Panel-&gt;Tools</i><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOURLS API URL: <input name="YOURLSURL" style="width: 19.4%;" value="<?php if (isset($options['YOURLSURL'])) _e(apply_filters('format_to_edit',$options['YOURLSURL']), 'social-networks-auto-poster-facebook-twitter-g') ?>" /><br/>
+              <input type="radio" name="nxsURLShrtnr" value="Y" <?php if (isset($options['nxsURLShrtnr']) && $options['nxsURLShrtnr']=='Y')  echo 'checked="checked"'; ?> /> <b>YOURLS (Your Own URL Shortener)</b> -
+                  &nbsp;<i>YOURLS API URL - usually sonething like https://yourdomain.cc/yourls-api.php; YOURLS API Secret Signature Token can be found in your YOURLS Admin Panel-&gt;Tools</i><br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOURLS API URL: <input name="YOURLSURL" style="width: 19.4%;" value="<?php if (isset($options['YOURLSURL'])) _e(apply_filters('format_to_edit',$options['YOURLSURL']), 'social-networks-auto-poster-facebook-twitter-g') ?>" /><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOURLS API Secret Signature Token:&nbsp;&nbsp;&nbsp;<input name="YOURLSKey" style="width: 13%;" value="<?php if (isset($options['YOURLSKey'])) _e(apply_filters('format_to_edit',$options['YOURLSKey']), 'social-networks-auto-poster-facebook-twitter-g') ?>" />
               </div>
               
             </div></div>
-            
+            <!-- ##################### NextScripts/PS Beta #####################-->
+            <div class="nxs_box"> <div class="nxs_box_header"><h3><?php _e('NextScripts/PS Beta', 'social-networks-auto-poster-facebook-twitter-g') ?><span class="nxs_newLabel">[<?php _e('New', 'social-networks-auto-poster-facebook-twitter-g') ?>]</span></h3></div>
+                <div class="nxs_box_inside">
+                    <span style="font-size: 11px; margin-left: 1px;">NextScripts/PS Beta Service will try to redirect your requests through the location close to your home. <a href="https://www.nextscripts.com/beta" target="_blank"><?php _e('[Join Beta]', 'social-networks-auto-poster-facebook-twitter-g'); ?></a></span> <br/>
+                    <div class="itemDiv">
+                        <strong style="font-size: 12px; margin: 10px; margin-left: 1px;">NextScripts/PS Connection Key:</strong>
+                        <input name="psKey" style="width: 250px;" value="<?php if (isset($options['psKey'])) _e(apply_filters('format_to_edit', $options['psKey']), 'social-networks-auto-poster-facebook-twitter-g'); else echo ""; ?>" /> <br/>
+                    </div>
+            </div></div>
             <!-- ##################### Auto-Import comments from Social Networks #####################-->
             <div class="nxs_box"> <div class="nxs_box_header"><h3><?php _e('Auto-Import comments from Social Networks', 'social-networks-auto-poster-facebook-twitter-g') ?><span class="nxs_newLabel">[<?php _e('New', 'social-networks-auto-poster-facebook-twitter-g') ?>]</span></h3></div>
              <div class="nxs_box_inside"> 
@@ -570,7 +581,8 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
               <div class="itemDiv">
               <b><?php _e('Spaces in hashtags', 'social-networks-auto-poster-facebook-twitter-g') ?></b> <select name="nxsHTSpace" id="nxsHTSpace">
               <option <?php if (empty($options['nxsHTSpace'])) echo "selected" ?> value=""><?php _e('Remove Spaces', 'social-networks-auto-poster-facebook-twitter-g') ?></option>
-              <option <?php if (!empty($options['nxsHTSpace']) && $options['nxsHTSpace']=='_') echo "selected" ?> value ="_"><?php _e('Replace spaces with _ (Underscore)', 'social-networks-auto-poster-facebook-twitter-g') ?></option>              
+              <option <?php if (!empty($options['nxsHTSpace']) && $options['nxsHTSpace']=='_') echo "selected" ?> value ="_"><?php _e('Replace spaces with _ (Underscore)', 'social-networks-auto-poster-facebook-twitter-g') ?></option>
+              <option <?php if (!empty($options['nxsHTSpace']) && $options['nxsHTSpace']=='-') echo "selected" ?> value ="-"><?php _e('Replace spaces with - (Hyphen)', 'social-networks-auto-poster-facebook-twitter-g') ?></option>
               </select>
               </div>   
                <span style="font-size: 11px; margin-left: 1px;"><?php _e('How to separate hashtags', 'social-networks-auto-poster-facebook-twitter-g') ?> </span> <br/>
@@ -806,7 +818,7 @@ if (!class_exists("nxs_SNAP")) { class nxs_SNAP {//## SNAP General Class
       
       <?php $tmL = get_option('nxs_last_nxs_cron'); 
         if (!empty($tmL)) { _e('Last Cron Execution Time:', 'social-networks-auto-poster-facebook-twitter-g'); $tmCorr = get_option( 'gmt_offset' ) * HOUR_IN_SECONDS; echo '&nbsp;'.date_i18n('Y-m-d H:i', $tmL+$tmCorr);
-          $td = time()-$tmL; if ($td>3600) { echo '<br/><span style="color:red;font-weight:bold;">&nbsp;&nbsp;'; _e('Problem: Cron was not executed in the last hour. Query is not running.', 'social-networks-auto-poster-facebook-twitter-g'); echo '[<a target="_blank" href="http://gd.is/nttg">More info</a>]'; echo '</span>'; } 
+            $td = time()-$tmL; if ($td>3600) { echo '<br/><span style="color:red;font-weight:bold;">&nbsp;&nbsp;'; _e('Problem: Cron was not executed in the last hour. Query is not running.', 'social-networks-auto-poster-facebook-twitter-g'); echo '[<a target="_blank" href="https://gd.is/nttg">More info</a>]'; echo '</span>'; }
             elseif ($td>600) { echo '<span style="color:orange;">&nbsp;&nbsp;'; _e('Warning: Cron was not executed in the last 5 minutes', 'social-networks-auto-poster-facebook-twitter-g'); echo '</span>';  }
         }
       ?>      
@@ -903,7 +915,7 @@ _e('Plugin Version', 'social-networks-auto-poster-facebook-twitter-g'); ?>: <spa
               <div style="line-height: 24px;">
               <b>Here is what you can do:</b><br/>
               <?php if(class_exists('nxsAPI_GP')) { ?><s><?php } ?><img src="<?php echo NXS_PLURL; ?>img/snap-icon12.png"/> Get the <a href="https://www.nextscripts.com/social-networks-autoposter-wordpress-plugin-pro/#getit">"Pro" Edition</a>. You will be able to add several accounts for each network as well as post to Google+, Pinterest and LinkedIn company pages.<?php if(class_exists('nxsAPI_GP')) { ?></s> <i>Done! Thank you!</i><?php } ?><br/>
-              <img src="<?php echo NXS_PLURL; ?>img/snap-icon12.png"/> Rate the plugin 5 stars at <a href="http://wordpress.org/extend/plugins/social-networks-auto-poster-facebook-twitter-g/">wordpress.org page</a>.<br/>
+              <img src="<?php echo NXS_PLURL; ?>img/snap-icon12.png"/> Rate the plugin 5 stars at <a href="https://wordpress.org/extend/plugins/social-networks-auto-poster-facebook-twitter-g/">wordpress.org page</a>.<br/>
               <img src="<?php echo NXS_PLURL; ?>img/snap-icon12.png"/> <a href="<?php echo nxs_get_admin_url(); ?>post-new.php">Write a blogpost</a> about the plugin and don't forget to auto-post this blogpost to all your social networks ;-).<br/>
             </div>
           </div>
@@ -1125,9 +1137,11 @@ _e('Plugin Version', 'social-networks-auto-poster-facebook-twitter-g'); ?>: <spa
             if (isset($pvData['clkimAPIKey'])) $options['clkimAPIKey'] = $pvData['clkimAPIKey']; 
             if (isset($pvData['postAPIKey'])) $options['postAPIKey'] = $pvData['postAPIKey'];
                         
-            if (isset($pvData['gglAPIKey'])) $options['gglAPIKey'] = $pvData['gglAPIKey'];             
-            
-            if (isset($pvData['fltrs']))  $options = nxs_adjFilters($pvData['fltrs'][0], $options);   
+            if (isset($pvData['gglAPIKey'])) $options['gglAPIKey'] = $pvData['gglAPIKey'];
+
+            if (isset($pvData['psKey'])) $options['psKey'] = $pvData['psKey'];
+
+            if (isset($pvData['fltrs']))  $options = nxs_adjFilters($pvData['fltrs'][0], $options);
             if (isset($pvData['fltrsOn']))  $options['fltrsOn'] = 1;  else $options['fltrsOn'] = 0;                        
             
             if (!isset($options['nxsURLShrtnr'])) $options['nxsURLShrtnr'] = 'G';                                     
@@ -1269,15 +1283,16 @@ class nxs_ReposterListTable extends WP_List_Table {
             /*$2%s*/ $item->ID                //The value of the checkbox should be the record's id
         );
     }
-    function column_title($item){          
+    function column_title($item){
         $mt = maybe_unserialize(get_post_meta( $item->ID, 'nxs_rpstr', true )); // $isActiveTxtD = var_export($mt['rpstOn'], true);
         $this->isActive = (!empty($mt['rpstOn']) && $mt['rpstOn']=='1'); $isActiveTxt =  $this->isActive ?__('Active'):((!empty($mt['rpstOn']) && $mt['rpstOn']=='F')?__('Finished'):__('Inactive')); $color = $this->isActive?'Blue':'Gray';
         //Build row actions
+        $pid = sanitize_key($_GET['page']);
         $actions = array(
-            'edit'      => sprintf('<a href="?page=%s&action=%s&item=%s">Edit</a>',$_REQUEST['page'],'edit',$item->ID),
-            'delete'    => sprintf('<a href="?page=%s&action=%s&item=%s">Delete</a>',$_REQUEST['page'],'delete',$item->ID),
-        );        
-        
+            'edit'      => sprintf('<a href="?page=%s&action=%s&item=%s">Edit</a>',$pid,'edit',$item->ID),
+            'delete'    => sprintf('<a href="?page=%s&action=%s&item=%s">Delete</a>',$pid,'delete',$item->ID),
+        );
+
         $grOptions = maybe_unserialize(get_post_meta( $item->ID, 'nxs_rpstr_data', true )); if (!empty($grOptions)) { $grOptions['fullreturn'] = 1; nxs_removeAllWPQueryFilters(); $this->fltsInfo = get_posts_ids_by_filter($grOptions); }
         //Return the title contents
         return sprintf('%1$s <span style="color:%2$s">(%3$s)</span>%4$s',
@@ -1385,12 +1400,13 @@ class nxs_QPListTable extends WP_List_Table {
         }
     }
 
-    function column_post_title($item){        
+    function column_post_title($item){
+        $pid = sanitize_key($_GET['page']);
         //Build row actions
         $actions = array(
-            'edit'      => sprintf('<a href="?page=%s&action=%s&item=%s">Edit</a>',$_REQUEST['page'],'edit',$item->ID),
-            'delete'    => sprintf('<a href="?page=%s&action=%s&item=%s">Delete</a>',$_REQUEST['page'],'delete',$item->ID),
-        );        
+            'edit'      => sprintf('<a href="?page=%s&action=%s&item=%s">Edit</a>',$pid,'edit',$item->ID),
+            'delete'    => sprintf('<a href="?page=%s&action=%s&item=%s">Delete</a>',$pid['page'],'delete',$item->ID),
+        );
         //Return the title contents
         return sprintf('%1$s <span style="color:silver">(id:%2$s)</span>%3$s',
             /*$1%s*/ $item->post_title,

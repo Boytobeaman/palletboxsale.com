@@ -3,7 +3,6 @@
 	<div class="wpallimport-header">
 		<div class="wpallimport-logo"></div>
 		<div class="wpallimport-title">
-			<p style="font-size:18px !important;"><?php _e('WP All Import', 'wp_all_import_plugin'); ?></p>
 			<h3><?php _e('Settings', 'wp_all_import_plugin'); ?></h3>			
 		</div>	
 	</div>
@@ -129,19 +128,15 @@
 						<label for="force_stream_reader"><input type="checkbox" value="1" id="force_stream_reader" name="force_stream_reader" <?php echo (($post['force_stream_reader']) ? 'checked="checked"' : ''); ?>><?php _e('Enable Stream Reader', 'wp_all_import_plugin'); ?></label>																				
 					</fieldset>					
 					<p class="description"><?php _e('XMLReader is much faster, but has a bug that sometimes prevents certain records from being imported with import files that contain special cases.', 'wp_all_import_plugin'); ?></p>
+					<p class="submit-buttons">
+						<?php wp_nonce_field('edit-settings', '_wpnonce_edit-settings') ?>
+						<input type="hidden" name="is_settings_submitted" value="1" />
+						<input type="submit" class="button-primary" value="Save Settings" />
+					</p>
 				</td>
 			</tr>						
 		</tbody>
 	</table>			
-
-	<div class="clear"></div>
-
-	<p class="submit-buttons">
-		<?php wp_nonce_field('edit-settings', '_wpnonce_edit-settings') ?>
-		<input type="hidden" name="is_settings_submitted" value="1" />
-		<input type="submit" class="button-primary" value="Save Settings" />
-	</p>	
-
 </form>
 
 <?php

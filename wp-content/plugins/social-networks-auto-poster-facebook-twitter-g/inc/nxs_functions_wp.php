@@ -156,6 +156,41 @@ if (!function_exists("nxssnap_enqueue_scripts")) { function nxssnap_enqueue_scri
       wp_localize_script( 'nxssnap-scripts', 'MyAjax', array( 'ajaxurl' => nxs_get_admin_url( 'admin-ajax.php' ), 'nxsnapWPnonce' => wp_create_nonce( 'nxsnapWPnonce' ),));
   }  
 }}
+
+//## [Posts to Favorite Accounts] Add Fav Networks to top bar menu
+add_action( 'admin_bar_menu', 'nxsToolbarLinkToPostToFavs', 999 );
+function nxsToolbarLinkToPostToFavs($wpAdminBar){
+    if (is_single()) { $favNts = [];
+        //## Make list of Favorite Networks
+        global $nxs_SNAP; if (!isset($nxs_SNAP)) return; $networks = (!current_user_can( 'manage_options' ) && current_user_can( 'haveown_snap_accss' ) ) ? $nxs_SNAP->nxs_acctsU : $nxs_SNAP->nxs_accts; $options =  $nxs_SNAP->nxs_options;
+        foreach ($networks as $ntC=>$nt) foreach ($nt as $ii=>$acc) if (!empty($acc['fav'])) $favNts[] = ['nName'=>$acc['nName'], 'NTL'=>strtoupper($ntC), 'code'=>strtolower($ntC).'-'.$ii.'-'.get_the_ID()];
+        //## Add list to Menu
+        if (!empty($favNts)) { $wpAdminBar->add_node(array( 'id' => 'postTo', 'title' => '[SNAP] Post to...', 'href' => esc_url(admin_url('upload.php')), 'meta' => false ));
+            foreach ($favNts as $fNt) $wpAdminBar->add_node(array( 'parent' => 'postTo', 'id' => 'fNt' . $fNt['code'], 'title' => '[' . $fNt['NTL'] . '] ' . $fNt['nName'], 'href' => "#", 'meta' => ['onclick'=>'nxsPostToFav(this); return false;', 'target'=>$fNt['code']] ));
+        }
+    }
+}
+//## [Posts to Favorite Accounts] Add JS and CSS
+add_action('wp_head', 'jsPostToFAV');
+if (!function_exists("jsPostToFAV")) { function jsPostToFAV(){ ?>
+    <script type="text/javascript">
+        function nxsPostToFav(obj){ obj.preventDefault;
+            var k = obj.target.split("-"); var nt = k[0]; var ii = k[1];  var pid = k[2];
+            var data = {  action:'nxs_snap_aj', nxsact: 'manPost', nt:nt, id: pid, nid: ii, et_load_builder_modules:1, _wpnonce: '<?php echo wp_create_nonce('nxsSsPageWPN');  ?>'};
+            jQuery('#nxsFavNoticeCnt').html('<p> Posting... </p>'); jQuery('#nxsFavNotice').modal({ fadeDuration: 50 });
+            jQuery.post('<?php echo admin_url( 'admin-ajax.php' ); ?>', data, function(response) { if (response=='') response = 'Message Posted';
+                jQuery('#nxsFavNoticeCnt').html('<p> ' + response + '</p>' +'<input type="button"  onclick="jQuery.modal.close();" class="bClose" value="Close" />');
+            });
+        }
+    </script><?php $path =  str_ireplace( '/inc/', '', plugin_dir_url( __FILE__ ) );
+    wp_enqueue_script( 'modal', $path . '/js-css/jquery.modal.min.js', array( 'jquery' ),  NextScripts_SNAP_Version, true);
+    wp_enqueue_style( 'modal',  $path . '/js-css/jquery.modal.min.css', array( ),  NextScripts_SNAP_Version );
+}}
+//## [Posts to Favorite Accounts] Div to Footer Posts to Favorite Accounts modal msg results.
+add_action( 'wp_footer', 'nxsFavFooter' );
+if (!function_exists("nxsFavFooter")) { function nxsFavFooter() { echo '<div style="display: none;" id="nxsFavNotice"><div id="nxsFavNoticeCnt">Posting....</div></div>'; }}
+
+
 if (!function_exists("jsPostToSNAP")) { function jsPostToSNAP() { if (function_exists('get_current_screen')) $screen = get_current_screen(); else return;   
   if( $screen->base == 'post' || stripos($screen->id,'NextScripts_SNAP')!==false || stripos($screen->id,'nxssnap')!==false || stripos($screen->id, '_page_nxs')!==false) {          
     global $nxs_SNAP, $pagenow, $snap_curPageURL;  $options = $nxs_SNAP->nxs_options; if (empty($options['fltrs'])) $options['fltrs'] = array(); if (empty($options['fltrs']['nxs_post_type'])) $options['fltrs']['nxs_post_type'] = array('post');          
@@ -227,7 +262,13 @@ if (!function_exists("jsPostToSNAP")) { function jsPostToSNAP() { if (function_e
       jQuery('.nxs_ntGroupWrapper').show();
       jQuery('.nxs_box').show();
   }
-  
+
+  function nxsnFavChange(obj){  console.log(obj); var nt=obj.data('nt'); var ii=obj.data('ii'); console.log(nt); var st = obj.hasClass('nxsOrange'); console.log(st); if (st) obj.removeClass('nxsOrange'); else obj.addClass('nxsOrange');
+      jQuery.post(ajaxurl,{ nt:nt, ii:ii, stt:st, action: 'nxs_snap_aj',"nxsact":"nxsnFavChange", id: 0, _wpnonce: jQuery('input#nxsSsPageWPN_wpnonce').val()}, function(j){
+          jQuery('#nFav'.nt+ii).html(j);
+      }, "html")
+  }
+
   function nxs_do2StepCodeCheck(nt, svc, code){ 
      jQuery.post(ajaxurl,{svc:svc, nt:nt, code:code, action: 'nxs_snap_aj',"nxsact":"getItFromNT", "fName":"nxsCptCheck", id: 0, _wpnonce: jQuery('input#nxsSsPageWPN_wpnonce').val()}, function(j){
            jQuery('#nxsCPTResults').html(j);
@@ -238,7 +279,8 @@ if (!function_exists("jsPostToSNAP")) { function jsPostToSNAP() { if (function_e
     jQuery( "#nxsShowOnlySelectedAll" ).on( "click", nxsShowOnlySelectedAll);      
     jQuery( "#nxsShowOnlySelectedEd" ).on( "click", nxsShowOnlySelectedEd);
     jQuery( "#nxsShowOnlySelectedAllEd" ).on( "click", nxsShowOnlySelectedAllEd);
-    
+
+    jQuery( ".nxsnFav" ).on( "click", nxsnFavChange);
     
     /* JS Playground */
        
