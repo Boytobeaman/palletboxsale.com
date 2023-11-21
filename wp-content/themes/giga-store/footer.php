@@ -18,11 +18,10 @@
 					}
 					?>                 
 				</div>
-				<div class="text-center h4">
-					Stronger Stacks, Smarter Logistics: Palletize Your Potential with Our Pallet Box Solutions!
-				</div>
 			<?php endif; ?>
-		
+			<div class="text-center h4">
+				Stronger Stacks, Smarter Logistics: Palletize Your Potential with Our Pallet Box Solutions!
+			</div>
 		</div>
             <div class="row text-center" style="padding-bottom: 10px">
             <div class="col-md-3">
