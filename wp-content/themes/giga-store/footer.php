@@ -39,7 +39,7 @@
                     <b>|</b>
                     <a href="https://www.plastic-crate.co.uk" target="_blank">Euro crates</a>
                     <b>|</b>
-                    <a href="https://www.joinplastic.com/product-category/folding-crate/" target="_blank">Collapsible crate</a>
+                    <a href="https://www.poolteststrip.com/product/sanitizer-test-strips-sanitizer-test-strips-for-restaurants-0-2000-ppm/" target="_blank">sanitizer test strips</a>
                 </div>
             </div>
         </div>
