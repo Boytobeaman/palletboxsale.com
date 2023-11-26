@@ -1,0 +1,851 @@
+0000.000 (0) Opened log file at time: Mon, 20 Nov 2023 00:52:20 +0000 on https://www.palletboxsale.com
+0000.003 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.62 WP: 5.8.1 PHP: 7.4.19 (fpm-fcgi, Linux ip-172-26-9-158.ec2.internal 3.10.0-1160.15.2.el7.x86_64 #1 SMP Wed Feb 3 15:06:38 UTC 2021 x86_64) MySQL: 5.7.34-log (max packet size=524288000) WPLANG: en_US Server: nginx/1.20.1 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 9M | 2M) multisite: N openssl: OpenSSL 1.0.2k  26 Jan 2017 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.004 (0) Free space on disk containing Updraft's temporary directory: 50971.5 MB
+0000.006 (0) Deleting old log file: log.bb156640b6f5.txt
+0000.009 (0) Tasks: Backup files:  (schedule: manual) Backup DB: 1 (schedule: daily)
+0000.010 (0) Processed schedules. Tasks now: Backup files:  Backup DB: 1
+0000.014 (0) Requesting semaphore lock (d) (apparently via scheduler: last_scheduled_action_called_at=1700353798, seconds_ago=87742)
+0000.022 (0) Set semaphore last lock (d) time to 2023-11-20 00:52:20
+0000.024 (0) Semaphore lock (d) complete
+0000.030 (0) Backup run: resumption=0, nonce=3eab81f16123, file_nonce=3eab81f16123 begun at=1700441540 (0s ago), job type=backup
+0000.034 (0) Scheduling a resumption (1) after 300 seconds (1700441840) in case this run gets aborted
+0000.038 (0) This backup run is not intended for files - skipping
+0000.040 (0) Beginning creation of database dump (WordPress DB)
+0000.042 (0) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+0000.055 (0) Table wp_options: Total expected rows (via COUNT): 815
+0000.104 (0) Table wp_options: Rows added in this batch (next record: 1489494): 811 (uncompressed bytes in this segment=1437009) in 0.05 seconds
+0000.115 (0) Table wp_options: finishing file(s) (2, 194.5 KB)
+0000.120 (0) Table wp_users: Total expected rows (via COUNT): 3
+0000.122 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.126 (0) Table wp_users: Rows added in this batch (next record: 5): 3 (uncompressed bytes in this segment=1705) in 0.01 seconds
+0000.131 (0) Table wp_users: finishing file(s) (2, 0.8 KB)
+0000.138 (0) Table wp_usermeta: Total expected rows (via COUNT): 117
+0000.139 (0) Table is relatively small; fetch_rows will thus be: 200 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.144 (0) Table wp_usermeta: Rows added in this batch (next record: 160): 117 (uncompressed bytes in this segment=18421) in 0.01 seconds
+0000.152 (0) Table wp_usermeta: finishing file(s) (2, 4.3 KB)
+0000.159 (0) Table wp_actionscheduler_actions: Total expected rows (via COUNT): 0
+0000.166 (0) Table wp_actionscheduler_actions: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1612) in 0.01 seconds
+0000.173 (0) Table wp_actionscheduler_actions: finishing file(s) (2, 0.5 KB)
+0000.177 (0) Table wp_actionscheduler_claims: Total expected rows (via COUNT): 0
+0000.179 (0) Table wp_actionscheduler_claims: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=636) in 0.00 seconds
+0000.184 (0) Table wp_actionscheduler_claims: finishing file(s) (2, 0.4 KB)
+0000.189 (0) Table wp_actionscheduler_groups: Total expected rows (via COUNT): 4
+0000.191 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0000.195 (0) Table wp_actionscheduler_groups: Rows added in this batch (next record: 4): 4 (uncompressed bytes in this segment=766) in 0.01 seconds
+0000.201 (0) Table wp_actionscheduler_groups: finishing file(s) (2, 0.4 KB)
+0000.206 (0) Table wp_actionscheduler_logs: Total expected rows (via COUNT): 0
+0000.212 (0) Table wp_actionscheduler_logs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=808) in 0.01 seconds
+0000.218 (0) Table wp_actionscheduler_logs: finishing file(s) (2, 0.4 KB)
+0000.225 (0) Table wp_commentmeta: Total expected rows (via COUNT): 0
+0000.229 (0) Table wp_commentmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=673) in 0.01 seconds
+0000.236 (0) Table wp_commentmeta: finishing file(s) (2, 0.4 KB)
+0000.240 (0) Table wp_comments: Total expected rows (via COUNT): 0
+0000.244 (0) Table wp_comments: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1716) in 0.00 seconds
+0000.249 (0) Table wp_comments: finishing file(s) (2, 0.5 KB)
+0000.254 (0) Table wp_links: Total expected rows (via COUNT): 0
+0000.258 (0) Table wp_links: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1270) in 0.01 seconds
+0000.264 (0) Table wp_links: finishing file(s) (2, 0.5 KB)
+0000.293 (0) Table wp_postmeta: Total expected rows (approximate): 33051
+0000.485 (0) Table wp_postmeta: Rows added in this batch (next record: 38888): 33648 (uncompressed bytes in this segment=3344200) in 0.22 seconds
+0000.493 (0) Table wp_postmeta: finishing file(s) (2, 247.7 KB)
+0000.520 (0) Table wp_posts: Total expected rows (approximate): 27283
+0001.193 (0) Table wp_posts: Rows added in this batch (next record: 26664): 26394 (uncompressed bytes in this segment=12410605) in 0.70 seconds
+0001.201 (0) Table wp_posts: finishing file(s) (2, 1009 KB)
+0001.206 (0) Table wp_term_relationships: Total expected rows (approximate): 803
+0001.211 (0) Table wp_term_relationships: Rows added in this batch (next record: 100000): 804 (uncompressed bytes in this segment=12938) in 0.01 seconds
+0001.217 (0) Table wp_term_relationships: finishing file(s) (2, 2.5 KB)
+0001.224 (0) Table wp_term_taxonomy: Total expected rows (via COUNT): 36
+0001.226 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.229 (0) Table wp_term_taxonomy: Rows added in this batch (next record: 75): 36 (uncompressed bytes in this segment=6330) in 0.01 seconds
+0001.237 (0) Table wp_term_taxonomy: finishing file(s) (2, 2.3 KB)
+0001.243 (0) Table wp_termmeta: Total expected rows (via COUNT): 28
+0001.245 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.247 (0) Table wp_termmeta: Rows added in this batch (next record: 43): 28 (uncompressed bytes in this segment=1718) in 0.01 seconds
+0001.255 (0) Table wp_termmeta: finishing file(s) (2, 0.6 KB)
+0001.259 (0) Table wp_terms: Total expected rows (via COUNT): 36
+0001.261 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.263 (0) Table wp_terms: Rows added in this batch (next record: 75): 36 (uncompressed bytes in this segment=2385) in 0.00 seconds
+0001.269 (0) Table wp_terms: finishing file(s) (2, 0.9 KB)
+0001.273 (0) Table wp_wc_category_lookup: Total expected rows (approximate): 6
+0001.277 (0) Table wp_wc_category_lookup: Rows added in this batch (next record: 1000): 6 (uncompressed bytes in this segment=642) in 0.00 seconds
+0001.282 (0) Table wp_wc_category_lookup: finishing file(s) (2, 0.4 KB)
+0001.287 (0) Table wp_wc_product_meta_lookup: Total expected rows (via COUNT): 0
+0001.289 (0) Table wp_wc_product_meta_lookup: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1361) in 0.00 seconds
+0001.295 (0) Table wp_wc_product_meta_lookup: finishing file(s) (2, 0.5 KB)
+0001.299 (0) Table wp_wc_reserved_stock: Total expected rows (approximate): 0
+0001.301 (0) Table wp_wc_reserved_stock: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=665) in 0.00 seconds
+0001.306 (0) Table wp_wc_reserved_stock: finishing file(s) (2, 0.4 KB)
+0001.310 (0) Table wp_wc_tax_rate_classes: Total expected rows (via COUNT): 2
+0001.312 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.315 (0) Table wp_wc_tax_rate_classes: Rows added in this batch (next record: 2): 2 (uncompressed bytes in this segment=812) in 0.01 seconds
+0001.321 (0) Table wp_wc_tax_rate_classes: finishing file(s) (2, 0.4 KB)
+0001.328 (0) Table wp_woocommerce_order_itemmeta: Total expected rows (via COUNT): 0
+0001.332 (0) Table wp_woocommerce_order_itemmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=760) in 0.01 seconds
+0001.339 (0) Table wp_woocommerce_order_itemmeta: finishing file(s) (2, 0.4 KB)
+0001.346 (0) Table wp_woocommerce_payment_tokenmeta: Total expected rows (via COUNT): 0
+0001.348 (0) Table wp_woocommerce_payment_tokenmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=787) in 0.00 seconds
+0001.356 (0) Table wp_woocommerce_payment_tokenmeta: finishing file(s) (2, 0.4 KB)
+0001.361 (0) Table wp_ddp_log: Total expected rows (via COUNT): 501
+0001.367 (0) Table wp_ddp_log: Rows added in this batch (next record: 1348): 501 (uncompressed bytes in this segment=30067) in 0.01 seconds
+0001.372 (0) Table wp_ddp_log: finishing file(s) (2, 3.9 KB)
+0001.377 (0) Table wp_nxs_log: Total expected rows (approximate): 1004
+0001.389 (0) Table wp_nxs_log: Rows added in this batch (next record: 765369): 1004 (uncompressed bytes in this segment=210363) in 0.01 seconds
+0001.396 (0) Table wp_nxs_log: finishing file(s) (2, 17.5 KB)
+0001.400 (0) Table wp_nxs_query: Total expected rows (via COUNT): 0
+0001.402 (0) Table wp_nxs_query: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=901) in 0.00 seconds
+0001.408 (0) Table wp_nxs_query: finishing file(s) (2, 0.4 KB)
+0001.412 (0) Table wp_pmxi_files: Total expected rows (via COUNT): 1
+0001.414 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.418 (0) Table wp_pmxi_files: Rows added in this batch (next record: 8): 1 (uncompressed bytes in this segment=803) in 0.01 seconds
+0001.423 (0) Table wp_pmxi_files: finishing file(s) (2, 0.5 KB)
+0001.432 (0) Table wp_pmxi_hash: Total expected rows (approximate): 0
+0001.435 (0) Table wp_pmxi_hash: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=553) in 0.00 seconds
+0001.441 (0) Table wp_pmxi_hash: finishing file(s) (2, 0.4 KB)
+0001.445 (0) Table wp_pmxi_history: Total expected rows (via COUNT): 5
+0001.447 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.450 (0) Table wp_pmxi_history: Rows added in this batch (next record: 8): 5 (uncompressed bytes in this segment=1302) in 0.01 seconds
+0001.455 (0) Table wp_pmxi_history: finishing file(s) (2, 0.6 KB)
+0001.460 (0) Table wp_pmxi_images: Total expected rows (via COUNT): 0
+0001.463 (0) Table wp_pmxi_images: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=631) in 0.00 seconds
+0001.469 (0) Table wp_pmxi_images: finishing file(s) (2, 0.4 KB)
+0001.478 (0) Table wp_pmxi_imports: Total expected rows (via COUNT): 1
+0001.479 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.484 (0) Table wp_pmxi_imports: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=22993) in 0.01 seconds
+0001.491 (0) Table wp_pmxi_imports: finishing file(s) (2, 5.3 KB)
+0001.495 (0) Table wp_pmxi_posts: Total expected rows (via COUNT): 58
+0001.497 (0) Table is relatively small; fetch_rows will thus be: 100 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.502 (0) Table wp_pmxi_posts: Rows added in this batch (next record: 58): 58 (uncompressed bytes in this segment=4478) in 0.01 seconds
+0001.507 (0) Table wp_pmxi_posts: finishing file(s) (2, 1.2 KB)
+0001.514 (0) Table wp_pmxi_templates: Total expected rows (via COUNT): 0
+0001.517 (0) Table wp_pmxi_templates: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=952) in 0.01 seconds
+0001.524 (0) Table wp_pmxi_templates: finishing file(s) (2, 0.4 KB)
+0001.530 (0) Table wp_wc_admin_note_actions: Total expected rows (via COUNT): 231
+0001.532 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.538 (0) Table wp_wc_admin_note_actions: Rows added in this batch (next record: 45847): 231 (uncompressed bytes in this segment=47504) in 0.01 seconds
+0001.546 (0) Table wp_wc_admin_note_actions: finishing file(s) (2, 7.2 KB)
+0001.553 (0) Table wp_wc_admin_notes: Total expected rows (via COUNT): 192
+0001.555 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.561 (0) Table wp_wc_admin_notes: Rows added in this batch (next record: 193): 192 (uncompressed bytes in this segment=90333) in 0.01 seconds
+0001.569 (0) Table wp_wc_admin_notes: finishing file(s) (2, 18.4 KB)
+0001.574 (0) Table wp_wc_customer_lookup: Total expected rows (via COUNT): 0
+0001.578 (0) Table wp_wc_customer_lookup: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1266) in 0.00 seconds
+0001.583 (0) Table wp_wc_customer_lookup: finishing file(s) (2, 0.5 KB)
+0001.587 (0) Table wp_wc_download_log: Total expected rows (via COUNT): 0
+0001.589 (0) Table wp_wc_download_log: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=918) in 0.00 seconds
+0001.595 (0) Table wp_wc_download_log: finishing file(s) (2, 0.5 KB)
+0001.600 (0) Table wp_wc_order_coupon_lookup: Total expected rows (approximate): 0
+0001.602 (0) Table wp_wc_order_coupon_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=717) in 0.00 seconds
+0001.610 (0) Table wp_wc_order_coupon_lookup: finishing file(s) (2, 0.4 KB)
+0001.615 (0) Table wp_wc_order_product_lookup: Total expected rows (via COUNT): 0
+0001.617 (0) Table wp_wc_order_product_lookup: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1227) in 0.00 seconds
+0001.623 (0) Table wp_wc_order_product_lookup: finishing file(s) (2, 0.5 KB)
+0001.628 (0) Table wp_wc_order_stats: Total expected rows (via COUNT): 0
+0001.630 (0) Table wp_wc_order_stats: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1122) in 0.00 seconds
+0001.636 (0) Table wp_wc_order_stats: finishing file(s) (2, 0.5 KB)
+0001.641 (0) Table wp_wc_order_tax_lookup: Total expected rows (approximate): 0
+0001.643 (0) Table wp_wc_order_tax_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=799) in 0.00 seconds
+0001.648 (0) Table wp_wc_order_tax_lookup: finishing file(s) (2, 0.4 KB)
+0001.653 (0) Table wp_wc_webhooks: Total expected rows (via COUNT): 0
+0001.655 (0) Table wp_wc_webhooks: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1206) in 0.00 seconds
+0001.661 (0) Table wp_wc_webhooks: finishing file(s) (2, 0.5 KB)
+0001.668 (0) Table wp_woocommerce_api_keys: Total expected rows (via COUNT): 0
+0001.669 (0) Table wp_woocommerce_api_keys: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1018) in 0.00 seconds
+0001.677 (0) Table wp_woocommerce_api_keys: finishing file(s) (2, 0.4 KB)
+0001.681 (0) Table wp_woocommerce_attribute_taxonomies: Total expected rows (via COUNT): 0
+0001.683 (0) Table wp_woocommerce_attribute_taxonomies: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=942) in 0.00 seconds
+0001.689 (0) Table wp_woocommerce_attribute_taxonomies: finishing file(s) (2, 0.4 KB)
+0001.693 (0) Table wp_woocommerce_downloadable_product_permissions: Total expected rows (via COUNT): 0
+0001.698 (0) Table wp_woocommerce_downloadable_product_permissions: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1519) in 0.01 seconds
+0001.705 (0) Table wp_woocommerce_downloadable_product_permissions: finishing file(s) (2, 0.5 KB)
+0001.711 (0) Table wp_woocommerce_log: Total expected rows (via COUNT): 0
+0001.713 (0) Table wp_woocommerce_log: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=706) in 0.00 seconds
+0001.720 (0) Table wp_woocommerce_log: finishing file(s) (2, 0.4 KB)
+0001.727 (0) Table wp_woocommerce_order_items: Total expected rows (via COUNT): 0
+0001.729 (0) Table wp_woocommerce_order_items: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=731) in 0.00 seconds
+0001.736 (0) Table wp_woocommerce_order_items: finishing file(s) (2, 0.4 KB)
+0001.741 (0) Table wp_woocommerce_payment_tokens: Total expected rows (via COUNT): 0
+0001.743 (0) Table wp_woocommerce_payment_tokens: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=825) in 0.00 seconds
+0001.748 (0) Table wp_woocommerce_payment_tokens: finishing file(s) (2, 0.4 KB)
+0001.756 (0) Table wp_woocommerce_sessions: Total expected rows (via COUNT): 0
+0001.758 (0) Table wp_woocommerce_sessions: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=705) in 0.01 seconds
+0001.765 (0) Table wp_woocommerce_sessions: finishing file(s) (2, 0.4 KB)
+0001.770 (0) Table wp_woocommerce_shipping_zone_locations: Total expected rows (via COUNT): 0
+0001.772 (0) Table wp_woocommerce_shipping_zone_locations: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=899) in 0.00 seconds
+0001.777 (0) Table wp_woocommerce_shipping_zone_locations: finishing file(s) (2, 0.4 KB)
+0001.782 (0) Table wp_woocommerce_shipping_zone_methods: Total expected rows (via COUNT): 0
+0001.784 (0) Table wp_woocommerce_shipping_zone_methods: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=767) in 0.00 seconds
+0001.790 (0) Table wp_woocommerce_shipping_zone_methods: finishing file(s) (2, 0.4 KB)
+0001.795 (0) Table wp_woocommerce_shipping_zones: Total expected rows (via COUNT): 0
+0001.799 (0) Table wp_woocommerce_shipping_zones: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=625) in 0.00 seconds
+0001.806 (0) Table wp_woocommerce_shipping_zones: finishing file(s) (2, 0.4 KB)
+0001.811 (0) Table wp_woocommerce_tax_rate_locations: Total expected rows (via COUNT): 0
+0001.813 (0) Table wp_woocommerce_tax_rate_locations: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=873) in 0.00 seconds
+0001.818 (0) Table wp_woocommerce_tax_rate_locations: finishing file(s) (2, 0.4 KB)
+0001.823 (0) Table wp_woocommerce_tax_rates: Total expected rows (via COUNT): 0
+0001.825 (0) Table wp_woocommerce_tax_rates: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1280) in 0.00 seconds
+0001.830 (0) Table wp_woocommerce_tax_rates: finishing file(s) (2, 0.5 KB)
+0001.835 (0) Table wp_wpmailsmtp_debug_events: Total expected rows (via COUNT): 0
+0001.837 (0) Table wp_wpmailsmtp_debug_events: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=707) in 0.00 seconds
+0001.842 (0) Table wp_wpmailsmtp_debug_events: finishing file(s) (2, 0.4 KB)
+0001.850 (0) Table wp_wpmailsmtp_tasks_meta: Total expected rows (via COUNT): 12
+0001.852 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.856 (0) Table wp_wpmailsmtp_tasks_meta: Rows added in this batch (next record: 12): 12 (uncompressed bytes in this segment=1651) in 0.01 seconds
+0001.864 (0) Table wp_wpmailsmtp_tasks_meta: finishing file(s) (2, 0.6 KB)
+0001.872 (0) Table wp_yoast_indexable: Total expected rows (via COUNT): 799
+0001.907 (0) Table wp_yoast_indexable: Rows added in this batch (next record: 806): 799 (uncompressed bytes in this segment=495489) in 0.04 seconds
+0001.915 (0) Table wp_yoast_indexable: finishing file(s) (2, 63.2 KB)
+0001.920 (0) Table wp_yoast_indexable_hierarchy: Total expected rows (approximate): 792
+0001.924 (0) Table wp_yoast_indexable_hierarchy: Rows added in this batch (next record: 1000): 796 (uncompressed bytes in this segment=14333) in 0.00 seconds
+0001.930 (0) Table wp_yoast_indexable_hierarchy: finishing file(s) (2, 2.4 KB)
+0001.935 (0) Table wp_yoast_migrations: Total expected rows (via COUNT): 22
+0001.937 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.944 (0) Table wp_yoast_migrations: Rows added in this batch (next record: 22): 22 (uncompressed bytes in this segment=1215) in 0.01 seconds
+0001.951 (0) Table wp_yoast_migrations: finishing file(s) (2, 0.6 KB)
+0001.956 (0) Table wp_yoast_primary_term: Total expected rows (via COUNT): 38
+0001.959 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0001.963 (0) Table wp_yoast_primary_term: Rows added in this batch (next record: 38): 38 (uncompressed bytes in this segment=3922) in 0.01 seconds
+0001.969 (0) Table wp_yoast_primary_term: finishing file(s) (2, 1.1 KB)
+0001.974 (0) Table wp_yoast_seo_links: Total expected rows (approximate): 4229
+0002.011 (0) Table wp_yoast_seo_links: Rows added in this batch (next record: 10587): 4256 (uncompressed bytes in this segment=611872) in 0.04 seconds
+0002.017 (0) Table wp_yoast_seo_links: finishing file(s) (2, 28 KB)
+0002.022 (0) Table wp_yoast_seo_meta: Total expected rows (via COUNT): 859
+0002.023 (0) Table is relatively small; fetch_rows will thus be: 500 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0002.030 (0) Table wp_yoast_seo_meta: Rows added in this batch (next record: 2122): 859 (uncompressed bytes in this segment=13063) in 0.01 seconds
+0002.037 (0) Table wp_yoast_seo_meta: finishing file(s) (2, 2.4 KB)
+0002.039 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_options.table.tmpr1489495.gz (1/61/fopen): adding to final database dump
+0002.042 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_options.table.gz (2/61/fopen): adding to final database dump
+0002.044 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_users.table.tmpr6.gz (3/61/fopen): adding to final database dump
+0002.046 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_users.table.gz (4/61/fopen): adding to final database dump
+0002.048 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_usermeta.table.tmpr161.gz (5/61/fopen): adding to final database dump
+0002.049 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_usermeta.table.gz (6/61/fopen): adding to final database dump
+0002.051 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_actions.table.tmpr0.gz (7/61/fopen): adding to final database dump
+0002.053 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_actions.table.gz (8/61/fopen): adding to final database dump
+0002.055 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_claims.table.tmpr0.gz (9/61/fopen): adding to final database dump
+0002.056 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_claims.table.gz (10/61/fopen): adding to final database dump
+0002.058 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_groups.table.tmpr5.gz (11/61/fopen): adding to final database dump
+0002.060 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_groups.table.gz (12/61/fopen): adding to final database dump
+0002.062 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_logs.table.tmpr0.gz (13/61/fopen): adding to final database dump
+0002.063 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_actionscheduler_logs.table.gz (14/61/fopen): adding to final database dump
+0002.065 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_commentmeta.table.tmpr0.gz (15/61/fopen): adding to final database dump
+0002.066 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_commentmeta.table.gz (16/61/fopen): adding to final database dump
+0002.068 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_comments.table.tmpr0.gz (17/61/fopen): adding to final database dump
+0002.070 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_comments.table.gz (18/61/fopen): adding to final database dump
+0002.071 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_links.table.tmpr0.gz (19/61/fopen): adding to final database dump
+0002.073 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_links.table.gz (20/61/fopen): adding to final database dump
+0002.074 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_postmeta.table.tmpr38889.gz (21/61/fopen): adding to final database dump
+0002.078 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_postmeta.table.gz (22/61/fopen): adding to final database dump
+0002.080 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_posts.table.tmpr26665.gz (23/61/fopen): adding to final database dump
+0002.091 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_posts.table.gz (24/61/fopen): adding to final database dump
+0002.093 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_term_relationships.table.tmpr100001.gz (25/61/fopen): adding to final database dump
+0002.097 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_term_relationships.table.gz (26/61/fopen): adding to final database dump
+0002.098 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_term_taxonomy.table.tmpr76.gz (27/61/fopen): adding to final database dump
+0002.100 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_term_taxonomy.table.gz (28/61/fopen): adding to final database dump
+0002.101 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_termmeta.table.tmpr44.gz (29/61/fopen): adding to final database dump
+0002.103 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_termmeta.table.gz (30/61/fopen): adding to final database dump
+0002.105 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_terms.table.tmpr76.gz (31/61/fopen): adding to final database dump
+0002.106 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_terms.table.gz (32/61/fopen): adding to final database dump
+0002.108 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_category_lookup.table.tmpr1001.gz (33/61/fopen): adding to final database dump
+0002.110 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_category_lookup.table.gz (34/61/fopen): adding to final database dump
+0002.111 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_product_meta_lookup.table.tmpr0.gz (35/61/fopen): adding to final database dump
+0002.113 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_product_meta_lookup.table.gz (36/61/fopen): adding to final database dump
+0002.114 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_reserved_stock.table.tmpr1.gz (37/61/fopen): adding to final database dump
+0002.116 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_reserved_stock.table.gz (38/61/fopen): adding to final database dump
+0002.118 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_tax_rate_classes.table.tmpr3.gz (39/61/fopen): adding to final database dump
+0002.119 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_tax_rate_classes.table.gz (40/61/fopen): adding to final database dump
+0002.121 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_order_itemmeta.table.tmpr0.gz (41/61/fopen): adding to final database dump
+0002.123 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_order_itemmeta.table.gz (42/61/fopen): adding to final database dump
+0002.125 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_payment_tokenmeta.table.tmpr0.gz (43/61/fopen): adding to final database dump
+0002.126 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_payment_tokenmeta.table.gz (44/61/fopen): adding to final database dump
+0002.128 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_ddp_log.table.tmpr1349.gz (45/61/fopen): adding to final database dump
+0002.130 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_ddp_log.table.gz (46/61/fopen): adding to final database dump
+0002.131 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_nxs_log.table.tmpr765370.gz (47/61/fopen): adding to final database dump
+0002.133 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_nxs_log.table.gz (48/61/fopen): adding to final database dump
+0002.135 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_nxs_query.table.tmpr0.gz (49/61/fopen): adding to final database dump
+0002.137 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_nxs_query.table.gz (50/61/fopen): adding to final database dump
+0002.138 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_files.table.tmpr9.gz (51/61/fopen): adding to final database dump
+0002.140 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_files.table.gz (52/61/fopen): adding to final database dump
+0002.142 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_hash.table.tmpr1.gz (53/61/fopen): adding to final database dump
+0002.144 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_hash.table.gz (54/61/fopen): adding to final database dump
+0002.145 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_history.table.tmpr9.gz (55/61/fopen): adding to final database dump
+0002.147 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_history.table.gz (56/61/fopen): adding to final database dump
+0002.149 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_images.table.tmpr0.gz (57/61/fopen): adding to final database dump
+0002.151 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_images.table.gz (58/61/fopen): adding to final database dump
+0002.152 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_imports.table.tmpr2.gz (59/61/fopen): adding to final database dump
+0002.155 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_imports.table.gz (60/61/fopen): adding to final database dump
+0002.156 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_posts.table.tmpr59.gz (61/61/fopen): adding to final database dump
+0002.158 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_posts.table.gz (62/61/fopen): adding to final database dump
+0002.159 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_templates.table.tmpr0.gz (63/61/fopen): adding to final database dump
+0002.161 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_pmxi_templates.table.gz (64/61/fopen): adding to final database dump
+0002.163 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_admin_note_actions.table.tmpr45848.gz (65/61/fopen): adding to final database dump
+0002.165 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_admin_note_actions.table.gz (66/61/fopen): adding to final database dump
+0002.166 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_admin_notes.table.tmpr194.gz (67/61/fopen): adding to final database dump
+0002.168 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_admin_notes.table.gz (68/61/fopen): adding to final database dump
+0002.170 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_customer_lookup.table.tmpr0.gz (69/61/fopen): adding to final database dump
+0002.171 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_customer_lookup.table.gz (70/61/fopen): adding to final database dump
+0002.173 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_download_log.table.tmpr0.gz (71/61/fopen): adding to final database dump
+0002.175 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_download_log.table.gz (72/61/fopen): adding to final database dump
+0002.177 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_coupon_lookup.table.tmpr1.gz (73/61/fopen): adding to final database dump
+0002.179 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_coupon_lookup.table.gz (74/61/fopen): adding to final database dump
+0002.180 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_product_lookup.table.tmpr0.gz (75/61/fopen): adding to final database dump
+0002.182 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_product_lookup.table.gz (76/61/fopen): adding to final database dump
+0002.184 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_stats.table.tmpr0.gz (77/61/fopen): adding to final database dump
+0002.185 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_stats.table.gz (78/61/fopen): adding to final database dump
+0002.187 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_tax_lookup.table.tmpr1.gz (79/61/fopen): adding to final database dump
+0002.188 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_order_tax_lookup.table.gz (80/61/fopen): adding to final database dump
+0002.192 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_webhooks.table.tmpr0.gz (81/61/fopen): adding to final database dump
+0002.194 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wc_webhooks.table.gz (82/61/fopen): adding to final database dump
+0002.195 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_api_keys.table.tmpr0.gz (83/61/fopen): adding to final database dump
+0002.197 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_api_keys.table.gz (84/61/fopen): adding to final database dump
+0002.199 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_attribute_taxonomies.table.tmpr0.gz (85/61/fopen): adding to final database dump
+0002.200 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_attribute_taxonomies.table.gz (86/61/fopen): adding to final database dump
+0002.202 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_downloadable_product_permissions.table.tmpr0.gz (87/61/fopen): adding to final database dump
+0002.203 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_downloadable_product_permissions.table.gz (88/61/fopen): adding to final database dump
+0002.205 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_log.table.tmpr0.gz (89/61/fopen): adding to final database dump
+0002.207 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_log.table.gz (90/61/fopen): adding to final database dump
+0002.208 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_order_items.table.tmpr0.gz (91/61/fopen): adding to final database dump
+0002.210 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_order_items.table.gz (92/61/fopen): adding to final database dump
+0002.212 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_payment_tokens.table.tmpr0.gz (93/61/fopen): adding to final database dump
+0002.214 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_payment_tokens.table.gz (94/61/fopen): adding to final database dump
+0002.215 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_sessions.table.tmpr0.gz (95/61/fopen): adding to final database dump
+0002.217 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_sessions.table.gz (96/61/fopen): adding to final database dump
+0002.219 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_shipping_zone_locations.table.tmpr0.gz (97/61/fopen): adding to final database dump
+0002.220 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_shipping_zone_locations.table.gz (98/61/fopen): adding to final database dump
+0002.222 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_shipping_zone_methods.table.tmpr0.gz (99/61/fopen): adding to final database dump
+0002.226 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_shipping_zone_methods.table.gz (100/61/fopen): adding to final database dump
+0002.227 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_shipping_zones.table.tmpr0.gz (101/61/fopen): adding to final database dump
+0002.229 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_shipping_zones.table.gz (102/61/fopen): adding to final database dump
+0002.230 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_tax_rate_locations.table.tmpr0.gz (103/61/fopen): adding to final database dump
+0002.232 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_tax_rate_locations.table.gz (104/61/fopen): adding to final database dump
+0002.234 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_tax_rates.table.tmpr0.gz (105/61/fopen): adding to final database dump
+0002.236 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_woocommerce_tax_rates.table.gz (106/61/fopen): adding to final database dump
+0002.237 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wpmailsmtp_debug_events.table.tmpr0.gz (107/61/fopen): adding to final database dump
+0002.239 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wpmailsmtp_debug_events.table.gz (108/61/fopen): adding to final database dump
+0002.240 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wpmailsmtp_tasks_meta.table.tmpr13.gz (109/61/fopen): adding to final database dump
+0002.242 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_wpmailsmtp_tasks_meta.table.gz (110/61/fopen): adding to final database dump
+0002.243 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_indexable.table.tmpr807.gz (111/61/fopen): adding to final database dump
+0002.245 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_indexable.table.gz (112/61/fopen): adding to final database dump
+0002.247 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_indexable_hierarchy.table.tmpr1001.gz (113/61/fopen): adding to final database dump
+0002.249 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_indexable_hierarchy.table.gz (114/61/fopen): adding to final database dump
+0002.250 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_migrations.table.tmpr23.gz (115/61/fopen): adding to final database dump
+0002.252 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_migrations.table.gz (116/61/fopen): adding to final database dump
+0002.254 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_primary_term.table.tmpr39.gz (117/61/fopen): adding to final database dump
+0002.255 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_primary_term.table.gz (118/61/fopen): adding to final database dump
+0002.257 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_seo_links.table.tmpr10588.gz (119/61/fopen): adding to final database dump
+0002.259 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_seo_links.table.gz (120/61/fopen): adding to final database dump
+0002.260 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_seo_meta.table.tmpr2123.gz (121/61/fopen): adding to final database dump
+0002.262 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db-table-wp_yoast_seo_meta.table.gz (122/61/fopen): adding to final database dump
+0002.268 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db.gz: finished writing out complete database file (1631.6 KB)
+0002.296 (0) Total database tables backed up: 61 (backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db.gz, size: 1670820, sha1: 4963c7cb09f400ca16d93f08473fd336433dbe0e, sha256: 1046e9beb0c6dad24a2801bbb6331b3978e46834cd04f059e38d9be99fbad5ff)
+0002.314 (0) backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db.gz: db: This file has not yet been successfully uploaded: will queue
+0002.316 (0) Saving backup history. Total backup size: 1.6 MB
+0002.326 (0) Requesting upload of the files that have not yet been successfully uploaded (1)
+0002.331 (0) Cloud backup selection (1/1): s3 with instance (1/1) (last)
+0002.333 (0) Beginning dispatch of backup to remote (s3) (instance identifier s-4c9f28d878d94fdf129aae8d8cb7e7df)
+0002.400 (0) Amazon S3: Set region: us-west-1
+0002.403 (0) Amazon S3: upload (us-west-1): backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db.gz (chunks: 1) -> s3://website-database-lxc/palletboxsale.com/backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db.gz
+0003.237 (0) Amazon S3: regular upload: success
+0003.239 (0) Recording as successfully uploaded: backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db.gz
+0003.243 (0) Deleting local file: backup_2023-11-20-0052_PalletBoxSale_3eab81f16123-db.gz: OK
+0003.248 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=120
+0003.251 (0) Number of backup sets in history: 123; groups (db): 1
+0003.253 (0) Examining (for databases) backup set with group_id=0, nonce=3eab81f16123, datestamp=1700441540 (Nov 20 2023 00:52:20)
+0003.255 (0) This backup set is the backup set just made, so will not be deleted.
+0003.255 (0) Examining (for databases) backup set with group_id=0, nonce=08c1359946af, datestamp=1700353798 (Nov 19 2023 00:29:58)
+0003.255 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.256 (0) Examining (for databases) backup set with group_id=0, nonce=1db20c2acfbd, datestamp=1700267586 (Nov 18 2023 00:33:06)
+0003.256 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.256 (0) Examining (for databases) backup set with group_id=0, nonce=18fe256fa23d, datestamp=1700180712 (Nov 17 2023 00:25:12)
+0003.256 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.256 (0) Examining (for databases) backup set with group_id=0, nonce=63c32165e143, datestamp=1700094307 (Nov 16 2023 00:25:07)
+0003.256 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=f50f9bd15d88, datestamp=1700008194 (Nov 15 2023 00:29:54)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=ed4d9bedc7d2, datestamp=1699922152 (Nov 14 2023 00:35:52)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=57fe8a608284, datestamp=1699836301 (Nov 13 2023 00:45:01)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=e6a07668428d, datestamp=1699748921 (Nov 12 2023 00:28:41)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=8dc9f7622afa, datestamp=1699662920 (Nov 11 2023 00:35:20)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=7a9a712fbdf1, datestamp=1699576000 (Nov 10 2023 00:26:40)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=6b24a5201fcd, datestamp=1699489889 (Nov 09 2023 00:31:29)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=bf401183e77b, datestamp=1699403233 (Nov 08 2023 00:27:13)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=7dda12226a04, datestamp=1699317737 (Nov 07 2023 00:42:17)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=6b0644a5b134, datestamp=1699230321 (Nov 06 2023 00:25:21)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=ce5c8a4f41fb, datestamp=1699144286 (Nov 05 2023 00:31:26)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=bfada800fc96, datestamp=1699057509 (Nov 04 2023 00:25:09)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=0349cf94dd5b, datestamp=1698971428 (Nov 03 2023 00:30:28)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=504a846642b7, datestamp=1698884896 (Nov 02 2023 00:28:16)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=a2870c2251ec, datestamp=1698798304 (Nov 01 2023 00:25:04)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=f55632e41e6c, datestamp=1698712144 (Oct 31 2023 00:29:04)
+0003.257 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.257 (0) Examining (for databases) backup set with group_id=0, nonce=75c4e34823c8, datestamp=1698626119 (Oct 30 2023 00:35:19)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=481a5a9560aa, datestamp=1698540117 (Oct 29 2023 00:41:57)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=1070d6edecf4, datestamp=1698452959 (Oct 28 2023 00:29:19)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=3859c1bfc876, datestamp=1698366456 (Oct 27 2023 00:27:36)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=2ec7c4e237f6, datestamp=1698280299 (Oct 26 2023 00:31:39)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=32866ec932d4, datestamp=1698194180 (Oct 25 2023 00:36:20)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=668498a7e788, datestamp=1698107110 (Oct 24 2023 00:25:10)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=6f2338849a1a, datestamp=1698021031 (Oct 23 2023 00:30:31)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=300c32b1b049, datestamp=1697934971 (Oct 22 2023 00:36:11)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=09ec573870d1, datestamp=1697849129 (Oct 21 2023 00:45:29)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=220f20e93034, datestamp=1697761596 (Oct 20 2023 00:26:36)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=6721a5232228, datestamp=1697675642 (Oct 19 2023 00:34:02)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=90a81b42b84a, datestamp=1697589242 (Oct 18 2023 00:34:02)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=b9b11f99c47e, datestamp=1697502777 (Oct 17 2023 00:32:57)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=0f6d0ecdb280, datestamp=1697415949 (Oct 16 2023 00:25:49)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=d7b0df7747d9, datestamp=1697329827 (Oct 15 2023 00:30:27)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=fb35ce362961, datestamp=1697243189 (Oct 14 2023 00:26:29)
+0003.258 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.258 (0) Examining (for databases) backup set with group_id=0, nonce=d1bdbff9c57c, datestamp=1697156723 (Oct 13 2023 00:25:23)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=c23693e78c1a, datestamp=1697070469 (Oct 12 2023 00:27:49)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=bb156640b6f5, datestamp=1696984038 (Oct 11 2023 00:27:18)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=837d3783da60, datestamp=1696897525 (Oct 10 2023 00:25:25)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=8a4d19e2be29, datestamp=1696811411 (Oct 09 2023 00:30:11)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=bca980735002, datestamp=1696724876 (Oct 08 2023 00:27:56)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=9616d115bedf, datestamp=1696638417 (Oct 07 2023 00:26:57)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=7eff5c631069, datestamp=1696552129 (Oct 06 2023 00:28:49)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=1f810a205928, datestamp=1696465915 (Oct 05 2023 00:31:55)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=2fe672f6b080, datestamp=1696379101 (Oct 04 2023 00:25:01)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=9a00d34dd243, datestamp=1696292835 (Oct 03 2023 00:27:15)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=bd50c4e8385e, datestamp=1696206324 (Oct 02 2023 00:25:24)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=c452e71c120c, datestamp=1696119948 (Oct 01 2023 00:25:48)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=9fba1ff3f538, datestamp=1696033503 (Sep 30 2023 00:25:03)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=f3600e91c802, datestamp=1695947765 (Sep 29 2023 00:36:05)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=eacd8b5aecf1, datestamp=1695860837 (Sep 28 2023 00:27:17)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.259 (0) Examining (for databases) backup set with group_id=0, nonce=f1863e1649c3, datestamp=1695774410 (Sep 27 2023 00:26:50)
+0003.259 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=f641c2559fd3, datestamp=1695688003 (Sep 26 2023 00:26:43)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=7ee1c1ad1f67, datestamp=1695602502 (Sep 25 2023 00:41:42)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=972e4e0d4de2, datestamp=1695515454 (Sep 24 2023 00:30:54)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=10caf0baf020, datestamp=1695429001 (Sep 23 2023 00:30:01)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=c14dba0968c4, datestamp=1695342768 (Sep 22 2023 00:32:48)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=029ead1420f6, datestamp=1695255958 (Sep 21 2023 00:25:58)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=f8b20bfdd029, datestamp=1695170479 (Sep 20 2023 00:41:19)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=31d509821060, datestamp=1695083712 (Sep 19 2023 00:35:12)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=02390534ee24, datestamp=1694996843 (Sep 18 2023 00:27:23)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=9ba46a24d54a, datestamp=1694910399 (Sep 17 2023 00:26:39)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=6d375d7a7c88, datestamp=1694824378 (Sep 16 2023 00:32:58)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=ba3000cc8df2, datestamp=1694738579 (Sep 15 2023 00:42:59)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=c85936395545, datestamp=1694651500 (Sep 14 2023 00:31:40)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=386d37758171, datestamp=1694564819 (Sep 13 2023 00:26:59)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=217fea674291, datestamp=1694478998 (Sep 12 2023 00:36:38)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=349c6686da64, datestamp=1694392076 (Sep 11 2023 00:27:56)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.260 (0) Examining (for databases) backup set with group_id=0, nonce=01c0f68c0eb2, datestamp=1694305524 (Sep 10 2023 00:25:24)
+0003.260 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=e67764903277, datestamp=1694219239 (Sep 09 2023 00:27:19)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=d54f32976f79, datestamp=1694132865 (Sep 08 2023 00:27:45)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=badf0853b2ce, datestamp=1694046319 (Sep 07 2023 00:25:19)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=2a41a3234f87, datestamp=1693959958 (Sep 06 2023 00:25:58)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=e0be566aa544, datestamp=1693874156 (Sep 05 2023 00:35:56)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=03d3b0fe1a7e, datestamp=1693787532 (Sep 04 2023 00:32:12)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=ca692f49eaeb, datestamp=1693701384 (Sep 03 2023 00:36:24)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=897edd713fef, datestamp=1693614333 (Sep 02 2023 00:25:33)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=dce3133e3c1d, datestamp=1693527933 (Sep 01 2023 00:25:33)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=b8169240021e, datestamp=1693441517 (Aug 31 2023 00:25:17)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=bd6860b06eab, datestamp=1693355438 (Aug 30 2023 00:30:38)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=dd01b6d6932b, datestamp=1693269079 (Aug 29 2023 00:31:19)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=a2dbb828f4f4, datestamp=1693182423 (Aug 28 2023 00:27:03)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=45526d83173a, datestamp=1693096866 (Aug 27 2023 00:41:06)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=057684fc4b1c, datestamp=1693010758 (Aug 26 2023 00:45:58)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=01e974c4e447, datestamp=1692923718 (Aug 25 2023 00:35:18)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.261 (0) Examining (for databases) backup set with group_id=0, nonce=b7610b8279f3, datestamp=1692836829 (Aug 24 2023 00:27:09)
+0003.261 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=5fc07a4b29da, datestamp=1692751342 (Aug 23 2023 00:42:22)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=fd72dbd08b4f, datestamp=1692664170 (Aug 22 2023 00:29:30)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=51007f2faf06, datestamp=1692577512 (Aug 21 2023 00:25:12)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=21a4fb1289fb, datestamp=1692491797 (Aug 20 2023 00:36:37)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=b767a810fc92, datestamp=1692404958 (Aug 19 2023 00:29:18)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=adba484ce6cf, datestamp=1692318413 (Aug 18 2023 00:26:53)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=93bcf399941c, datestamp=1692231966 (Aug 17 2023 00:26:06)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=80ced0428319, datestamp=1692146198 (Aug 16 2023 00:36:38)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=d25c49bb6896, datestamp=1692059536 (Aug 15 2023 00:32:16)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=73f181dca7b0, datestamp=1691972925 (Aug 14 2023 00:28:45)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=9ec5813c2955, datestamp=1691887599 (Aug 13 2023 00:46:39)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=de0e7457687c, datestamp=1691800144 (Aug 12 2023 00:29:04)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=740bcb4aaf3e, datestamp=1691713654 (Aug 11 2023 00:27:34)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=db089d27fb94, datestamp=1691627330 (Aug 10 2023 00:28:50)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=364aa4f93132, datestamp=1691540821 (Aug 09 2023 00:27:01)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=3438ac1f8269, datestamp=1691454605 (Aug 08 2023 00:30:05)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.262 (0) Examining (for databases) backup set with group_id=0, nonce=42ac4923359a, datestamp=1691367905 (Aug 07 2023 00:25:05)
+0003.262 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=796a3eec3814, datestamp=1691282135 (Aug 06 2023 00:35:35)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=724fb59634e8, datestamp=1691195107 (Aug 05 2023 00:25:07)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=06f16bddb2b9, datestamp=1691108803 (Aug 04 2023 00:26:43)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=4f92960c6e9f, datestamp=1691022717 (Aug 03 2023 00:31:57)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=9c7644dd1607, datestamp=1690936371 (Aug 02 2023 00:32:51)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=087b7873d125, datestamp=1690849949 (Aug 01 2023 00:32:29)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=e3f5e130b197, datestamp=1690764064 (Jul 31 2023 00:41:04)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=e0fcf555d493, datestamp=1690676862 (Jul 30 2023 00:27:42)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=ae4ae625f4a7, datestamp=1690590721 (Jul 29 2023 00:32:01)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=c7aa8f56af06, datestamp=1690504299 (Jul 28 2023 00:31:39)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=8767b80bf628, datestamp=1690418355 (Jul 27 2023 00:39:15)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=276b839ad7ab, datestamp=1690331252 (Jul 26 2023 00:27:32)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=8019b7a61983, datestamp=1690244815 (Jul 25 2023 00:26:55)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=a611dc7678d1, datestamp=1690158408 (Jul 24 2023 00:26:48)
+0003.263 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.263 (0) Examining (for databases) backup set with group_id=0, nonce=6de9a73799a4, datestamp=1690072534 (Jul 23 2023 00:35:34)
+0003.263 (0) 1690072534: db: this set includes a database (backup_2023-07-23-0035_PalletBoxSale_6de9a73799a4-db.gz); db count is now 120
+0003.263 (0) 1690072534: db: over retain limit (120); will delete this database
+0003.263 (0) Delete file: backup_2023-07-23-0035_PalletBoxSale_6de9a73799a4-db.gz, service=s3
+0003.265 (0) Amazon S3: Delete remote: bucket=website-database-lxc, URI=palletboxsale.com/backup_2023-07-23-0035_PalletBoxSale_6de9a73799a4-db.gz
+0003.344 (0) This backup set is now empty; will remove from history
+0003.346 (0) Corresponding log file (log.6de9a73799a4.txt) not found - must have already been deleted
+0003.347 (0) Examining (for databases) backup set with group_id=0, nonce=c51c01f6985e, datestamp=1550147181 (Feb 14 2019 12:26:21)
+0003.347 (0) Examining (for databases) backup set with group_id=0, nonce=1920e2f1bfca, datestamp=1519950198 (Mar 02 2018 00:23:18)
+0003.347 (0) Number of backup sets in history: 122; groups (files): 1
+0003.349 (0) Examining (for files) backup set with nonce=3eab81f16123, datestamp=1700441540 (Nov 20 2023 00:52:20)
+0003.349 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=08c1359946af, datestamp=1700353798 (Nov 19 2023 00:29:58)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=1db20c2acfbd, datestamp=1700267586 (Nov 18 2023 00:33:06)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=18fe256fa23d, datestamp=1700180712 (Nov 17 2023 00:25:12)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=63c32165e143, datestamp=1700094307 (Nov 16 2023 00:25:07)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=f50f9bd15d88, datestamp=1700008194 (Nov 15 2023 00:29:54)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=ed4d9bedc7d2, datestamp=1699922152 (Nov 14 2023 00:35:52)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=57fe8a608284, datestamp=1699836301 (Nov 13 2023 00:45:01)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=e6a07668428d, datestamp=1699748921 (Nov 12 2023 00:28:41)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=8dc9f7622afa, datestamp=1699662920 (Nov 11 2023 00:35:20)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=7a9a712fbdf1, datestamp=1699576000 (Nov 10 2023 00:26:40)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.351 (0) Examining (for files) backup set with nonce=6b24a5201fcd, datestamp=1699489889 (Nov 09 2023 00:31:29)
+0003.351 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=bf401183e77b, datestamp=1699403233 (Nov 08 2023 00:27:13)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=7dda12226a04, datestamp=1699317737 (Nov 07 2023 00:42:17)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=6b0644a5b134, datestamp=1699230321 (Nov 06 2023 00:25:21)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=ce5c8a4f41fb, datestamp=1699144286 (Nov 05 2023 00:31:26)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=bfada800fc96, datestamp=1699057509 (Nov 04 2023 00:25:09)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=0349cf94dd5b, datestamp=1698971428 (Nov 03 2023 00:30:28)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=504a846642b7, datestamp=1698884896 (Nov 02 2023 00:28:16)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=a2870c2251ec, datestamp=1698798304 (Nov 01 2023 00:25:04)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=f55632e41e6c, datestamp=1698712144 (Oct 31 2023 00:29:04)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=75c4e34823c8, datestamp=1698626119 (Oct 30 2023 00:35:19)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=481a5a9560aa, datestamp=1698540117 (Oct 29 2023 00:41:57)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=1070d6edecf4, datestamp=1698452959 (Oct 28 2023 00:29:19)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=3859c1bfc876, datestamp=1698366456 (Oct 27 2023 00:27:36)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=2ec7c4e237f6, datestamp=1698280299 (Oct 26 2023 00:31:39)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=32866ec932d4, datestamp=1698194180 (Oct 25 2023 00:36:20)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=668498a7e788, datestamp=1698107110 (Oct 24 2023 00:25:10)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=6f2338849a1a, datestamp=1698021031 (Oct 23 2023 00:30:31)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.352 (0) Examining (for files) backup set with nonce=300c32b1b049, datestamp=1697934971 (Oct 22 2023 00:36:11)
+0003.352 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=09ec573870d1, datestamp=1697849129 (Oct 21 2023 00:45:29)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=220f20e93034, datestamp=1697761596 (Oct 20 2023 00:26:36)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=6721a5232228, datestamp=1697675642 (Oct 19 2023 00:34:02)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=90a81b42b84a, datestamp=1697589242 (Oct 18 2023 00:34:02)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=b9b11f99c47e, datestamp=1697502777 (Oct 17 2023 00:32:57)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=0f6d0ecdb280, datestamp=1697415949 (Oct 16 2023 00:25:49)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=d7b0df7747d9, datestamp=1697329827 (Oct 15 2023 00:30:27)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=fb35ce362961, datestamp=1697243189 (Oct 14 2023 00:26:29)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=d1bdbff9c57c, datestamp=1697156723 (Oct 13 2023 00:25:23)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=c23693e78c1a, datestamp=1697070469 (Oct 12 2023 00:27:49)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=bb156640b6f5, datestamp=1696984038 (Oct 11 2023 00:27:18)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=837d3783da60, datestamp=1696897525 (Oct 10 2023 00:25:25)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=8a4d19e2be29, datestamp=1696811411 (Oct 09 2023 00:30:11)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=bca980735002, datestamp=1696724876 (Oct 08 2023 00:27:56)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=9616d115bedf, datestamp=1696638417 (Oct 07 2023 00:26:57)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=7eff5c631069, datestamp=1696552129 (Oct 06 2023 00:28:49)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=1f810a205928, datestamp=1696465915 (Oct 05 2023 00:31:55)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.353 (0) Examining (for files) backup set with nonce=2fe672f6b080, datestamp=1696379101 (Oct 04 2023 00:25:01)
+0003.353 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=9a00d34dd243, datestamp=1696292835 (Oct 03 2023 00:27:15)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=bd50c4e8385e, datestamp=1696206324 (Oct 02 2023 00:25:24)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=c452e71c120c, datestamp=1696119948 (Oct 01 2023 00:25:48)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=9fba1ff3f538, datestamp=1696033503 (Sep 30 2023 00:25:03)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=f3600e91c802, datestamp=1695947765 (Sep 29 2023 00:36:05)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=eacd8b5aecf1, datestamp=1695860837 (Sep 28 2023 00:27:17)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=f1863e1649c3, datestamp=1695774410 (Sep 27 2023 00:26:50)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=f641c2559fd3, datestamp=1695688003 (Sep 26 2023 00:26:43)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=7ee1c1ad1f67, datestamp=1695602502 (Sep 25 2023 00:41:42)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=972e4e0d4de2, datestamp=1695515454 (Sep 24 2023 00:30:54)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=10caf0baf020, datestamp=1695429001 (Sep 23 2023 00:30:01)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=c14dba0968c4, datestamp=1695342768 (Sep 22 2023 00:32:48)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=029ead1420f6, datestamp=1695255958 (Sep 21 2023 00:25:58)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=f8b20bfdd029, datestamp=1695170479 (Sep 20 2023 00:41:19)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=31d509821060, datestamp=1695083712 (Sep 19 2023 00:35:12)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=02390534ee24, datestamp=1694996843 (Sep 18 2023 00:27:23)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=9ba46a24d54a, datestamp=1694910399 (Sep 17 2023 00:26:39)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=6d375d7a7c88, datestamp=1694824378 (Sep 16 2023 00:32:58)
+0003.354 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.354 (0) Examining (for files) backup set with nonce=ba3000cc8df2, datestamp=1694738579 (Sep 15 2023 00:42:59)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=c85936395545, datestamp=1694651500 (Sep 14 2023 00:31:40)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=386d37758171, datestamp=1694564819 (Sep 13 2023 00:26:59)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=217fea674291, datestamp=1694478998 (Sep 12 2023 00:36:38)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=349c6686da64, datestamp=1694392076 (Sep 11 2023 00:27:56)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=01c0f68c0eb2, datestamp=1694305524 (Sep 10 2023 00:25:24)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=e67764903277, datestamp=1694219239 (Sep 09 2023 00:27:19)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=d54f32976f79, datestamp=1694132865 (Sep 08 2023 00:27:45)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=badf0853b2ce, datestamp=1694046319 (Sep 07 2023 00:25:19)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=2a41a3234f87, datestamp=1693959958 (Sep 06 2023 00:25:58)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=e0be566aa544, datestamp=1693874156 (Sep 05 2023 00:35:56)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=03d3b0fe1a7e, datestamp=1693787532 (Sep 04 2023 00:32:12)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=ca692f49eaeb, datestamp=1693701384 (Sep 03 2023 00:36:24)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=897edd713fef, datestamp=1693614333 (Sep 02 2023 00:25:33)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=dce3133e3c1d, datestamp=1693527933 (Sep 01 2023 00:25:33)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=b8169240021e, datestamp=1693441517 (Aug 31 2023 00:25:17)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=bd6860b06eab, datestamp=1693355438 (Aug 30 2023 00:30:38)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.355 (0) Examining (for files) backup set with nonce=dd01b6d6932b, datestamp=1693269079 (Aug 29 2023 00:31:19)
+0003.355 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=a2dbb828f4f4, datestamp=1693182423 (Aug 28 2023 00:27:03)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=45526d83173a, datestamp=1693096866 (Aug 27 2023 00:41:06)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=057684fc4b1c, datestamp=1693010758 (Aug 26 2023 00:45:58)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=01e974c4e447, datestamp=1692923718 (Aug 25 2023 00:35:18)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=b7610b8279f3, datestamp=1692836829 (Aug 24 2023 00:27:09)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=5fc07a4b29da, datestamp=1692751342 (Aug 23 2023 00:42:22)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=fd72dbd08b4f, datestamp=1692664170 (Aug 22 2023 00:29:30)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=51007f2faf06, datestamp=1692577512 (Aug 21 2023 00:25:12)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=21a4fb1289fb, datestamp=1692491797 (Aug 20 2023 00:36:37)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=b767a810fc92, datestamp=1692404958 (Aug 19 2023 00:29:18)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=adba484ce6cf, datestamp=1692318413 (Aug 18 2023 00:26:53)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=93bcf399941c, datestamp=1692231966 (Aug 17 2023 00:26:06)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=80ced0428319, datestamp=1692146198 (Aug 16 2023 00:36:38)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=d25c49bb6896, datestamp=1692059536 (Aug 15 2023 00:32:16)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=73f181dca7b0, datestamp=1691972925 (Aug 14 2023 00:28:45)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=9ec5813c2955, datestamp=1691887599 (Aug 13 2023 00:46:39)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=de0e7457687c, datestamp=1691800144 (Aug 12 2023 00:29:04)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.356 (0) Examining (for files) backup set with nonce=740bcb4aaf3e, datestamp=1691713654 (Aug 11 2023 00:27:34)
+0003.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=db089d27fb94, datestamp=1691627330 (Aug 10 2023 00:28:50)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=364aa4f93132, datestamp=1691540821 (Aug 09 2023 00:27:01)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=3438ac1f8269, datestamp=1691454605 (Aug 08 2023 00:30:05)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=42ac4923359a, datestamp=1691367905 (Aug 07 2023 00:25:05)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=796a3eec3814, datestamp=1691282135 (Aug 06 2023 00:35:35)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=724fb59634e8, datestamp=1691195107 (Aug 05 2023 00:25:07)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=06f16bddb2b9, datestamp=1691108803 (Aug 04 2023 00:26:43)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=4f92960c6e9f, datestamp=1691022717 (Aug 03 2023 00:31:57)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=9c7644dd1607, datestamp=1690936371 (Aug 02 2023 00:32:51)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=087b7873d125, datestamp=1690849949 (Aug 01 2023 00:32:29)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=e3f5e130b197, datestamp=1690764064 (Jul 31 2023 00:41:04)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=e0fcf555d493, datestamp=1690676862 (Jul 30 2023 00:27:42)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=ae4ae625f4a7, datestamp=1690590721 (Jul 29 2023 00:32:01)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=c7aa8f56af06, datestamp=1690504299 (Jul 28 2023 00:31:39)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=8767b80bf628, datestamp=1690418355 (Jul 27 2023 00:39:15)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=276b839ad7ab, datestamp=1690331252 (Jul 26 2023 00:27:32)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=8019b7a61983, datestamp=1690244815 (Jul 25 2023 00:26:55)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.357 (0) Examining (for files) backup set with nonce=a611dc7678d1, datestamp=1690158408 (Jul 24 2023 00:26:48)
+0003.357 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0003.358 (0) Examining (for files) backup set with nonce=c51c01f6985e, datestamp=1550147181 (Feb 14 2019 12:26:21)
+0003.358 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0003.359 (0) Examining (for files) backup set with nonce=1920e2f1bfca, datestamp=1519950198 (Mar 02 2018 00:23:18)
+0003.359 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0003.359 (0) Retain: saving new backup history (sets now: 122) and finishing retain operation
+0003.369 (0) Resume backup (3eab81f16123, 0): finish run
+0003.374 (0) Decremented the semaphore (d) by 1
+0003.377 (0) Semaphore (d) unlocked
+0003.379 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0003.385 (0) No email will/can be sent - the user has not configured an email address.
+0003.387 (0) The backup apparently succeeded and is now complete

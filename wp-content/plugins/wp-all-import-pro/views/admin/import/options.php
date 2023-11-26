@@ -15,8 +15,7 @@
 		<div class="wpallimport-header">
 			<div class="wpallimport-logo"></div>
 			<div class="wpallimport-title">
-				<p><?php _e('WP All Import', 'wp_all_import_plugin'); ?></p>
-				<h2><?php _e('Import XML / CSV', 'wp_all_import_plugin'); ?></h2>					
+				<h2><?php _e('Import Settings', 'wp_all_import_plugin'); ?></h2>
 			</div>
 			<div class="wpallimport-links">
 				<a href="http://www.wpallimport.com/support/" target="_blank"><?php _e('Support', 'wp_all_import_plugin'); ?></a> | <a href="http://www.wpallimport.com/documentation/" target="_blank"><?php _e('Documentation', 'wp_all_import_plugin'); ?></a>
@@ -58,7 +57,7 @@
 				<div class="rad4 first-step-errors error-no-root-element" <?php if ($is_valid_root_element === false):?>style="display:block;"<?php endif; ?>>
 					<div class="wpallimport-notify-wrapper">
 						<div class="error-headers exclamation">
-							<?php if ($is_404 and $import->type == 'url'): ?>
+							<?php if (isset($is_404) && $is_404 && $update_previous->type == 'url'): ?>
 							<h3><?php _e('This URL no longer returns an import file', 'wp_all_import_plugin');?></h3>
 							<h4 style="font-size:18px;"><?php _e("You must provide a URL that returns a valid import file.", "wp_all_import_plugin"); ?></h4>	
 							<?php else: ?>
@@ -70,7 +69,7 @@
 					<a class="button button-primary button-hero wpallimport-large-button wpallimport-notify-read-more" href="http://www.wpallimport.com/documentation/troubleshooting/problems-with-import-files/#invalid" target="_blank"><?php _e('Read More', 'wp_all_import_plugin');?></a>		
 				</div>
 
-				<form class="<?php echo ! $isWizard ? 'edit' : 'options' ?>" method="post" enctype="multipart/form-data" autocomplete="off" <?php echo ! $isWizard ? 'style="overflow:visible;"' : '' ?>>
+				<form class="<?php echo ! $isWizard ? 'edit' : 'options' ?>" method="post" enctype="multipart/form-data" autocomplete="off" <?php echo ! $isWizard ? 'style="overflow:visible;"' : '' ?> id="wpai-submit-confirm-form">
 
 					<?php $post_type = $post['custom_type']; ?>				
 
@@ -83,17 +82,42 @@
 					<div class="options">
 						<?php
 													
-							if ( in_array('reimport', $visible_sections)) include( 'options/_reimport_template.php' );
-							do_action('pmxi_options_tab', $isWizard, $post);
-							if ( in_array('settings', $visible_sections)) include( 'options/_settings_template.php' );
-							
-							include( 'options/_buttons_template.php' );
+							if ( in_array('reimport', $visible_sections)){
+								if ($post_type == 'taxonomies'){
+									include( 'options/_reimport_taxonomies_template.php' );
+								}
+                                elseif (in_array($post_type, ['comments', 'woo_reviews'])) {
+                                    include( 'options/_reimport_comments_template.php' );
+                                } else {
+									include( 'options/_reimport_template.php' );
+								}
+							}
 
+							do_action('pmxi_options_tab', $isWizard, $post);
+
+                            if(!isset($import)) {
+                                $import = $update_previous;
+                            }
+                            include( 'options/scheduling/_scheduling_ui.php' );
+
+							if ( in_array('settings', $visible_sections)) include( 'options/_settings_template.php' );
+
+							?>
+                        <?php if ( $import->type !== 'upload' ): ?>
+                        <div style="color: #425F9A; font-size: 14px; font-weight: bold; margin: 0 0 15px; line-height: 25px; text-align: center;">
+                            <div id="no-subscription" style="display: none;">
+                                <?php _e("Looks like you're trying out Automatic Scheduling!", 'wp_all_import_plugin');?><br/>
+                                <?php _e("Your Automatic Scheduling settings won't be saved without a subscription.", 'wp_all_import_plugin');?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <input type="hidden" id="scheduling_import_id" value="<?php echo $import->id; ?>" />
+                        <?php
+							include( 'options/_buttons_template.php' );
 						?>
 					</div>
 
-				</form>					
-								
+				</form>
 				<a href="http://soflyy.com/" target="_blank" class="wpallimport-created-by"><?php _e('Created by', 'wp_all_import_plugin'); ?> <span></span></a>
 					
 			</td>

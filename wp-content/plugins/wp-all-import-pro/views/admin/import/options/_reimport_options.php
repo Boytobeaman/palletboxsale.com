@@ -3,10 +3,21 @@
 <?php else: ?>
 <h4><?php _e('If this import is run again and WP All Import finds new or changed data...', 'wp_all_import_plugin'); ?></h4>
 <?php endif; ?>
+<?php
+
+	if (!empty($post['custom_type'])){
+		$custom_type = get_post_type_object( $post['custom_type'] );
+		$cpt_name = ( ! empty($custom_type)) ? strtolower($custom_type->label) : '';
+	}
+	else{
+		$cpt_name = '';
+	}
+
+?>
 <div class="input">
 	<input type="hidden" name="create_new_records" value="0" />
 	<input type="checkbox" id="create_new_records" name="create_new_records" value="1" <?php echo $post['create_new_records'] ? 'checked="checked"' : '' ?> />
-	<label for="create_new_records"><?php _e('Create new posts from records newly present in your file', 'wp_all_import_plugin') ?></label>
+	<label for="create_new_records"><?php printf(__('Create new %s from records newly present in your file', 'wp_all_import_plugin'), $cpt_name) ?></label>
 	<?php if ( ! empty(PMXI_Plugin::$session->deligate) and PMXI_Plugin::$session->deligate == 'wpallexport' ): ?>
 	<a href="#help" class="wpallimport-help" title="<?php _e('New posts will only be created when ID column is present and value in ID column is unique.', 'wp_all_import_plugin') ?>" style="top: -1px;">?</a>
 	<?php endif; ?>
@@ -15,7 +26,7 @@
 	<div class="input">
 		<input type="hidden" name="is_delete_missing" value="0" />
 		<input type="checkbox" id="is_delete_missing" name="is_delete_missing" value="1" <?php echo $post['is_delete_missing'] ? 'checked="checked"': '' ?> class="switcher" <?php if ( "new" != $post['wizard_type']): ?>disabled="disabled"<?php endif; ?>/>
-		<label for="is_delete_missing" <?php if ( "new" != $post['wizard_type']): ?>style="color:#ccc;"<?php endif; ?>><?php _e('Delete posts that are no longer present in your file', 'wp_all_import_plugin') ?></label>
+		<label for="is_delete_missing" <?php if ( "new" != $post['wizard_type']): ?>style="color:#ccc;"<?php endif; ?>><?php printf(__('Delete %s that are no longer present in your file', 'wp_all_import_plugin'), $cpt_name) ?></label>
 		<?php if ( "new" != $post['wizard_type']): ?>
 		<a href="#help" class="wpallimport-help" title="<?php _e('Records removed from the import file can only be deleted when importing into New Items. This feature cannot be enabled when importing into Existing Items.', 'wp_all_import_plugin') ?>" style="position:relative; top: -1px;">?</a>
 		<?php endif; ?>	
@@ -54,17 +65,28 @@
 <div class="input">
 	<input type="hidden" id="is_keep_former_posts" name="is_keep_former_posts" value="yes" />				
 	<input type="checkbox" id="is_not_keep_former_posts" name="is_keep_former_posts" value="no" <?php echo "yes" != $post['is_keep_former_posts'] ? 'checked="checked"': '' ?> class="switcher" />
-	<label for="is_not_keep_former_posts"><?php _e('Update existing posts with changed data in your file', 'wp_all_import_plugin') ?></label>
+	<label for="is_not_keep_former_posts"><?php printf(__('Update existing %s with the data in your file', 'wp_all_import_plugin'), $cpt_name) ?></label>
 	<?php if ( $this->isWizard and "new" == $post['wizard_type'] and empty(PMXI_Plugin::$session->deligate)): ?>
-	<a href="#help" class="wpallimport-help" style="position: relative; top: -2px;" title="<?php _e('These options will only be used if you run this import again later. All data is imported the first time you run an import.', 'wp_all_import_plugin') ?>">?</a>	
+	<a href="#help" class="wpallimport-help" style="position: relative; top: -2px;" title="<?php printf(__('These options will only be used if you run this import again later. All data is imported the first time you run an import.<br/><br/>Note that WP All Import will only update/remove %s created by this import. If you want to match to %s that already exist on this site, use Existing Items in Step 1.', 'wp_all_import_plugin'), $cpt_name, $cpt_name) ?>">?</a>	
 	<?php endif; ?>
 	<div class="switcher-target-is_not_keep_former_posts" style="padding-left:17px;">
+
+        <div class="input" style="margin-left: 4px;">
+            <input type="hidden" name="is_selective_hashing" value="0" />
+            <input type="checkbox" id="is_selective_hashing" name="is_selective_hashing" value="1" <?php echo $post['is_selective_hashing'] ? 'checked="checked"': '' ?> />
+            <label for="is_selective_hashing"><?php printf(__('Skip %s if their data in your file has not changed', 'wp_all_import_plugin'), strtolower($custom_type->labels->name)); ?></label>
+            <a href="#help" class="wpallimport-help" style="position: relative; top: -2px;" title="<?php _e('When enabled, WP All Import will keep track of every post\'s data as it is imported. When the import is run again, posts will be skipped if their data in the import file has not changed since the last run.<br/><br/>Posts will not be skipped if the import template or settings change, or if you make changes to the custom code in the Function Editor.', 'wp_all_import_plugin') ?>">?</a>
+        </div>
+
 		<input type="radio" id="update_all_data" class="switcher" name="update_all_data" value="yes" <?php echo 'no' != $post['update_all_data'] ? 'checked="checked"': '' ?>/>
 		<label for="update_all_data"><?php _e('Update all data', 'wp_all_import_plugin' )?></label><br>
 		
 		<input type="radio" id="update_choosen_data" class="switcher" name="update_all_data" value="no" <?php echo 'no' == $post['update_all_data'] ? 'checked="checked"': '' ?>/>
 		<label for="update_choosen_data"><?php _e('Choose which data to update', 'wp_all_import_plugin' )?></label><br>
-		<div class="switcher-target-update_choosen_data"  style="padding-left:17px;">
+		<div class="switcher-target-update_choosen_data"  style="padding-left:27px;">
+			<div class="input">
+				<h4 class="wpallimport-trigger-options wpallimport-select-all" rel="<?php _e("Unselect All", "wp_all_import_plugin"); ?>"><?php _e("Select All", "wp_all_import_plugin"); ?></h4>
+			</div>
 			<div class="input">
 				<input type="hidden" name="is_update_status" value="0" />
 				<input type="checkbox" id="is_update_status" name="is_update_status" value="1" <?php echo $post['is_update_status'] ? 'checked="checked"': '' ?> />
@@ -112,15 +134,54 @@
 				<label for="is_update_parent"><?php _e('Parent post', 'wp_all_import_plugin') ?></label>
 			</div>
 			<div class="input">
+				<input type="hidden" name="is_update_post_type" value="0" />
+				<input type="checkbox" id="is_update_post_type" name="is_update_post_type" value="1" <?php echo $post['is_update_post_type'] ? 'checked="checked"': '' ?> />
+				<label for="is_update_post_type"><?php _e('Post type', 'wp_all_import_plugin') ?></label>
+			</div>
+			<?php if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post_type, 'post-formats' ) ): ?>
+            <div class="input">
+                <input type="hidden" name="is_update_post_format" value="0" />
+                <input type="checkbox" id="is_update_post_format" name="is_update_post_format" value="1" <?php echo $post['is_update_post_format'] ? 'checked="checked"': '' ?> />
+                <label for="is_update_post_format"><?php _e('Post format', 'wp_all_import_plugin') ?></label>
+            </div>
+            <?php endif; ?>
+			<div class="input">
 				<input type="hidden" name="is_update_comment_status" value="0" />
 				<input type="checkbox" id="is_update_comment_status" name="is_update_comment_status" value="1" <?php echo $post['is_update_comment_status'] ? 'checked="checked"': '' ?> />
-				<label for="is_update_comment_status"><?php _e('Comment status', 'wp_all_import_plugin') ?></label>
-			</div>	
+				<?php if ($post_type == 'product' and class_exists('PMWI_Plugin')): ?>
+					<label for="is_update_comment_status"><?php _e('Enable review setting', 'wp_all_import_plugin') ?></label>
+				<?php else: ?>
+					<label for="is_update_comment_status"><?php _e('Comment status', 'wp_all_import_plugin') ?></label>
+				<?php endif;?>
+			</div>
+            <div class="input">
+                <input type="hidden" name="is_update_ping_status" value="0" />
+                <input type="checkbox" id="is_update_ping_status" name="is_update_ping_status" value="1" <?php echo $post['is_update_ping_status'] ? 'checked="checked"': '' ?> />
+                <label for="is_update_ping_status"><?php _e('Trackbacks and pingbacks', 'wp_all_import_plugin') ?></label>
+            </div>
 			<div class="input">
 				<input type="hidden" name="is_update_attachments" value="0" />
 				<input type="checkbox" id="is_update_attachments" name="is_update_attachments" value="1" <?php echo $post['is_update_attachments'] ? 'checked="checked"': '' ?> />
 				<label for="is_update_attachments"><?php _e('Attachments', 'wp_all_import_plugin') ?></label>
-			</div>	
+			</div>
+            <!-- Disable comment update for now. -->
+            <?php if( post_type_supports( $post_type, 'comments' ) && false) : ?>
+            <div class="input">
+                <input type="hidden" name="is_update_comments" value="0" />
+                <input type="checkbox" id="is_update_comments" name="is_update_comments" value="1" <?php echo $post['is_update_comments'] ? 'checked="checked"': '' ?> class="switcher"/>
+                <label for="is_update_comments"><?php _e('Comments', 'wp_all_import_plugin') ?></label>
+                <div class="switcher-target-is_update_comments" style="padding-left:17px;">
+                    <div class="input" style="margin-bottom:3px;">
+                        <input type="radio" id="update_comments_logic_full_update" name="update_comments_logic" value="full_update" <?php echo ( "full_update" == $post['update_comments_logic'] ) ? 'checked="checked"': '' ?> />
+                        <label for="update_comments_logic_full_update"><?php _e('Update all comments', 'wp_all_import_plugin') ?></label>
+                    </div>
+                    <div class="input" style="margin-bottom:3px;">
+                        <input type="radio" id="update_comments_logic_add_new" name="update_comments_logic" value="add_new" <?php echo ( "add_new" == $post['update_comments_logic'] ) ? 'checked="checked"': '' ?> />
+                        <label for="update_comments_logic_add_new"><?php _e('Don\'t touch existing comments, append new comments', 'wp_all_import_plugin') ?></label>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
 			
 			<?php 
 
@@ -185,7 +246,7 @@
 				<div class="switcher-target-is_update_categories" style="padding-left:17px;">
 					<?php
 					$existing_taxonomies = array();
-					$hide_taxonomies = (class_exists('PMWI_Plugin')) ? array('product_type') : array();
+					$hide_taxonomies = (class_exists('PMWI_Plugin')) ? array('product_type', 'product_visibility') : array();
 					$post_taxonomies = array_diff_key(get_taxonomies_by_object_type($post['is_override_post_type'] ? array_keys(get_post_types( '', 'names' )) : array($post_type), 'object'), array_flip($hide_taxonomies));
 					if (!empty($post_taxonomies)): 
 						foreach ($post_taxonomies as $ctx):  if ("" == $ctx->labels->name or (class_exists('PMWI_Plugin') and $post_type == "product" and strpos($ctx->name, "pa_") === 0)) continue;
@@ -218,7 +279,11 @@
 						<label for="update_categories_logic_add_new"><?php _e('Only add new', 'wp_all_import_plugin') ?></label>
 					</div>
 				</div>
-			</div>	
+			</div>
+			<?php
+				// add-ons re-import options
+				do_action('pmxi_reimport_options_after_taxonomies', $post_type, $post);
+			?>
 		</div>
 	</div>
 </div>	

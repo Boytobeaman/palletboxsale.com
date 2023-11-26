@@ -1,5 +1,5 @@
 <?php $is_new_import = ($isWizard or $import->imported + $import->skipped == $import->count or $import->imported + $import->skipped == 0 or $import->options['is_import_specified'] or $import->triggered); ?>
-
+<?php $visible_sections = apply_filters('pmxi_visible_confirm_sections', array('data_to_import'), $post['custom_type']); ?>
 <h2 class="wpallimport-wp-notices"></h2>
 
 <div class="wpallimport-wrapper wpallimport-step-5">
@@ -8,8 +8,7 @@
 		<div class="wpallimport-header">
 			<div class="wpallimport-logo"></div>
 			<div class="wpallimport-title">
-				<p><?php _e('WP All Import', 'wp_all_import_plugin'); ?></p>
-				<h2><?php _e('Import XML / CSV', 'wp_all_import_plugin'); ?></h2>					
+				<h2><?php _e('Confirm & Run', 'wp_all_import_plugin'); ?></h2>
 			</div>
 			<div class="wpallimport-links">
 				<a href="http://www.wpallimport.com/support/" target="_blank"><?php _e('Support', 'wp_all_import_plugin'); ?></a> | <a href="http://www.wpallimport.com/documentation/" target="_blank"><?php _e('Documentation', 'wp_all_import_plugin'); ?></a>
@@ -41,7 +40,7 @@
 	<div class="rad4 first-step-errors error-no-root-element" <?php if ($is_valid_root_element === false):?>style="display:block;"<?php endif; ?>>
 		<div class="wpallimport-notify-wrapper">
 			<div class="error-headers exclamation">
-				<?php if ($import->type == 'url'): ?>
+				<?php if (isset($import) && !$import->isEmpty() && $import->type == 'url'): ?>
 				<h3><?php _e('This URL no longer returns an import file', 'wp_all_import_plugin');?></h3>
 				<h4><?php _e("You must provide a URL that returns a valid import file.", "wp_all_import_plugin"); ?></h4>
 				<?php else: ?>
@@ -53,7 +52,22 @@
 		<a class="button button-primary button-hero wpallimport-large-button wpallimport-notify-read-more" href="http://www.wpallimport.com/documentation/troubleshooting/problems-with-import-files/#invalid" target="_blank"><?php _e('Read More', 'wp_all_import_plugin');?></a>		
 	</div>
 
-	<?php $custom_type = get_post_type_object( PMXI_Plugin::$session->custom_type ); ?>
+	<?php
+		switch ($post['custom_type']){
+			case 'taxonomies':
+				$custom_type = get_taxonomy($post['taxonomy_type']);
+				break;
+            case 'comments':
+                $custom_type = new stdClass();
+                $custom_type->labels = new stdClass();
+                $custom_type->labels->singular_name = __('Comments', 'wp_all_import_plugin');
+                $custom_type->labels->name = __('Comment', 'wp_all_import_plugin');
+                break;
+			default:
+				$custom_type = get_post_type_object( $post['custom_type'] );
+				break;
+		}
+	?>
 		
 	<?php if ($is_valid_root_element):?>
 		<div class="wpallimport-content-section" style="padding: 30px; overflow: hidden;">			
@@ -62,7 +76,7 @@
 				<?php if ($is_new_import):?>
 				<h3><?php _e('Your file is all set up!', 'wp_all_import_plugin'); ?></h3>
 				<?php else: ?>
-				<h3><?php _e('This import did not finish successfuly last time it was run.', 'wp_all_import_plugin'); ?></h3>
+				<h3><?php _e('This import did not finish successfully last time it was run.', 'wp_all_import_plugin'); ?></h3>
 				<?php endif; ?>				
 
 				<?php if ($is_new_import):?>				
@@ -112,10 +126,10 @@
 
 			<?php $max_execution_time = ini_get('max_execution_time');?>			
 
-			<div class="wpallimport-section">
+			<div class="wpallimport-section" style="margin-top: -20px;">
 				<div class="wpallimport-content-section">
 					<div class="wpallimport-collapsed-header" style="padding-left: 30px;">
-						<h3 style="color: #425e99;"><?php _e('Import Summary', 'wp_all_import_plugin'); ?></h3>
+						<h3 style="color: #425e99;"><?php _e('Import Summary', 'wp_all_import_plugin'); ?> <?php if (!$isWizard):?><span style="color:#000;"><?php printf(__(" - ID: %s - %s"), $import->id, empty($import->friendly_name) ? $import->name : $import->friendly_name);?></span><?php endif;?></h3>
 					</div>
 					<div class="wpallimport-collapsed-content" style="padding: 15px 25px 25px;">
 						
@@ -140,12 +154,14 @@
 										$path = str_replace($dirname, preg_replace('%^(.{3}).*(.{3})$%', '$1***$2', $dirname), str_replace('temp/', '', $path));										
 									}
 								}								
-							} else{
+							} elseif ( in_array($import_type, array('ftp'))){
+							    $path = $import->options['ftp_username'] . '@' . preg_replace('%^ftps?://%i', '', $import->options['ftp_host']) . '/' . $import->options['ftp_path'];
+                            } else{
 								$path = str_replace("\\", '/', preg_replace('%^(\w+://[^:]+:)[^@]+@%', '$1*****@', $path));
 							}
 							if ( in_array($import_type, array('upload', 'file'))){ $path = preg_replace('%.*wp-content/%', 'wp-content/', $path); }
 						?>
-						<p><?php printf(__('WP All Import will import the file <span style="color:#40acad;">%s</span>, which is <span style="color:#000; font-weight:bold;">%s</span>', 'wp_all_import_plugin'), $path, (isset($locfilePath)) ? human_filesize(filesize($locfilePath)) : __('undefined', 'wp_all_import_plugin')); ?></p>
+						<p><?php printf(__('WP All Import will import the file <span style="color:#40acad;">%s</span>, which is <span style="color:#000; font-weight:bold;">%s</span>', 'wp_all_import_plugin'), $path, (isset($locfilePath)) ? pmxi_human_filesize(filesize($locfilePath)) : __('undefined', 'wp_all_import_plugin')); ?></p>
 
 						<?php if ( strpos($xpath, '[') !== false){ ?>
 						<p><?php printf(__('WP All Import will process the records matching the XPath expression: <span style="color:#46ba69; font-weight:bold;">%s</span>', 'wp_all_import_plugin'), $xpath); ?></p>
@@ -160,11 +176,10 @@
 						<?php endif;?>
 						
 						<!-- Record Matching -->
-						<?php $custom_type = get_post_type_object( $post['custom_type'] ); ?>
-						
+
 						<?php if ( "new" == $post['wizard_type']): ?>
 						
-							<p><?php printf(__('Your unique key is <span style="color:#000; font-weight:bold;">%s</span>', 'wp_all_import_plugin'), $post['unique_key']); ?></p>
+							<p><?php printf(__('Your unique key is <span style="color:#000; font-weight:bold;">%s</span>', 'wp_all_import_plugin'), wp_all_import_clear_xss($post['unique_key'])); ?></p>
 							
 							<?php if ( ! $isWizard and !empty($custom_type)): ?>
 								
@@ -189,8 +204,28 @@
 							<?php
 							$criteria = '';
 							if ( 'pid' == $post['duplicate_indicator']) $criteria = 'has the same ID';
-							if ( 'title' == $post['duplicate_indicator']) $criteria = 'has the same Title';
-							if ( 'content' == $post['duplicate_indicator']) $criteria = 'has the same Content';
+							if ( 'title' == $post['duplicate_indicator']){
+								switch ($post['custom_type']){
+									case 'import_users':
+									case 'shop_customer':
+										$criteria = 'has the same Login';
+										break;
+									default:
+										$criteria = 'has the same Title';
+										break;
+								}
+							}
+							if ( 'content' == $post['duplicate_indicator']){
+								switch ($post['custom_type']){
+									case 'import_users':
+									case 'shop_customer':
+										$criteria = 'has the same Email';
+										break;
+									default:
+										$criteria = 'has the same Content';
+										break;
+								}
+							}
 							if ( 'custom field' == $post['duplicate_indicator']) $criteria = 'has Custom Field named "'. $post['custom_duplicate_name'] .'" with value = ' . $post['custom_duplicate_value'];
 							?>
 							<p><?php printf(__('WP All Import will merge data into existing %ss, matching the following criteria: %s', 'wp_all_import_plugin'), $custom_type->labels->singular_name, $criteria); ?></p>
@@ -199,9 +234,10 @@
 							<p><?php _e('Existing data will be updated with the data specified in this import.', 'wp_all_import_plugin'); ?></p>
 							<?php } elseif ("no" == $post['is_keep_former_posts'] and "no" == $post['update_all_data']){?>
 							<div>
-								<p><?php printf(__('Next %s data will be updated, <strong>all other data will be left alone</strong>', 'wp_all_import_plugin'), $custom_type->labels->singular_name); ?></p>				
+								<p><?php printf(__('Next %s data will be updated, <strong>all other data will be left alone</strong>', 'wp_all_import_plugin'), $custom_type->labels->singular_name); ?></p>
+								<?php if ( in_array('data_to_import', $visible_sections)):?>
 								<ul style="padding-left: 35px;">
-									<?php if ( $post['is_update_status']): ?>
+									<?php if ( $post['is_update_status'] && 'taxonomies' != $post['custom_type'] ): ?>
 									<li> <?php _e('status', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>
 									<?php if ( $post['is_update_title']): ?>
@@ -213,19 +249,31 @@
 									<?php if ( $post['is_update_content']): ?>
 									<li> <?php _e('content', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>
-									<?php if ( $post['is_update_excerpt']): ?>
+									<?php if ( $post['is_update_author']): ?>
+                                    <li> <?php _e('author', 'wp_all_import_plugin'); ?></li>
+									<?php endif; ?>
+									<?php if ( $post['is_update_comment_status']): ?>
+                                    <li> <?php _e('comment status', 'wp_all_import_plugin'); ?></li>
+									<?php endif; ?>
+									<?php if ( $post['is_update_post_format']): ?>
+                                    <li> <?php _e('post format', 'wp_all_import_plugin'); ?></li>
+									<?php endif; ?>
+									<?php if ( $post['is_update_excerpt'] && 'taxonomies' != $post['custom_type'] && 'comments' != $post['custom_type']): ?>
 									<li> <?php _e('excerpt', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>
-									<?php if ( $post['is_update_dates']): ?>
+									<?php if ( $post['is_update_dates'] && 'taxonomies' != $post['custom_type']): ?>
 									<li> <?php _e('dates', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>
-									<?php if ( $post['is_update_menu_order']): ?>
+									<?php if ( $post['is_update_menu_order'] && 'taxonomies' != $post['custom_type'] && 'comments' != $post['custom_type']): ?>
 									<li> <?php _e('menu order', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>
 									<?php if ( $post['is_update_parent']): ?>
 									<li> <?php _e('parent post', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>
-									<?php if ( $post['is_update_attachments']): ?>
+									<?php if ( $post['is_update_post_type'] && 'taxonomies' != $post['custom_type'] && 'comments' != $post['custom_type']): ?>
+									<li> <?php _e('post type', 'wp_all_import_plugin'); ?></li>
+									<?php endif; ?>
+									<?php if ( $post['is_update_attachments'] && 'taxonomies' != $post['custom_type'] && 'comments' != $post['custom_type']): ?>
 									<li> <?php _e('attachments', 'wp_all_import_plugin'); ?></li>
 									<?php endif; ?>
 									<?php if ( ! empty($post['is_update_acf'])): ?>
@@ -276,7 +324,7 @@
 										} ?>
 										</li>						
 									<?php endif; ?>
-									<?php if ( ! empty($post['is_update_categories'])): ?>
+									<?php if ( ! empty($post['is_update_categories']) && 'taxonomies' != $post['custom_type'] && 'comments' != $post['custom_type']): ?>
 										<li>
 										<?php 
 										switch($post['update_categories_logic']){
@@ -296,6 +344,8 @@
 										</li>						
 									<?php endif; ?>					
 								</ul>
+								<?php endif; ?>
+								<?php do_action('pmxi_confirm_data_to_import', $isWizard, $post);?>
 							</div>
 							<?php } ?>
 							<?php if ( $post['create_new_records']): ?>
@@ -304,15 +354,9 @@
 						<?php endif; ?>
 						
 						<!-- Import Performance -->
-						<?php if ( "default" == $post['import_processing']): ?>
-						<p><?php _e('High-Speed, Small File Processing enabled. Your import will fail if it takes longer than your server\'s max_execution_time.', 'wp_all_import_plugin'); ?></p>
-						<?php else: ?>
-						<p><?php printf(__('Piece By Piece Processing enabled. %s records will be processed each iteration. If it takes longer than your server\'s max_execution_time to process %s records, your import will fail.', 'wp_all_import_plugin'), $post['records_per_request'], $post['records_per_request']); ?></p>
-						<?php endif; ?>
-						
-						<?php if ($post['chuncking'] and "default" != $post['import_processing']):?>
-						<p><?php printf(__('Your file will be split into %s records chunks before processing.', 'wp_all_import_plugin'), PMXI_Plugin::getInstance()->getOption('large_feed_limit')); ?></p>
-						<?php endif; ?>
+                        <p><?php printf(__('Piece By Piece Processing enabled. %s records will be processed each iteration. If it takes longer than your server\'s max_execution_time to process %s records, your import will fail.', 'wp_all_import_plugin'), $post['records_per_request'], $post['records_per_request']); ?></p>
+
+                        <p><?php printf(__('Your file will be split into %s records chunks before processing.', 'wp_all_import_plugin'), PMXI_Plugin::getInstance()->getOption('large_feed_limit')); ?></p>
 
 						<?php if ($post['is_fast_mode']):?>
 						<p><?php _e('do_action calls will be disabled in wp_insert_post and wp_insert_attachment during the import.', 'wp_all_import_plugin'); ?></p>
@@ -327,11 +371,19 @@
 			</td>			
 		</tr>
 	</table>
-	<?php if ($is_new_import):?>
-	<form class="confirm <?php echo ! $isWizard ? 'edit' : '' ?>" method="post">
+	<?php if ( isset($import_type) && $import_type !== 'upload' ): ?>
+    <div style="color: #425F9A; font-size: 14px; font-weight: bold; margin: 0 0 15px; line-height: 25px; text-align: center;">
+        <div id="no-subscription" style="display: none;">
+            <?php _e("Looks like you're trying out Automatic Scheduling!", 'wp_all_import_plugin');?><br/>
+            <?php _e("Your Automatic Scheduling settings won't be saved without a subscription.", 'wp_all_import_plugin');?>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php if ($is_new_import):?>
+	<form id="wpai-submit-confirm-form" class="confirm <?php echo ! $isWizard ? 'edit' : '' ?>" method="post">
 		<?php wp_nonce_field('confirm', '_wpnonce_confirm') ?>
 		<input type="hidden" name="is_confirmed" value="1" />
-		<input type="submit" class="rad10" value="<?php _e('Confirm & Run Import', 'wp_all_import_plugin') ?>" />						
+        <input type="submit" class="rad10" value="<?php _e('Confirm & Run Import', 'wp_all_import_plugin') ?>" />
 		<p>
 		<?php if ($isWizard): ?>
 			<a href="<?php echo apply_filters('pmxi_options_back_link', add_query_arg('action', 'options', $this->baseUrl), $isWizard); ?>"><?php _e('or go back to Step 4', 'wp_all_import_plugin') ?></a>
@@ -341,7 +393,6 @@
 		</p>
 	</form>	
 	<?php endif; ?>
-
 	<a href="http://soflyy.com/" target="_blank" class="wpallimport-created-by"><?php _e('Created by', 'wp_all_import_plugin'); ?> <span></span></a>
 	
 </div>
